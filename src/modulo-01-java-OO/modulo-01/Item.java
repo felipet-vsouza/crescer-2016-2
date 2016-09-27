@@ -12,7 +12,11 @@ public class Item {
     }
     
     public int getQuantidade() {
-        return quantidade;
+        return this.quantidade;
+    }
+    
+    public String getDescricao() {
+        return this.descricao;
     }
 }
 
