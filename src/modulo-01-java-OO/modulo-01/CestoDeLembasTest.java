@@ -50,4 +50,22 @@ public class CestoDeLembasTest
         // Act & Assert
         assertTrue(quatroSemGluten.podeDividirEmPares());
     }
+    
+    @Test
+    public void podeDividir8000LembasEmPares() {
+        // Arrange
+        int lembas = 8000;
+        CestoDeLembas cesto = new CestoDeLembas(lembas);
+        // Act & Assert
+        assertFalse(cesto.podeDividirEmPares());
+    }
+    
+    @Test
+    public void podeDividirMenos12LembasEmPares() {
+        // Arrange
+        int lembas = -12;
+        CestoDeLembas cesto = new CestoDeLembas(lembas);
+        // Act & Assert
+        assertFalse(cesto.podeDividirEmPares());
+    }
 }
