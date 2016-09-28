@@ -1,9 +1,7 @@
 public class Dwarf {
-    private String nome;
     private int hp;
     
-    public Dwarf (String nome){
-        this.nome = nome;
+    public Dwarf (){
         this.hp = 110;
     }
     
@@ -11,11 +9,7 @@ public class Dwarf {
         this.hp -= dano;
     }
     
-    public String getNome(){
-        return this.nome;
-    }
-    
-    public int getHP(){
+    public int getHp(){
         return this.hp;
     }
 }

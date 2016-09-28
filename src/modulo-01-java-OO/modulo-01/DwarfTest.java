@@ -12,34 +12,24 @@ import org.junit.Test;
  * @version (a version number or a date)
  */
 public class DwarfTest
-{
-    @Test
-    public void dwarfNasceComNome(){
-        // Arrange
-        String nome = "Gimli";
-        // Act
-        Dwarf dwarf = new Dwarf(nome);
-        // Assert
-        assertEquals(nome, dwarf.getNome());
-    }
-    
+{   
     @Test
     public void dwarfNasceComHP(){
-        // Act
-        Dwarf dwarf = new Dwarf("Geraldo");
+        // Arrange & Act
+        Dwarf dwarf = new Dwarf();
         // Assert
-        assertEquals(110, dwarf.getHP());
+        assertEquals(110, dwarf.getHp());
     }
     
     @Test
-    public void dwarfRecebeFlechada(){
+    public void dwarfRecebeTresFlechadas(){
         // Act
-        Dwarf dwarf = new Dwarf("Hemingway");
+        Dwarf dwarf = new Dwarf();
         Elfo elfo = new Elfo("Fitzgerald");
         elfo.atirarFlecha(dwarf);
         elfo.atirarFlecha(dwarf);
         elfo.atirarFlecha(dwarf);
         // Assert
-        assertEquals(80, dwarf.getHP());
+        assertEquals(80, dwarf.getHp());
     }
 }
