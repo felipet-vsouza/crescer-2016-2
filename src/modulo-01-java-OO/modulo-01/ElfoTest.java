@@ -31,4 +31,30 @@ public class ElfoTest
         assertEquals("Arco", elfo.getArco().getDescricao());
         assertEquals(1, elfo.getArco().getQuantidade());
     }
+    
+    @Test
+    public void elfoNasceComFlechas() {
+        // Act
+        Elfo elfo = new Elfo("Jeremias");
+        // Assert
+        assertEquals("Flechas", elfo.getFlecha().getDescricao());
+        assertEquals(42, elfo.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceAtiraFlechas() {
+        // Act
+        Elfo elfo = new Elfo("Gabe Newell");
+        Elfo elfo2 = new Elfo("Scorcese");
+        elfo2.atirarFlecha();
+        elfo2.atirarFlecha();
+        elfo2.atirarFlecha();
+        Elfo elfo3 = new Elfo("Hound");
+        for(int i = 0; i < 42; i++)
+            elfo3.atirarFlecha();
+        // Assert
+        assertEquals(42, elfo.getFlecha().getQuantidade());
+        assertEquals(39, elfo2.getFlecha().getQuantidade());
+        assertEquals(0, elfo3.getFlecha().getQuantidade());
+    }
 }
