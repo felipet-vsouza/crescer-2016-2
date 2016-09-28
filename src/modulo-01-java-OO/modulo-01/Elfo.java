@@ -25,6 +25,10 @@ public class Elfo {
     public Item getFlecha() {
         return this.flecha;
     }
+    
+    public int getExp() {
+        return this.exp;
+    }
 
     public void atirarFlecha() {
         if(flecha.getQuantidade() > 0){
