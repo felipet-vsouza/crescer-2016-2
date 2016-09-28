@@ -94,4 +94,35 @@ public class ElfoTest
         // Assert
         assertEquals(41, elfo.getFlecha().getQuantidade());
     }
+    
+    @Test
+    public void toStringDeElfoAoNascer() {
+        // Arrange
+        Elfo leo = new Elfo("Leônidas");
+        // Act & Assert
+        assertEquals("Leônidas possui 42 flechas e 0 níveis de experiência.", leo.toString());
+    }
+    
+    @Test
+    public void toStringDeElfoAposAtirar15Flechas() {
+        // Arrange
+        Elfo leo = new Elfo("Leônidas");
+        // Act
+        for(int i = 0; i < 15; i++)
+            leo.atirarFlecha(new Dwarf());
+        // Assert
+        assertEquals("Leônidas possui 27 flechas e 15 níveis de experiência.", leo.toString());
+    }
+    
+    
+    @Test
+    public void toStringDeElfoAposAtirar60Flechas() {
+        // Arrange
+        Elfo leo = new Elfo("Leônidas");
+        // Act
+        for(int i = 0; i < 60; i++)
+            leo.atirarFlecha(new Dwarf());
+        // Assert
+        assertEquals("Leônidas possui 0 flechas e 42 níveis de experiência.", leo.toString());
+    }
 }
