@@ -27,8 +27,10 @@ public class Elfo {
     }
 
     public void atirarFlecha() {
-        flecha.setQuantidade(flecha.getQuantidade() - 1);
-        exp++;
+        if(flecha.getQuantidade() > 0){
+            flecha.setQuantidade(flecha.getQuantidade() - 1);
+            exp++;
+        }
     }
 
     /*public void atirarFlechaRefactory(){
