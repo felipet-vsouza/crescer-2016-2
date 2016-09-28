@@ -32,4 +32,14 @@ public class DwarfTest
         // Assert
         assertEquals(80, dwarf.getHp());
     }
+    
+    @Test
+    public void dwarfRecebe200Dano() {
+        // Arrange
+        Dwarf dwarf = new Dwarf();
+        // Act
+        dwarf.recebeDano(200);
+        // Assert
+        assertEquals(-90, dwarf.getHp());
+    }
 }
