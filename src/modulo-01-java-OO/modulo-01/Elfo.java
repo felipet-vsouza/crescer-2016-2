@@ -21,6 +21,10 @@ public class Elfo {
     public Item getArco() {
         return this.arco;
     }
+    
+    public Item getFlecha() {
+        return this.flecha;
+    }
 
     public void atirarFlecha() {
         flecha.setQuantidade(flecha.getQuantidade() - 1);
