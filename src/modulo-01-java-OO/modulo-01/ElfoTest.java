@@ -42,20 +42,36 @@ public class ElfoTest
     }
     
     @Test
-    public void elfoNasceAtiraFlechas() {
-        // Act
+    public void elfoNaoAtiraFlechas() {
+        // Arrange & Act
         Elfo elfo = new Elfo("Gabe Newell");
-        Elfo elfo2 = new Elfo("Scorcese");
-        elfo2.atirarFlecha();
-        elfo2.atirarFlecha();
-        elfo2.atirarFlecha();
-        Elfo elfo3 = new Elfo("Hound");
-        for(int i = 0; i < 42; i++)
-            elfo3.atirarFlecha();
         // Assert
         assertEquals(42, elfo.getFlecha().getQuantidade());
-        assertEquals(39, elfo2.getFlecha().getQuantidade());
-        assertEquals(0, elfo3.getFlecha().getQuantidade());
+        assertEquals(0, elfo.getExp());
+    }
+    
+    @Test
+    public void elfoAtiraTresFlechas() {
+        // Arrange
+        Elfo elfo = new Elfo("Scorcese");
+        // Act
+        elfo.atirarFlecha();
+        elfo.atirarFlecha();
+        elfo.atirarFlecha();
+        // Assert
+        assertEquals(39, elfo.getFlecha().getQuantidade());
+        assertEquals(3, elfo.getExp());
+    }
+    
+    @Test
+    public void elfoAtira42Flechas() {
+        Elfo elfo = new Elfo("Hound");
+        // Act
+        for(int i = 0; i < 42; i++)
+            elfo.atirarFlecha();
+        // Assert
+        assertEquals(0, elfo.getFlecha().getQuantidade());
+        assertEquals(42, elfo.getExp());
     }
     
     @Test
@@ -66,13 +82,14 @@ public class ElfoTest
             elfo.atirarFlecha();
         // Assert
         assertEquals(0, elfo.getFlecha().getQuantidade());
+        assertEquals(42, elfo.getExp());
     }
     
     @Test
     public void elfoAtiraFlechaEmDwarf() {
         // Act
         Elfo elfo = new Elfo("Elrond");
-        Dwarf dwarf = new Dwarf("Gimli");
+        Dwarf dwarf = new Dwarf();
         elfo.atirarFlecha(dwarf);
         // Assert
         assertEquals(41, elfo.getFlecha().getQuantidade());
