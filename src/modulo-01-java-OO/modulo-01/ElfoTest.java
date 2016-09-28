@@ -67,4 +67,14 @@ public class ElfoTest
         // Assert
         assertEquals(0, elfo.getFlecha().getQuantidade());
     }
+    
+    @Test
+    public void elfoAtiraFlechaEmDwarf() {
+        // Act
+        Elfo elfo = new Elfo("Elrond");
+        Dwarf dwarf = new Dwarf("Gimli");
+        elfo.atirarFlecha(dwarf);
+        // Assert
+        assertEquals(41, elfo.getFlecha().getQuantidade());
+    }
 }
