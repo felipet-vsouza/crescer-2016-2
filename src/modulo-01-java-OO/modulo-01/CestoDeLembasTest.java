@@ -26,16 +26,28 @@ public class CestoDeLembasTest
     @Test
     public void podeDividirLembasEmPares() {
         // Arrange
-        int lembasImpares = 11;
-        int lembasPares = 42;
         int lembasParesIndivisiveis = 2;
         // Act
-        CestoDeLembas tresSemGluten = new CestoDeLembas(lembasImpares);
-        CestoDeLembas quatroSemGluten = new CestoDeLembas(lembasPares);
         CestoDeLembas doisSemGluten = new CestoDeLembas(lembasParesIndivisiveis);
         // Assert
-        assertEquals(false, tresSemGluten.podeDividirEmPares());
-        assertEquals(true, quatroSemGluten.podeDividirEmPares());
-        assertEquals(false, doisSemGluten.podeDividirEmPares());
+        assertFalse(doisSemGluten.podeDividirEmPares());
+    }
+    
+    @Test
+    public void podeDividir11LembasEmPares() {
+        // Arrange
+        int lembasImpares = 11;
+        CestoDeLembas tresSemGluten = new CestoDeLembas(lembasImpares);
+        // Act & Assert
+        assertFalse(tresSemGluten.podeDividirEmPares());
+    }
+    
+    @Test
+    public void podeDividir42LembasEmPares() {
+        // Arrange
+        int lembasPares = 42;
+        CestoDeLembas quatroSemGluten = new CestoDeLembas(lembasPares);
+        // Act & Assert
+        assertTrue(quatroSemGluten.podeDividirEmPares());
     }
 }
