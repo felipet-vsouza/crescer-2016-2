@@ -9,6 +9,12 @@ public class Elfo {
         arco = new Item("Arco", 1);
         flecha = new Item("Flechas", 42);
     }
+    
+    public Elfo(String nome, int quantidadeFlechas){
+        this.nome = nome;
+        this.arco = new Item("Arco", 1);
+        this.flecha = new Item("Flechas", quantidadeFlechas);
+    }
 
     public void setNome(String n) {
         nome = n;

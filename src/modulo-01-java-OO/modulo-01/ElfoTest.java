@@ -125,4 +125,31 @@ public class ElfoTest
         // Assert
         assertEquals("Leônidas possui 0 flechas e 42 níveis de experiência.", leo.toString());
     }
+    
+    @Test
+    public void elfoNasceCom100000Flechas() {
+        // Arrange & Act
+        Elfo elfo = new Elfo("João Carlos", 100000);
+        // Assert
+        assertEquals("João Carlos", elfo.getNome());
+        assertEquals(100000, elfo.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceComMenos30Flechas() {
+        // Arrange & Act
+        Elfo elfo = new Elfo("Gloin", -30);
+        // Assert
+        assertEquals("Gloin", elfo.getNome());
+        assertEquals(-30, elfo.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoNasceSemFlechas() {
+        // Arrange & Act
+        Elfo elfo = new Elfo("Dovakhin", 0);
+        // Assert
+        assertEquals("Dovakhin", elfo.getNome());
+        assertEquals(0, elfo.getFlecha().getQuantidade());
+    }
 }
