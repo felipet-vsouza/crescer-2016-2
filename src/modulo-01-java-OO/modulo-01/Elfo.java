@@ -32,6 +32,13 @@ public class Elfo {
             exp++;
         }
     }
+    
+    public void atirarFlecha(Dwarf dwarf) {
+        if(flecha.getQuantidade() > 0){
+            dwarf.recebeDano(10);
+            this.atirarFlecha();
+        }
+    }
 
     /*public void atirarFlechaRefactory(){
         flecha.setQuantidade(flecha.getQuantidade()-1);
