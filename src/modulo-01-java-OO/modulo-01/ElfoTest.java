@@ -160,7 +160,7 @@ public class ElfoTest
         Elfo elfo = new Elfo("Gloin", -30);
         // Assert
         assertEquals("Gloin", elfo.getNome());
-        assertEquals(-30, elfo.getFlecha().getQuantidade());
+        assertEquals(42, elfo.getFlecha().getQuantidade());
     }
 
     @Test
