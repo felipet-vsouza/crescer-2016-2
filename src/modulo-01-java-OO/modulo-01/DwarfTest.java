@@ -81,9 +81,17 @@ public class DwarfTest
     }
     
     @Test
-    public void dwarfPossuiNumeroDaSorte33() {
+    public void dwarfSeixasPossuiNumeroDaSorte33() {
         // Arrange
         Dwarf joker = new Dwarf("Seixas", new DataTerceiraEra(14, 8, 1967));
+        // Act & Assert
+        assertEquals(33.0, joker.getNumeroSorte(), 0.01);
+    }
+    
+    @Test
+    public void dwarfMeirelesPossuiNumeroDaSorte33() {
+        // Arrange
+        Dwarf joker = new Dwarf("Meireles", new DataTerceiraEra(14, 8, 1967));
         // Act & Assert
         assertEquals(33.0, joker.getNumeroSorte(), 0.01);
     }
