@@ -42,4 +42,22 @@ public class DwarfTest
         // Assert
         assertEquals(-90, dwarf.getHp());
     }
+    
+    @Test
+    public void dwarfNasceComNomeGimli() {
+        // Arrange & Act
+        Dwarf dwarf = new Dwarf("Gimli", new DataTerceiraEra(2, 10, 1993));
+        // Assert
+        assertEquals("Gimli", dwarf.getNome());
+    }
+    
+    @Test
+    public void dwarfPossuiDataNascimentoDia31Mes12Ano1004() {
+        // Arrange & Act
+        Dwarf pedrao = new Dwarf("Pedrão", new DataTerceiraEra(31, 12, 1004));
+        // Assert
+        assertEquals(31, pedrao.getDataNascimento().getDia());
+        assertEquals(12, pedrao.getDataNascimento().getMes());
+        assertEquals(1004, pedrao.getDataNascimento().getAno());
+    }
 }
