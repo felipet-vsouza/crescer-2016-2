@@ -171,4 +171,12 @@ public class ElfoTest
         assertEquals("Dovakhin", elfo.getNome());
         assertEquals(0, elfo.getFlecha().getQuantidade());
     }
+    
+    @Test
+    public void elfoNasceVivo() {
+        // Arrange & Act
+        Elfo elfo = new Elfo("Chico Buarque");
+        // Assert
+        assertEquals(Status.VIVO, elfo.getStatus());
+    }
 }

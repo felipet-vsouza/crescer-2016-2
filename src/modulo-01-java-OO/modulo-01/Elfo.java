@@ -3,6 +3,7 @@ public class Elfo {
     private Item arco;
     private Item flecha;
     private int exp;
+    private Status status;
 
     public Elfo(String nome) {
         // Chamando construtor de baixo
@@ -13,6 +14,7 @@ public class Elfo {
         this.nome = nome;
         this.arco = new Item("Arco", 1);
         this.flecha = new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42);
+        this.status = Status.VIVO;
     }
 
     public void setNome(String n) {
@@ -33,6 +35,10 @@ public class Elfo {
     
     public int getExp() {
         return this.exp;
+    }
+    
+    public Status getStatus() {
+        return this.status;
     }
     
     public void atirarFlecha(Dwarf dwarf) {
