@@ -4,12 +4,15 @@ public class Dwarf {
     private String nome;
     private int exp;
 
-    public Dwarf(){
+    {
         this.hp = 110;
+    }
+    
+    public Dwarf(){
+        this(null, new DataTerceiraEra(1, 1, 1));
     }
 
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        this();
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
