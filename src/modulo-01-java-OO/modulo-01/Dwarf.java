@@ -4,11 +4,11 @@ public class Dwarf {
     private String nome;
     private int exp;
     private Status status;
-    
+
     {
         this.hp = 110;
     }
-    
+
     public Dwarf(){
         this(null, new DataTerceiraEra(1, 1, 1));
     }
@@ -20,6 +20,9 @@ public class Dwarf {
     }
 
     public void recebeDano(int dano) {
+        if(this.status.equals(Status.MORTO)){
+            return;
+        }
         double numeroSorte = this.getNumeroSorte();
         if(numeroSorte > 100)
             if(this.hp >= dano)
@@ -52,11 +55,11 @@ public class Dwarf {
     public DataTerceiraEra getDataNascimento() {
         return this.dataNascimento;
     }
-    
+
     public int getExp() {
         return this.exp;
     }
-    
+
     public Status getStatus() {
         return this.status;
     }
