@@ -29,7 +29,7 @@ public class Dwarf {
         double numero = 101.0;
         if(this.dataNascimento.ehBissexto() && this.hp >= 80 && this.hp <= 90)
             numero *= -33;
-        if(!this.dataNascimento.ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles")))
+        if(!this.dataNascimento.ehBissexto() && ("Seixas".equals(this.nome) || "Meireles".equals(this.nome)))
             numero = numero * 33 % 100;
         return numero;
     }
