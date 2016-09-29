@@ -130,4 +130,29 @@ public class DwarfTest
         assertEquals(0, meireles.getExp());
         assertEquals(110, meireles.getHp());
     }
+    
+    @Test
+    public void dwarfNasceVivo() {
+        assertEquals(Status.VIVO, new Dwarf("Gilson", new DataTerceiraEra(1, 1, 1)).getStatus());
+    }
+    
+    @Test
+    public void dwarfContinuaVivoAposReceber50Dano() {
+        // Arrange
+        Dwarf miletto = new Dwarf("Miletto", new DataTerceiraEra(1, 1, 1));
+        // Act
+        miletto.recebeDano(50);
+        // Assert
+        assertEquals(Status.VIVO, miletto.getStatus());
+    }
+    
+    @Test
+    public void dwarfPereceAposReceber110Dano() {
+        // Arrange
+        Dwarf kuririn = new Dwarf("Kuririn", new DataTerceiraEra(1, 1, 1));
+        // Act
+        kuririn.recebeDano(110);
+        // Assert
+        assertEquals(Status.MORTO, kuririn.getStatus());
+    }
 }
