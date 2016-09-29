@@ -54,9 +54,9 @@ public class ElfoTest
         // Arrange
         Elfo elfo = new Elfo("Scorcese");
         // Act
-        elfo.atirarFlecha(new Dwarf());
-        elfo.atirarFlecha(new Dwarf());
-        elfo.atirarFlecha(new Dwarf());
+        elfo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
+        elfo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
+        elfo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals(39, elfo.getFlecha().getQuantidade());
         assertEquals(3, elfo.getExp());
@@ -67,7 +67,7 @@ public class ElfoTest
         Elfo elfo = new Elfo("Hound");
         // Act
         for(int i = 0; i < 42; i++)
-            elfo.atirarFlecha(new Dwarf());
+            elfo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals(0, elfo.getFlecha().getQuantidade());
         assertEquals(42, elfo.getExp());
@@ -78,7 +78,7 @@ public class ElfoTest
         // Act
         Elfo elfo = new Elfo("Jonas");
         for(int i = 0; i < 100; i++)
-            elfo.atirarFlecha(new Dwarf());
+            elfo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals(0, elfo.getFlecha().getQuantidade());
         assertEquals(42, elfo.getExp());
@@ -88,7 +88,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEmDwarf() {
         // Act
         Elfo elfo = new Elfo("Elrond");
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1));
         elfo.atirarFlecha(dwarf);
         // Assert
         assertEquals(41, elfo.getFlecha().getQuantidade());
@@ -108,7 +108,7 @@ public class ElfoTest
         Elfo leo = new Elfo("Leônidas");
         // Act
         for(int i = 0; i < 15; i++)
-            leo.atirarFlecha(new Dwarf());
+            leo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals("Leônidas possui 27 flechas e 15 níveis de experiência.", leo.toString());
     }
@@ -119,7 +119,7 @@ public class ElfoTest
         Elfo leo = new Elfo("Leônidas");
         // Act
         for(int i = 0; i < 60; i++)
-            leo.atirarFlecha(new Dwarf());
+            leo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals("Leônidas possui 0 flechas e 42 níveis de experiência.", leo.toString());
     }
@@ -129,7 +129,7 @@ public class ElfoTest
         // Arrange
         Elfo leo = new Elfo("Leônidas");
         // Act
-        leo.atirarFlecha(new Dwarf());
+        leo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals("Leônidas possui 41 flechas e 1 nível de experiência.", leo.toString());
     }
@@ -140,7 +140,7 @@ public class ElfoTest
         Elfo leo = new Elfo("Leônidas");
         // Act
         for(int i = 0; i < 41; i++)
-            leo.atirarFlecha(new Dwarf());
+            leo.atirarFlecha(new Dwarf("Coringa", new DataTerceiraEra(1, 1, 1)));
         // Assert
         assertEquals("Leônidas possui 1 flecha e 41 níveis de experiência.", leo.toString());
     }

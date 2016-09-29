@@ -24,7 +24,7 @@ public class DwarfTest
     @Test
     public void dwarfRecebeTresFlechadas(){
         // Act
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Jonas", new DataTerceiraEra(1, 1, 1));
         Elfo elfo = new Elfo("Fitzgerald");
         elfo.atirarFlecha(dwarf);
         elfo.atirarFlecha(dwarf);
@@ -36,7 +36,7 @@ public class DwarfTest
     @Test
     public void dwarfRecebe200Dano() {
         // Arrange
-        Dwarf dwarf = new Dwarf();
+        Dwarf dwarf = new Dwarf("Jonas", new DataTerceiraEra(1, 1, 1));
         // Act
         dwarf.recebeDano(200);
         // Assert
@@ -94,5 +94,40 @@ public class DwarfTest
         Dwarf joker = new Dwarf("Meireles", new DataTerceiraEra(14, 8, 1967));
         // Act & Assert
         assertEquals(33.0, joker.getNumeroSorte(), 0.01);
+    }
+    
+    @Test
+    public void dwarfRecebeDanoNormalmente() {
+        // Arrange
+        Dwarf ronaldo = new Dwarf("Ronaldo", new DataTerceiraEra(1, 1, 1));
+        // Act
+        ronaldo.recebeDano(10);
+        // Assert
+        assertEquals(0, ronaldo.getExp());
+        assertEquals(100, ronaldo.getHp());
+    }
+    
+    @Test
+    public void dwarfRecebe2ExpENaoReceneDano() {
+        // Arrange
+        Dwarf jamelao = new Dwarf("Jamelão", new DataTerceiraEra(2, 2, 2000));
+        jamelao.recebeDano(10);
+        jamelao.recebeDano(10);
+        // Act
+        jamelao.recebeDano(10);
+        // Assert
+        assertEquals(2, jamelao.getExp());
+        assertEquals(90, jamelao.getHp());
+    }
+    
+    @Test
+    public void dwarfMeirelesNaoRecebeDanoNemExp() {
+        // Arrange
+        Dwarf meireles = new Dwarf("Meireles", new DataTerceiraEra(14, 8, 1967));
+        // Act
+        meireles.recebeDano(10);
+        // Assert
+        assertEquals(0, meireles.getExp());
+        assertEquals(110, meireles.getHp());
     }
 }
