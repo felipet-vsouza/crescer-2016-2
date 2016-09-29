@@ -40,7 +40,7 @@ public class DwarfTest
         // Act
         dwarf.recebeDano(200);
         // Assert
-        assertEquals(-90, dwarf.getHp());
+        assertEquals(0, dwarf.getHp());
     }
     
     @Test
@@ -154,5 +154,15 @@ public class DwarfTest
         kuririn.recebeDano(110);
         // Assert
         assertEquals(Status.MORTO, kuririn.getStatus());
+    }
+    
+    @Test
+    public void dwarfNaoDeveVidasAposReceber500Dano() {
+        // Arrange
+        Dwarf master = new Dwarf("Master", new DataTerceiraEra(1, 1, 1));
+        // Act
+        master.recebeDano(500);
+        // Assert
+        assertEquals(0, master.getHp());
     }
 }

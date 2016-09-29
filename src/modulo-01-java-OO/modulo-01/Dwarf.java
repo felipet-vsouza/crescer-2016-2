@@ -22,7 +22,10 @@ public class Dwarf {
     public void recebeDano(int dano) {
         double numeroSorte = this.getNumeroSorte();
         if(numeroSorte > 100)
-            this.hp -= dano;
+            if(this.hp >= dano)
+                this.hp -= dano;
+            else
+                this.hp = 0;
         else if(numeroSorte < 0)
             this.exp += 2;
         if(this.hp == 0)
