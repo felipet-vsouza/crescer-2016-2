@@ -7,6 +7,10 @@ public class Item {
         this.quantidade = quantidade;
     }
     
+    public void aumentarQuantidade(int quantidade) {
+        this.quantidade += quantidade;
+    }
+    
     public void setQuantidade(int novaQuantidade) {
         quantidade = novaQuantidade;
     }

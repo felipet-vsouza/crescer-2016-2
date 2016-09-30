@@ -60,10 +60,7 @@ public class Dwarf {
     
     public void tentarSorte() {
         if(this.getNumeroSorte() == -3333.) {
-            for(int i = 0; i < this.inventario.getLista().size(); i++){
-                Item item = this.inventario.getLista().get(i);
-                item.setQuantidade(item.getQuantidade() + 1000);
-            }
+            this.inventario.aumentarUnidadesDosItens(1000);
         }
     }
 

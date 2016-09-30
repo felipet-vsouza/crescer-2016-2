@@ -40,4 +40,10 @@ public class Inventario {
     public ArrayList<Item> getLista() {
         return this.lista;
     }
+    
+    public void aumentarUnidadesDosItens(int quantidade) {
+        for(Item item : this.lista){
+            item.aumentarQuantidade(quantidade);
+        }
+    }
 }
