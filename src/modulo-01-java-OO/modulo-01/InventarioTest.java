@@ -132,4 +132,55 @@ public class InventarioTest
         assertEquals(2027, inv.getLista().get(0).getQuantidade());
         assertEquals(2020, inv.getLista().get(1).getQuantidade());
     }
+    
+    @Test
+    public void inventarioOrdenaOitoItens() {
+        Inventario inv = new Inventario();
+        inv.adicionarItem(new Item("Peneira", 20));
+        inv.adicionarItem(new Item("Martelo", 2));
+        inv.adicionarItem(new Item("Concha", 28));
+        inv.adicionarItem(new Item("Pente", 59));
+        inv.adicionarItem(new Item("Ponte", 1));
+        inv.adicionarItem(new Item("Pá", 60));
+        inv.adicionarItem(new Item("Molho barbecue", 33));
+        inv.adicionarItem(new Item("Club Social", 6));
+        inv.ordenarItens();
+        assertEquals(1, inv.getLista().get(0).getQuantidade());
+        assertEquals(2, inv.getLista().get(1).getQuantidade());
+        assertEquals(6, inv.getLista().get(2).getQuantidade());
+        assertEquals(20, inv.getLista().get(3).getQuantidade());
+        assertEquals(28, inv.getLista().get(4).getQuantidade());
+        assertEquals(33, inv.getLista().get(5).getQuantidade());
+        assertEquals(59, inv.getLista().get(6).getQuantidade());
+        assertEquals(60, inv.getLista().get(7).getQuantidade());
+    }
+    
+    @Test
+    public void inventarioOrdenaOitoItensComQuantidadesIguais() {
+        Inventario inv = new Inventario();
+        inv.adicionarItem(new Item("Peneira", 12));
+        inv.adicionarItem(new Item("Martelo", 12));
+        inv.adicionarItem(new Item("Concha", 12));
+        inv.adicionarItem(new Item("Pente", 12));
+        inv.adicionarItem(new Item("Ponte", 12));
+        inv.adicionarItem(new Item("Pá", 12));
+        inv.adicionarItem(new Item("Molho barbecue", 12));
+        inv.adicionarItem(new Item("Club Social", 12));
+        inv.ordenarItens();
+        assertEquals("Peneira", inv.getLista().get(0).getDescricao());
+        assertEquals("Martelo", inv.getLista().get(1).getDescricao());
+        assertEquals("Concha", inv.getLista().get(2).getDescricao());
+        assertEquals("Pente", inv.getLista().get(3).getDescricao());
+        assertEquals("Ponte", inv.getLista().get(4).getDescricao());
+        assertEquals("Pá", inv.getLista().get(5).getDescricao());
+        assertEquals("Molho barbecue", inv.getLista().get(6).getDescricao());
+        assertEquals("Club Social", inv.getLista().get(7).getDescricao());
+    }
+    
+    @Test
+    public void inventarioVazioOrdenaNaoFazNada() {
+        Inventario inv = new Inventario();
+        inv.ordenarItens();
+        assertTrue(inv.getLista().isEmpty());
+    }
 }
