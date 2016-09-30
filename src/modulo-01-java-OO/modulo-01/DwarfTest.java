@@ -191,4 +191,48 @@ public class DwarfTest
         // Assert
         assertTrue(master.getInventario().getLista().isEmpty());
     }
+    
+    @Test
+    public void dwarfNaoSucedeAoTentarSorte101() {
+        // Arrange
+        Dwarf youtuber = new Dwarf("Pedro Pedroso", new DataTerceiraEra(31, 1, 2713));
+        youtuber.adicionarItem(new Item("PC Gamer", 4));
+        youtuber.adicionarItem(new Item("Barrinha de cereal", 10000));
+        // Act
+        youtuber.tentarSorte();
+        // Assert
+        assertEquals(4, youtuber.getInventario().getLista().get(0).getQuantidade());
+        assertEquals(10000, youtuber.getInventario().getLista().get(1).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfSucedeAoTentarSorteMenos3333() {
+        // Arrange
+        Dwarf jamelao = new Dwarf("Jamelão", new DataTerceiraEra(2, 2, 2000));
+        jamelao.recebeDano(10);
+        jamelao.recebeDano(10);
+        jamelao.recebeDano(10);
+        jamelao.adicionarItem(new Item("Melão", 12));
+        jamelao.adicionarItem(new Item("Melão", 120));
+        jamelao.adicionarItem(new Item("Melão", 1200));
+        // Act
+        jamelao.tentarSorte();
+        // Assert
+        assertEquals(1012, jamelao.getInventario().getLista().get(0).getQuantidade());
+        assertEquals(1120, jamelao.getInventario().getLista().get(1).getQuantidade());
+        assertEquals(2200, jamelao.getInventario().getLista().get(2).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfSeixasNaoSucedeAoTentarSorte33() {
+        // Arrange
+        Dwarf joker = new Dwarf("Seixas", new DataTerceiraEra(14, 8, 1967));
+        joker.adicionarItem(new Item("Violão", 1));
+        joker.adicionarItem(new Item("Amigo Pedro", 1));
+        // Act
+        joker.tentarSorte();
+        // Assert
+        assertEquals(1, joker.getInventario().getLista().get(0).getQuantidade());
+        assertEquals(1, joker.getInventario().getLista().get(1).getQuantidade());
+    }
 }

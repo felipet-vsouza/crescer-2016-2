@@ -57,6 +57,15 @@ public class Dwarf {
             numero = numero * 33 % 100;
         return numero;
     }
+    
+    public void tentarSorte() {
+        if(this.getNumeroSorte() == -3333.) {
+            for(int i = 0; i < this.inventario.getLista().size(); i++){
+                Item item = this.inventario.getLista().get(i);
+                item.setQuantidade(item.getQuantidade() + 1000);
+            }
+        }
+    }
 
     public int getHp(){
         return this.hp;
