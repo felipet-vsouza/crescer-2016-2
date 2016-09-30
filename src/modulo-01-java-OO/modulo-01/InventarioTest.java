@@ -22,6 +22,12 @@ public class InventarioTest
         inv.adicionarItem(new Item("Pedaço de pano", 1));
         // Assert
         assertEquals(2, inv.getLista().size());
+        Item item0 = inv.getLista().get(0);
+        Item item1 = inv.getLista().get(1);
+        assertEquals("Garrafa", item0.getDescricao());
+        assertEquals("Pedaço de pano", item1.getDescricao());
+        assertEquals(1, item0.getQuantidade());
+        assertEquals(1, item1.getQuantidade());
     }
     
     @Test
