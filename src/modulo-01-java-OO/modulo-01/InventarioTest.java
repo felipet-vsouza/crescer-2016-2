@@ -122,4 +122,14 @@ public class InventarioTest
         assertEquals("Peixe coalho", maisPop.getDescricao());
         assertEquals(12, maisPop.getQuantidade());
     }
+    
+    @Test
+    public void inventarioRecebe2016DeCadaItem() {
+        Inventario inv = new Inventario();
+        inv.adicionarItem(new Item("Perna", 11));
+        inv.adicionarItem(new Item("Contrato", 4));
+        inv.aumentarUnidadesDosItens(2016);
+        assertEquals(2027, inv.getLista().get(0).getQuantidade());
+        assertEquals(2020, inv.getLista().get(1).getQuantidade());
+    }
 }
