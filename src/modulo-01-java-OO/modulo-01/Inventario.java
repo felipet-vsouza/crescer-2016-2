@@ -46,6 +46,15 @@ public class Inventario {
             item.aumentarQuantidade(quantidade);
         }
     }
+    
+    public void aumentarMuitoUnidadesDosItens(int multiplicador) {
+        for(Item item : this.lista){
+            int quantidadeASomar = 0;
+            for(int i = 1; i <= item.getQuantidade(); i++)
+                quantidadeASomar += i;
+            item.aumentarQuantidade(quantidadeASomar * multiplicador);
+        }
+    }
 
     public void ordenarItens() {
         for(int i = 0; i < this.lista.size() - 1; i++){
