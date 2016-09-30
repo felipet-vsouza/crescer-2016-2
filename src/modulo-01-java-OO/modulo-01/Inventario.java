@@ -12,7 +12,7 @@ public class Inventario {
     }
     
     public void removerItem(Item item) {
-        this.lista.remove(this.lista.indexOf(item));
+        this.lista.remove(item);
     }
     
     public String getDescricoesItens() {
