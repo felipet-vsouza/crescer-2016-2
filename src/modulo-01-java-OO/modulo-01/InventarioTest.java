@@ -70,6 +70,14 @@ public class InventarioTest
     }
     
     @Test
+    public void inventarioDescricoesVazio() {
+        // Arrange
+        Inventario inventario = new Inventario();
+        // Act & Assert
+        assertEquals("", inventario.getDescricoesItens());
+    }
+    
+    @Test
     public void inventarioItemMaisPopularSaoSessentaColheres() {
         // Arrange
         Inventario inv = new Inventario();
