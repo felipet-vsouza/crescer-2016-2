@@ -62,4 +62,50 @@ public class InventarioTest
         assertEquals("Vestido amarelo,Vestido vermelho,Vestido azul,Vestido rosa,Vestido marrom," +
             "Vestido verde,Vestido fúcsia", inv.getDescricoesItens());
     }
+    
+    @Test
+    public void inventarioItemMaisPopularSaoSessentaColheres() {
+        // Arrange
+        Inventario inv = new Inventario();
+        inv.adicionarItem(new Item("Peneira", 20));
+        inv.adicionarItem(new Item("Martelo", 2));
+        inv.adicionarItem(new Item("Concha", 28));
+        inv.adicionarItem(new Item("Pente", 59));
+        inv.adicionarItem(new Item("Ponte", 1));
+        inv.adicionarItem(new Item("Pá", 60));
+        inv.adicionarItem(new Item("Molho barbecue", 33));
+        inv.adicionarItem(new Item("Club Social", 6));
+        // Act
+        Item maisPop = inv.getItemMaisPopular();
+        // Assert
+        assertEquals("Pá", maisPop.getDescricao());
+        assertEquals(60, maisPop.getQuantidade());
+    }
+    
+    @Test
+    public void inventarioItemMaisPopularEhNullNoInventarioVazio() {
+        // Arrange
+        Inventario inv = new Inventario();
+        // Act & Assert
+        assertEquals(null, inv.getItemMaisPopular());
+    }
+    
+    @Test
+    public void inventarioItemMaisPopularSaoDozePeixesCoalho() {
+        // Arrange
+        Inventario inv = new Inventario();
+        inv.adicionarItem(new Item("Peixe coalho", 12));
+        inv.adicionarItem(new Item("Martelo", 12));
+        inv.adicionarItem(new Item("Concha", 12));
+        inv.adicionarItem(new Item("Pente", 12));
+        inv.adicionarItem(new Item("Ponte", 12));
+        inv.adicionarItem(new Item("Pá", 12));
+        inv.adicionarItem(new Item("Molho barbecue", 12));
+        inv.adicionarItem(new Item("Club Social", 12));
+        // Act
+        Item maisPop = inv.getItemMaisPopular();
+        // Assert
+        assertEquals("Peixe coalho", maisPop.getDescricao());
+        assertEquals(12, maisPop.getQuantidade());
+    }
 }
