@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -20,7 +19,7 @@ public class IrishDwarfTest
         // Act & Assert
         assertEquals(101.0, youtuber.getNumeroSorte(), 0.01);
     }
-    
+
     @Test
     public void irishDwarfPossuiNumeroDaSorteMenos3333() {
         // Arrange
@@ -31,7 +30,7 @@ public class IrishDwarfTest
         // Act & Assert
         assertEquals(-3333.0, jamelao.getNumeroSorte(), 0.01);
     }
-    
+
     @Test
     public void irishDwarfSeixasPossuiNumeroDaSorte33() {
         // Arrange
@@ -39,7 +38,7 @@ public class IrishDwarfTest
         // Act & Assert
         assertEquals(33.0, joker.getNumeroSorte(), 0.01);
     }
-    
+
     @Test
     public void irishDwarfMeirelesPossuiNumeroDaSorte33() {
         // Arrange
@@ -47,7 +46,7 @@ public class IrishDwarfTest
         // Act & Assert
         assertEquals(33.0, joker.getNumeroSorte(), 0.01);
     }
-    
+
     @Test
     public void irishDwarfSucedeAoTentarSorteMenos3333() {
         // Arrange
@@ -65,7 +64,7 @@ public class IrishDwarfTest
         assertEquals(66011, jamelao.getInventario().getLista().get(1).getQuantidade());
         assertEquals(78012, jamelao.getInventario().getLista().get(2).getQuantidade());
     }
-    
+
     @Test
     public void irishDwarfSeixasNaoSucedeAoTentarSorte33() {
         // Arrange
@@ -78,7 +77,7 @@ public class IrishDwarfTest
         assertEquals(1, joker.getInventario().getLista().get(0).getQuantidade());
         assertEquals(1, joker.getInventario().getLista().get(1).getQuantidade());
     }
-    
+
     @Test
     public void irishDwarfNaoSucedeAoTentarSorte101() {
         // Arrange
@@ -88,5 +87,16 @@ public class IrishDwarfTest
         youtuber.tentarSorte();
         // Assert
         assertEquals(666, youtuber.getInventario().getLista().get(0).getQuantidade());
+    }
+
+    @Test
+    public void irishDwarfSucedeAoTentarSorteMenos3333QuantidadeNegativa() {
+        IrishDwarf dwarf = new IrishDwarf("Pete 'O Murphy'", new DataTerceiraEra(1, 1, 2000));
+        dwarf.adicionarItem(new Item("Pint de Guinness", -5));
+        dwarf.recebeDano(10);
+        dwarf.recebeDano(10);
+        dwarf.recebeDano(10);
+        dwarf.tentarSorte();
+        assertEquals(14995, dwarf.getInventario().getLista().get(0).getQuantidade());
     }
 }

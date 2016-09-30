@@ -48,9 +48,10 @@ public class Inventario {
     }
     
     public void aumentarMuitoUnidadesDosItens(int multiplicador) {
-        for(Item item : this.lista){
+        for(Item item : this.lista) {
             int quantidadeASomar = 0;
-            for(int i = 1; i <= item.getQuantidade(); i++)
+            int quantidadeAtual = Math.abs(item.getQuantidade());
+            for(int i = 1; i <= quantidadeAtual; i++)
                 quantidadeASomar += i;
             item.aumentarQuantidade(quantidadeASomar * multiplicador);
         }
