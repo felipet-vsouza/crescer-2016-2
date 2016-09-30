@@ -165,4 +165,30 @@ public class DwarfTest
         // Assert
         assertEquals(0, master.getHp());
     }
+    
+    @Test
+    public void dwarfGanhaUmMachadoEUmaGarrafa() {
+        // Arrange
+        Dwarf master = new Dwarf();
+        // Act
+        master.adicionarItem(new Item("Machado", 1));
+        master.adicionarItem(new Item("Garrafa", 2));
+        // Assert
+        assertEquals(2, master.getInventario().getLista().size());
+    }
+    
+    @Test
+    public void dwarfPerdeTresPentesECincoPetecas() {
+        // Arrange
+        Dwarf master = new Dwarf();
+        Item pente = new Item("Pente", 3);
+        Item peteca = new Item("Peteca", 5);
+        master.adicionarItem(pente);
+        master.adicionarItem(peteca);
+        // Act
+        master.perderItem(pente);
+        master.perderItem(peteca);
+        // Assert
+        assertTrue(master.getInventario().getLista().isEmpty());
+    }
 }

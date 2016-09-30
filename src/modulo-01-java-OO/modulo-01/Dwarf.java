@@ -4,6 +4,7 @@ public class Dwarf {
     private String nome;
     private int exp;
     private Status status;
+    private Inventario inventario;
 
     {
         this.hp = 110;
@@ -17,6 +18,7 @@ public class Dwarf {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.status = Status.VIVO;
+        this.inventario = new Inventario();
     }
 
     public void recebeDano(int dano) {
@@ -34,7 +36,19 @@ public class Dwarf {
         if(this.hp == 0)
             this.status = Status.MORTO;
     }
-
+    
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+    
+    public void perderItem(Item item) {
+        this.inventario.removerItem(item);
+    }
+    
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
     public double getNumeroSorte() {
         double numero = 101.0;
         if(this.dataNascimento.ehBissexto() && this.hp >= 80 && this.hp <= 90)
