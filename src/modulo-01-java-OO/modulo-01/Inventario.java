@@ -15,6 +15,15 @@ public class Inventario {
         this.lista.remove(this.lista.indexOf(item));
     }
     
+    public String getDescricoesItens() {
+        String retorno = "";
+        for(int i = 0; i < this.lista.size(); i++) {
+            String descricao = this.lista.get(i).getDescricao();
+            retorno += descricao + (i == this.lista.size() - 1 ? "" : ",");
+        }
+        return retorno;
+    }
+    
     public ArrayList<Item> getLista() {
         return this.lista;
     }
