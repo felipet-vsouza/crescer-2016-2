@@ -58,20 +58,25 @@ public class Inventario {
     }
 
     public void ordenarItens() {
+        ordenarItens(TipoOrdenacao.ASCENDENTE);
+    }
+    
+    public void ordenarItens(TipoOrdenacao ordem) {
         for(int i = 0; i < this.lista.size() - 1; i++){
-            int indiceMenorQuantidade = i;
+            int indiceAuxiliar = i;
             for(int j = i + 1; j < this.lista.size(); j++){
-                if(this.lista.get(indiceMenorQuantidade).getQuantidade() > this.lista.get(j).getQuantidade()){
-                    indiceMenorQuantidade = j;
+                if(ordem.equals(TipoOrdenacao.ASCENDENTE) && this.lista.get(indiceAuxiliar).getQuantidade() > this.lista.get(j).getQuantidade() ||
+                   ordem.equals(TipoOrdenacao.DESCENDENTE) && this.lista.get(indiceAuxiliar).getQuantidade() < this.lista.get(j).getQuantidade()){
+                    indiceAuxiliar = j;
                 }
             }
-            if(i != indiceMenorQuantidade) {
+            if(i != indiceAuxiliar) {
                 Item maior = this.lista.get(i);
-                Item menor = this.lista.get(indiceMenorQuantidade);
+                Item menor = this.lista.get(indiceAuxiliar);
                 this.lista.remove(i);
                 this.lista.add(i, menor);
-                this.lista.remove(indiceMenorQuantidade);
-                this.lista.add(indiceMenorQuantidade, maior);
+                this.lista.remove(indiceAuxiliar);
+                this.lista.add(indiceAuxiliar, maior);
             }
         }
     }
