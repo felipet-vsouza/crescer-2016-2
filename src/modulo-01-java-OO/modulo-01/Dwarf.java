@@ -1,6 +1,6 @@
 public class Dwarf extends Personagem {
-    private int hp;
-    private DataTerceiraEra dataNascimento;
+    protected int hp;
+    protected DataTerceiraEra dataNascimento;
     
     {
         this.hp = 110;
