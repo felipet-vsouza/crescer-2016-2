@@ -22,6 +22,18 @@ public class Item {
     public String getDescricao() {
         return this.descricao;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Item item;
+        if(obj != null && obj instanceof Item)
+            item = (Item) obj;
+        else
+            return false;
+        return 
+            item.getDescricao().equals(this.descricao) && 
+            item.getQuantidade() == this.quantidade;
+    }
 }
 
 
