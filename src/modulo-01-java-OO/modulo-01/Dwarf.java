@@ -31,14 +31,6 @@ public class Dwarf extends Personagem {
             this.status = Status.MORTO;
     }
     
-    public void adicionarItem(Item item) {
-        this.inventario.adicionarItem(item);
-    }
-    
-    public void perderItem(Item item) {
-        this.inventario.removerItem(item);
-    }
-    
     public double getNumeroSorte() {
         double numero = 101.0;
         if(this.dataNascimento.ehBissexto() && this.hp >= 80 && this.hp <= 90)

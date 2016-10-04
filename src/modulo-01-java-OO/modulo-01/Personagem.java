@@ -29,4 +29,12 @@ public class Personagem {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+    
+    public void perderItem(Item item) {
+        this.inventario.removerItem(item);
+    }
 }

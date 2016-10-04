@@ -179,4 +179,27 @@ public class ElfoTest
         // Assert
         assertEquals(Status.VIVO, elfo.getStatus());
     }
+    
+    @Test
+    public void elfoRecebeItensEspadaEspadaEMachado() {
+        Elfo elfo = new Elfo("Legolas");
+        Item espada = new Item("Espada", 1);
+        Item machado = new Item("Machado", 1);
+        elfo.adicionarItem(espada);
+        elfo.adicionarItem(machado);
+        assertTrue(elfo.getInventario().getLista().contains(espada));
+        assertTrue(elfo.getInventario().getLista().contains(machado));
+    }
+    
+    @Test
+    public void elfoRecebeItensEspadaEspadaEMachadoEPerdeEspada() {
+        Elfo elfo = new Elfo("Legolas");
+        Item espada = new Item("Espada", 1);
+        Item machado = new Item("Machado", 1);
+        elfo.adicionarItem(espada);
+        elfo.adicionarItem(machado);
+        elfo.perderItem(espada);
+        assertFalse(elfo.getInventario().getLista().contains(espada));
+        assertTrue(elfo.getInventario().getLista().contains(machado));
+    }
 }
