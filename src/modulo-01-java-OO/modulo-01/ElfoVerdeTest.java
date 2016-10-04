@@ -45,4 +45,10 @@ public class ElfoVerdeTest
         assertTrue(elfoVerde.getInventario().getLista().contains(espada));
         assertTrue(elfoVerde.getInventario().getLista().contains(arco));
     }
+    
+    @Test
+    public void elfoVerdeNasceCom100Hp() {
+        ElfoVerde elfo = new ElfoVerde("Pablo Escobar verde");
+        assertEquals(100, elfo.getHp());
+    }
 }

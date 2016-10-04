@@ -1,6 +1,7 @@
 public class Personagem {
     protected String nome;
     protected int exp;
+    protected int hp;
     protected Status status;
     protected Inventario inventario;
 
@@ -28,6 +29,10 @@ public class Personagem {
     
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public int getHp(){
+        return this.hp;
     }
     
     public void adicionarItem(Item item) {

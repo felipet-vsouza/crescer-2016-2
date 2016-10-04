@@ -1,5 +1,9 @@
 public class Elfo extends Personagem {
     
+    {
+        this.hp = 100;
+    }
+    
     public Elfo(String nome) {
         // Chamando construtor de baixo
         this(nome, 42);

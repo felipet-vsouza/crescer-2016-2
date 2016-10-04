@@ -202,4 +202,10 @@ public class ElfoTest
         assertFalse(elfo.getInventario().getLista().contains(espada));
         assertTrue(elfo.getInventario().getLista().contains(machado));
     }
+    
+    @Test
+    public void elfoNasceCom100DeHp() {
+        Elfo elfo = new Elfo("Pablo Escobar");
+        assertEquals(100, elfo.getHp());
+    }
 }

@@ -1,5 +1,4 @@
 public class Dwarf extends Personagem {
-    protected int hp;
     protected DataTerceiraEra dataNascimento;
     
     {
@@ -44,10 +43,6 @@ public class Dwarf extends Personagem {
         if(this.getNumeroSorte() == -3333.) {
             this.inventario.aumentarUnidadesDosItens(1000);
         }
-    }
-
-    public int getHp(){
-        return this.hp;
     }
 
     public DataTerceiraEra getDataNascimento() {
