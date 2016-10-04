@@ -9,16 +9,14 @@ public class ElfoNoturno extends Elfo {
     
     @Override
     public void atirarFlecha(Dwarf dwarf){
-        super.atirarFlecha(dwarf, 3);
         //this.hp = this.hp - ((this.hp * 5) / 100);
         // Desta forma não funciona, pois, uma vez que o Java trata o número como inteiro e sempre 
         // arredonda o resultado para baixo, o resultado do cálculo de 5% a partir do número 19 será 0
         // e nada mais será subtraído.
-        int percent = ((this.hp * 5) / 100);
-        // TODO: Buscar maneira mais eficiente de resolver
-        this.hp = this.hp - (percent == 0 ? 1 : percent);
-        if(this.hp == 0) {
-            this.status = Status.MORTO;
-        }
+        if (status == Status.VIVO) { 
+            super.atirarFlecha(dwarf, 3); 
+            this.hp *= 0.95; 
+            this.status = (int)this.hp == 0 ? Status.MORTO : this.status; 
+        } 
     }
 }

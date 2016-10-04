@@ -18,7 +18,7 @@ public class DwarfTest
         // Arrange & Act
         Dwarf dwarf = new Dwarf();
         // Assert
-        assertEquals(110, dwarf.getHp());
+        assertEquals(110, dwarf.getHp(), 0.01);
     }
     
     @Test
@@ -30,7 +30,7 @@ public class DwarfTest
         elfo.atirarFlecha(dwarf);
         elfo.atirarFlecha(dwarf);
         // Assert
-        assertEquals(80, dwarf.getHp());
+        assertEquals(80, dwarf.getHp(), 0.01);
     }
     
     @Test
@@ -40,7 +40,7 @@ public class DwarfTest
         // Act
         dwarf.recebeDano(200);
         // Assert
-        assertEquals(0, dwarf.getHp());
+        assertEquals(0, dwarf.getHp(), 0.01);
     }
     
     @Test
@@ -103,8 +103,8 @@ public class DwarfTest
         // Act
         ronaldo.recebeDano(10);
         // Assert
-        assertEquals(0, ronaldo.getExp());
-        assertEquals(100, ronaldo.getHp());
+        assertEquals(0, ronaldo.getExp(), 0.01);
+        assertEquals(100, ronaldo.getHp(), 0.01);
     }
     
     @Test
@@ -117,7 +117,7 @@ public class DwarfTest
         jamelao.recebeDano(10);
         // Assert
         assertEquals(2, jamelao.getExp());
-        assertEquals(90, jamelao.getHp());
+        assertEquals(90, jamelao.getHp(), 0.01);
     }
     
     @Test
@@ -128,7 +128,7 @@ public class DwarfTest
         meireles.recebeDano(10);
         // Assert
         assertEquals(0, meireles.getExp());
-        assertEquals(110, meireles.getHp());
+        assertEquals(110, meireles.getHp(), 0.01);
     }
     
     @Test
@@ -163,7 +163,7 @@ public class DwarfTest
         // Act
         master.recebeDano(500);
         // Assert
-        assertEquals(0, master.getHp());
+        assertEquals(0, master.getHp(), 0.01);
     }
     
     @Test

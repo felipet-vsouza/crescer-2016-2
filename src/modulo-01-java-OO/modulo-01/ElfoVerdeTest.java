@@ -49,7 +49,7 @@ public class ElfoVerdeTest
     @Test
     public void elfoVerdeNasceCom100Hp() {
         ElfoVerde elfo = new ElfoVerde("Pablo Escobar verde");
-        assertEquals(100, elfo.getHp());
+        assertEquals(100, elfo.getHp(), 0.01);
     }
     
     @Test

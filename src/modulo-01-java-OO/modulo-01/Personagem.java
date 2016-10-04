@@ -1,7 +1,7 @@
 public class Personagem {
     protected String nome;
     protected int exp;
-    protected int hp;
+    protected double hp;
     protected Status status;
     protected Inventario inventario;
 
@@ -31,7 +31,7 @@ public class Personagem {
         this.nome = nome;
     }
     
-    public int getHp(){
+    public double getHp(){
         return this.hp;
     }
     

@@ -206,6 +206,6 @@ public class ElfoTest
     @Test
     public void elfoNasceCom100DeHp() {
         Elfo elfo = new Elfo("Pablo Escobar");
-        assertEquals(100, elfo.getHp());
+        assertEquals(100, elfo.getHp(), 0.01);
     }
 }

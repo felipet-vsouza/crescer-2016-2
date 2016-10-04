@@ -28,14 +28,14 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(new Dwarf());
         elfo.atirarFlecha(new Dwarf());
         elfo.atirarFlecha(new Dwarf());
-        assertEquals(87, elfo.getHp());
+        assertEquals(85.7375, elfo.getHp(), 0.01);
     }
     
     @Test
     public void elfoNoturnoFicaCom95HpAoAtirarUmaFlecha() {
         ElfoNoturno elfo = new ElfoNoturno("Marcelo");
         elfo.atirarFlecha(new Dwarf());
-        assertEquals(95, elfo.getHp());
+        assertEquals(95, elfo.getHp(), 0.01);
     }
     
     @Test
