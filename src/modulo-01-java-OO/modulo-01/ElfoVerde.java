@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ElfoVerde extends Elfo {
     public ElfoVerde(String nome) {
         super(nome);
@@ -7,14 +9,16 @@ public class ElfoVerde extends Elfo {
         super(nome, quantidadeFlechas);
     }
     
+    @Override
     public void atirarFlecha(Dwarf dwarf) {
         super.atirarFlecha(dwarf);
         exp++;
     }
     
+    @Override
     public void adicionarItem(Item item) {
-        String descricao = item.getDescricao();
-        if(descricao.equals("Espada de aço valiriano") || descricao.equals("Arco e Flecha de Vidro")) {
+        String[] validos = {"Espada de aço valiriano", "Arco e Flecha de Vidro"};
+        if(item != null && new ArrayList<>(Arrays.asList(validos)).contains(item.getDescricao())) {
             super.adicionarItem(item);
         }
     }
