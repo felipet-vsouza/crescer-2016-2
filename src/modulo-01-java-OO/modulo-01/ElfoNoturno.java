@@ -16,6 +16,7 @@ public class ElfoNoturno extends Elfo {
         // arredonda o resultado para baixo, o resultado do cálculo de 5% a partir do número 19 será 0
         // e nada mais será subtraído.
         int percent = ((this.hp * 5) / 100);
+        // TODO: Buscar maneira mais eficiente de resolver
         this.hp = this.hp - (percent == 0 ? 1 : percent);
         if(this.hp == 0) {
             this.status = Status.MORTO;
