@@ -24,10 +24,14 @@ public class Elfo extends Personagem {
     }
     
     public void atirarFlecha(Dwarf dwarf) {
+        this.atirarFlecha(dwarf, 1);
+    }
+    
+    protected void atirarFlecha(Dwarf dwarf, int fatorExp) {
         if(this.getFlecha().getQuantidade() > 0){
             dwarf.recebeDano(10);
             this.getFlecha().setQuantidade(this.getFlecha().getQuantidade() - 1);
-            exp++;
+            exp += fatorExp;
         }
     }
     

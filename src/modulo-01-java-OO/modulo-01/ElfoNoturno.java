@@ -9,8 +9,7 @@ public class ElfoNoturno extends Elfo {
     
     @Override
     public void atirarFlecha(Dwarf dwarf){
-        super.atirarFlecha(dwarf);
-        exp += 2;
+        super.atirarFlecha(dwarf, 3);
         //this.hp = this.hp - ((this.hp * 5) / 100);
         // Desta forma não funciona, pois, uma vez que o Java trata o número como inteiro e sempre 
         // arredonda o resultado para baixo, o resultado do cálculo de 5% a partir do número 19 será 0

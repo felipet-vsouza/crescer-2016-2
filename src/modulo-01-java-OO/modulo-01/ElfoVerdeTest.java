@@ -51,4 +51,12 @@ public class ElfoVerdeTest
         ElfoVerde elfo = new ElfoVerde("Pablo Escobar verde");
         assertEquals(100, elfo.getHp());
     }
+    
+    @Test
+    public void elfoVerdeNaoGanhaExpQuandoNaoTemMaisFlechas() {
+        ElfoVerde elfo = new ElfoVerde("Pepem", 1);
+        elfo.atirarFlecha(new Dwarf());
+        elfo.atirarFlecha(new Dwarf());
+        assertEquals(2, elfo.getExp());
+    }
 }

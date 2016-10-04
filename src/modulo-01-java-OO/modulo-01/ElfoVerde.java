@@ -11,8 +11,7 @@ public class ElfoVerde extends Elfo {
     
     @Override
     public void atirarFlecha(Dwarf dwarf) {
-        super.atirarFlecha(dwarf);
-        exp++;
+        super.atirarFlecha(dwarf, 2);
     }
     
     @Override
