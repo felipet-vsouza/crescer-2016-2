@@ -54,4 +54,13 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(new Dwarf());
         assertEquals(3, elfo.getExp());
     }
+    
+    @Test
+    public void elfoNoturnoNaoPerdeVidaAoAtirarFlechasMesmoQuandoNaoTemMaisFlechas() {
+        ElfoNoturno elfo = new ElfoNoturno("Elfo noturno", 1);
+        elfo.atirarFlecha(new Dwarf());
+        elfo.atirarFlecha(new Dwarf());
+        elfo.atirarFlecha(new Dwarf());
+        assertEquals(95, elfo.getHp(), 0.01);
+    }
 }

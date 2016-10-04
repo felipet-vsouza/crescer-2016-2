@@ -11,8 +11,7 @@ public class Elfo extends Personagem {
     
     public Elfo(String nome, int quantidadeFlechas) {
         super(nome);
-        this.inventario.adicionarItem(new Item("Arco", 1));
-        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
+        this.inicializarInventario(quantidadeFlechas);
     }
     
     public Item getArco() {
@@ -33,6 +32,11 @@ public class Elfo extends Personagem {
             this.getFlecha().setQuantidade(this.getFlecha().getQuantidade() - 1);
             exp += fatorExp;
         }
+    }
+    
+    protected void inicializarInventario(int quantidadeFlechas) {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas >= 0 ? quantidadeFlechas : 42));
     }
     
     public String toString() {

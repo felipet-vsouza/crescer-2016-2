@@ -36,14 +36,12 @@ public class ElfoVerdeTest
     }
     
     @Test
-    public void elfoVerdeRecebeItensEspadaDeAcoValirianoEArcoEFlechaDeVidro() {
+    public void elfoVerdeNasceComArcoEFlechaDeVidroEEspadaDeAcoValiriano() {
         ElfoVerde elfoVerde = new ElfoVerde("Imp");
-        Item espada = new Item("Espada de aço valiriano", 1), 
-            arco = new Item("Arco e Flecha de Vidro", 1);
-        elfoVerde.adicionarItem(espada);
-        elfoVerde.adicionarItem(arco);
-        assertTrue(elfoVerde.getInventario().getLista().contains(espada));
-        assertTrue(elfoVerde.getInventario().getLista().contains(arco));
+        assertEquals(3, elfoVerde.getInventario().getLista().size());
+        assertEquals("Arco de Vidro", elfoVerde.getInventario().getLista().get(0).getDescricao());
+        assertEquals("Flecha de Vidro", elfoVerde.getInventario().getLista().get(1).getDescricao());
+        assertEquals("Espada de aço valiriano", elfoVerde.getInventario().getLista().get(2).getDescricao());
     }
     
     @Test
