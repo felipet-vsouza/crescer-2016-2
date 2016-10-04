@@ -40,7 +40,7 @@ public class ElfoNoturnoTest
     
     @Test
     public void elfoNoturnoPodeMorrerAtirandoFlechas() {
-        ElfoNoturno elfo = new ElfoNoturno("Marcelo");
+        ElfoNoturno elfo = new ElfoNoturno("Marcelo", 91);
         while(!elfo.getStatus().equals(Status.MORTO)) {
             elfo.atirarFlecha(new Dwarf());
         }

@@ -13,7 +13,7 @@ public class ElfoNoturno extends Elfo {
         // Desta forma não funciona, pois, uma vez que o Java trata o número como inteiro e sempre 
         // arredonda o resultado para baixo, o resultado do cálculo de 5% a partir do número 19 será 0
         // e nada mais será subtraído.
-        if (status == Status.VIVO) { 
+        if (status == Status.VIVO && this.getFlecha().getQuantidade() > 0) { 
             super.atirarFlecha(dwarf, 3); 
             this.hp *= 0.95; 
             this.status = (int)this.hp == 0 ? Status.MORTO : this.status; 
