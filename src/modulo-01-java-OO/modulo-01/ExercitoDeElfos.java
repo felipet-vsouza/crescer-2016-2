@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
-public class ExercitoDeElfos extends Exercito {
+public class ExercitoDeElfos {
+    private ArrayList<Elfo> contingente;
+    
     public ExercitoDeElfos() {
-        super();
+        this.contingente = new ArrayList<>();
     }
     
     public void alistarElfo(Elfo elfo){
@@ -19,5 +21,18 @@ public class ExercitoDeElfos extends Exercito {
             }
         }
         return listaDeStatus;
+    }
+
+    public Elfo buscarPeloNome(String nome) {
+        for(Elfo elfo : contingente) {
+            if(elfo.getNome().equals(nome)){
+                return elfo;
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<Elfo> getContingente() {
+        return this.contingente;
     }
 }
