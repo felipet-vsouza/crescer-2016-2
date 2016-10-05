@@ -25,7 +25,7 @@ public class ExercitoDeElfos {
 
     public Elfo buscarPeloNome(String nome) {
         for(Elfo elfo : contingente) {
-            if(elfo.getNome().equals(nome)){
+            if(nome.equals(elfo.getNome())){
                 return elfo;
             }
         }
