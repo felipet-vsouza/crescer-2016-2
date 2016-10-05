@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -77,5 +77,39 @@ public class ExercitoDeElfosTest
         assertNull(nords.buscarPeloNome("Melita"));
         assertEquals(new ElfoVerde("Café Pelé"), nords.buscarPeloNome("Café Pelé"));
         assertEquals(new ElfoNoturno("Café do Mercado"), nords.buscarPeloNome("Café do Mercado"));
+    }
+    
+    @Test
+    public void exercitoDeElfosRetornaListaComUmElfoMorto() {
+        ElfoNoturno elfo1 = new ElfoNoturno("Renato Aragão", 1000);
+        for(int i = 0; i <= 200; i++){
+            elfo1.atirarFlecha(new Dwarf());
+        }
+        ElfoVerde elfo2 = new ElfoVerde("Didi Mocó");
+        ExercitoDeElfos elfada = new ExercitoDeElfos();
+        elfada.alistarElfo(elfo1);
+        elfada.alistarElfo(elfo2);
+        ArrayList<Elfo> lista = elfada.buscar(Status.MORTO);
+        assertEquals(Status.MORTO, elfo1.getStatus());
+        assertEquals(1, lista.size());
+        assertTrue(lista.get(0).getNome().equals("Renato Aragão"));
+    }
+    
+    @Test
+    public void exercitoDeElfosRetornaListaComDoisElfosVivos() {
+        ElfoNoturno elfo1 = new ElfoNoturno("Renato Aragão", 1000);
+        for(int i = 0; i <= 200; i++){
+            elfo1.atirarFlecha(new Dwarf());
+        }
+        ElfoVerde elfo2 = new ElfoVerde("Didi Mocó");
+        ElfoVerde elfo3 = new ElfoVerde("Spongebob Squarepants");
+        ExercitoDeElfos elfada = new ExercitoDeElfos();
+        elfada.alistarElfo(elfo1);
+        elfada.alistarElfo(elfo2);
+        elfada.alistarElfo(elfo3);
+        ArrayList<Elfo> lista = elfada.buscar(Status.VIVO);
+        assertEquals(2, lista.size());
+        assertTrue(lista.get(0).getNome().equals("Didi Mocó"));
+        assertTrue(lista.get(1).getNome().equals("Spongebob Squarepants"));
     }
 }
