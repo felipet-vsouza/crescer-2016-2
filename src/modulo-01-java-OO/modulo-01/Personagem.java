@@ -42,4 +42,16 @@ public abstract class Personagem {
     public void perderItem(Item item) {
         this.inventario.removerItem(item);
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null || !(obj instanceof Personagem)){
+            return false;
+        }
+        Personagem p = (Personagem) obj;
+        return this.nome.equals(p.getNome()) && 
+            this.exp == p.getExp() && 
+            this.hp == p.getHp() && 
+            this.status == p.getStatus();
+    }
 }
