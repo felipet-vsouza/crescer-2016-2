@@ -57,4 +57,10 @@ public class ElfoVerdeTest
         elfo.atirarFlecha(new Dwarf());
         assertEquals(2, elfo.getExp());
     }
+    
+    @After
+    // Executa após cada um dos testes
+    public void tearDown() {
+        System.gc();
+    }
 }

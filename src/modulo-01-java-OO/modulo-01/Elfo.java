@@ -1,5 +1,7 @@
 public class Elfo extends Personagem {
     
+    private static int contaElfos = 0;
+    
     {
         this.hp = 100;
     }
@@ -12,6 +14,17 @@ public class Elfo extends Personagem {
     public Elfo(String nome, int quantidadeFlechas) {
         super(nome);
         this.inicializarInventario(quantidadeFlechas);
+        contaElfos++;
+    }
+    
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        Elfo.contaElfos--;
+    }
+    
+    public static int getContaElfos(){
+        return Elfo.contaElfos;
     }
     
     public Item getArco() {

@@ -112,4 +112,10 @@ public class ExercitoDeElfosTest
         assertTrue(lista.get(0).getNome().equals("Didi Mocó"));
         assertTrue(lista.get(1).getNome().equals("Spongebob Squarepants"));
     }
+    
+    @After
+    // Executa após cada um dos testes
+    public void tearDown() {
+        System.gc();
+    }
 }

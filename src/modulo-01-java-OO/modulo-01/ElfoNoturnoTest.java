@@ -63,4 +63,10 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(new Dwarf());
         assertEquals(95, elfo.getHp(), 0.01);
     }
+    
+    @After
+    // Executa após cada um dos testes
+    public void tearDown() {
+        System.gc();
+    }
 }

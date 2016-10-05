@@ -1,7 +1,6 @@
 
 import static org.junit.Assert.*;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -12,6 +11,7 @@ import org.junit.Test;
  */
 public class ElfoTest
 {
+    
     @Test
     public void elfoNasceComNome() {
         // Arrange
@@ -207,5 +207,18 @@ public class ElfoTest
     public void elfoNasceCom100DeHp() {
         Elfo elfo = new Elfo("Pablo Escobar");
         assertEquals(100, elfo.getHp(), 0.01);
+    }
+    
+    @Test
+    public void contadorDeElfosNascidosIgualAoDaClasse() {
+        new Elfo("");
+        new Elfo("");
+        assertEquals(2, Elfo.getContaElfos());
+    }
+    
+    @After
+    // Executa após cada um dos testes
+    public void tearDown() {
+        System.gc();
     }
 }
