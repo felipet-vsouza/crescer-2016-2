@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class BatalhaoEspecialDeElfos {
+public class BatalhaoEspecialDeElfos implements Exercito {
     HashMap<String, ArrayList<Elfo>> contingente;
     HashMap<Status, ArrayList<Elfo>> porStatus;
 
