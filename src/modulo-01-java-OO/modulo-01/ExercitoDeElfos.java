@@ -7,7 +7,7 @@ public class ExercitoDeElfos {
         this.contingente = new ArrayList<>();
     }
     
-    public void alistarElfo(Elfo elfo){
+    public void alistar(Elfo elfo){
         if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
             this.contingente.add(elfo);
         }

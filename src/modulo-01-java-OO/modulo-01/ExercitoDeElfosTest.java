@@ -20,12 +20,12 @@ public class ExercitoDeElfosTest
         ElfoVerde ver1 = new ElfoVerde("Dylan", 1), ver2 = new ElfoVerde("Corrina", 1), 
             ver3 = new ElfoVerde("Woman from the north country side", 1);
         ExercitoDeElfos nords = new ExercitoDeElfos();
-        nords.alistarElfo(not1);
-        nords.alistarElfo(not2);
-        nords.alistarElfo(not3);
-        nords.alistarElfo(ver1);
-        nords.alistarElfo(ver2);
-        nords.alistarElfo(ver3);
+        nords.alistar(not1);
+        nords.alistar(not2);
+        nords.alistar(not3);
+        nords.alistar(ver1);
+        nords.alistar(ver2);
+        nords.alistar(ver3);
         assertTrue(nords.getContingente().contains(new ElfoNoturno("El Huervo", 13)));
         assertTrue(nords.getContingente().contains(new ElfoNoturno("Daisuke", 8)));
         assertTrue(nords.getContingente().contains( new ElfoNoturno("Helmet", 22)));
@@ -41,12 +41,12 @@ public class ExercitoDeElfosTest
         ElfoVerde ver1 = new ElfoVerde("Dylan", 1), ver2 = new ElfoVerde("Corrina", 1), 
             ver3 = new ElfoVerde("Woman from the north country side", 1);
         ExercitoDeElfos nords = new ExercitoDeElfos();
-        nords.alistarElfo(not1);
-        nords.alistarElfo(not2);
-        nords.alistarElfo(not3);
-        nords.alistarElfo(ver1);
-        nords.alistarElfo(ver2);
-        nords.alistarElfo(ver3);
+        nords.alistar(not1);
+        nords.alistar(not2);
+        nords.alistar(not3);
+        nords.alistar(ver1);
+        nords.alistar(ver2);
+        nords.alistar(ver3);
         assertEquals(new ElfoNoturno("El Huervo", 13), nords.buscarPeloNome("El Huervo"));
     }
     
@@ -62,8 +62,8 @@ public class ExercitoDeElfosTest
         ElfoNoturno not1 = new ElfoNoturno("El Huervo", 13), not2 = new ElfoNoturno("El Huervo", 13);
         not1.atirarFlecha(new Dwarf());
         not1.atirarFlecha(new Dwarf());
-        nords.alistarElfo(not1);
-        nords.alistarElfo(not2);
+        nords.alistar(not1);
+        nords.alistar(not2);
         assertFalse(not1.equals(not2));
         assertTrue(nords.buscarPeloNome("El Huervo").equals(not1));
     }
@@ -71,9 +71,9 @@ public class ExercitoDeElfosTest
     @Test
     public void exercitoDeElfosNaoRecebeElfosQueNaoSejamElfosVerdesOuElfosNoturnos() {
         ExercitoDeElfos nords = new ExercitoDeElfos();
-        nords.alistarElfo(new Elfo("Melita"));
-        nords.alistarElfo(new ElfoVerde("Café Pelé"));
-        nords.alistarElfo(new ElfoNoturno("Café do Mercado"));
+        nords.alistar(new Elfo("Melita"));
+        nords.alistar(new ElfoVerde("Café Pelé"));
+        nords.alistar(new ElfoNoturno("Café do Mercado"));
         assertNull(nords.buscarPeloNome("Melita"));
         assertEquals(new ElfoVerde("Café Pelé"), nords.buscarPeloNome("Café Pelé"));
         assertEquals(new ElfoNoturno("Café do Mercado"), nords.buscarPeloNome("Café do Mercado"));
@@ -87,8 +87,8 @@ public class ExercitoDeElfosTest
         }
         ElfoVerde elfo2 = new ElfoVerde("Didi Mocó");
         ExercitoDeElfos elfada = new ExercitoDeElfos();
-        elfada.alistarElfo(elfo1);
-        elfada.alistarElfo(elfo2);
+        elfada.alistar(elfo1);
+        elfada.alistar(elfo2);
         ArrayList<Elfo> lista = elfada.buscar(Status.MORTO);
         assertEquals(Status.MORTO, elfo1.getStatus());
         assertEquals(1, lista.size());
@@ -104,9 +104,9 @@ public class ExercitoDeElfosTest
         ElfoVerde elfo2 = new ElfoVerde("Didi Mocó");
         ElfoVerde elfo3 = new ElfoVerde("Spongebob Squarepants");
         ExercitoDeElfos elfada = new ExercitoDeElfos();
-        elfada.alistarElfo(elfo1);
-        elfada.alistarElfo(elfo2);
-        elfada.alistarElfo(elfo3);
+        elfada.alistar(elfo1);
+        elfada.alistar(elfo2);
+        elfada.alistar(elfo3);
         ArrayList<Elfo> lista = elfada.buscar(Status.VIVO);
         assertEquals(2, lista.size());
         assertTrue(lista.get(0).getNome().equals("Didi Mocó"));
