@@ -103,14 +103,29 @@ public class BatalhaoEspecialDeElfosTest
         }
         ElfoVerde elfo2 = new ElfoVerde("Didi Mocó");
         ElfoVerde elfo3 = new ElfoVerde("Spongebob Squarepants");
+        ElfoVerde elfo4 = new ElfoVerde("Didi Mocó");
         BatalhaoEspecialDeElfos elfada = new BatalhaoEspecialDeElfos();
         elfada.alistar(elfo1);
         elfada.alistar(elfo2);
         elfada.alistar(elfo3);
+        elfada.alistar(elfo4);
         ArrayList<Elfo> lista = elfada.buscar(Status.VIVO);
-        assertEquals(2, lista.size());
+        assertEquals(3, lista.size());
         assertTrue(lista.get(0).getNome().equals("Didi Mocó"));
-        assertTrue(lista.get(1).getNome().equals("Spongebob Squarepants"));
+        assertTrue(lista.get(1).getNome().equals("Didi Mocó"));
+        assertTrue(lista.get(2).getNome().equals("Spongebob Squarepants"));
+    }
+    
+    @Test
+    public void alistarUmElfoVivoEDepoisMatalo() {
+        ElfoNoturno elfo1 = new ElfoNoturno("Renato Aragão", 1000);
+        BatalhaoEspecialDeElfos elfada = new BatalhaoEspecialDeElfos();
+        elfada.alistar(elfo1);
+        elfada.alistar(new ElfoVerde("Comichão"));
+        for(int i = 0; i <= 200; i++){
+            elfo1.atirarFlecha(new Dwarf());
+        }
+        assertEquals(1, elfada.buscar(Status.VIVO).size());
     }
     
     @After
