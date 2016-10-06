@@ -10,7 +10,7 @@ public class BatalhaoEspecialDeElfos {
     }
 
     public Elfo[] getContingente() {
-        return this.contingente.values().toArray(new Elfo[0]);
+        return this.contingente.values().toArray(new Elfo[this.contingente.size()]);
     }
 
     public void alistar(Elfo elfo) {
