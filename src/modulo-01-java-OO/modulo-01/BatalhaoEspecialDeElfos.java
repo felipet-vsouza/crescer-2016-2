@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class BatalhaoEspecialDeElfos {
     HashMap<String, Elfo> contingente;
@@ -24,11 +25,9 @@ public class BatalhaoEspecialDeElfos {
 
     public ArrayList<Elfo> buscar(Status status) {
         ArrayList<Elfo> lista = new ArrayList<>();
-        this.contingente.values().stream().forEach(s -> {
-                if(((Elfo) s).getStatus().equals(status)){
-                    lista.add(s);
-                }
-            });
+        lista.addAll(this.contingente.values().stream()
+            .filter(s -> s.getStatus().equals(status))
+            .collect(Collectors.toList()));
         return lista;
     }
 }
