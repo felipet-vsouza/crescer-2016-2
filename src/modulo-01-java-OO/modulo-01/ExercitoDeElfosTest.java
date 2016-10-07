@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -123,7 +124,7 @@ public class ExercitoDeElfosTest
         elfada.alistar(new ElfoNoturno("Cláudio"));
         elfada.alistar(new ElfoVerde("Café"));
         elfada.alistar(new ElfoVerde("Acab"));
-        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        List<Elfo> lista = elfada.getOrdemDeAtaque(Arrays.asList(elfada.getContingente()), null);
         assertTrue(lista.get(0) instanceof ElfoVerde);
         assertTrue(lista.get(1) instanceof ElfoVerde);
         assertTrue(lista.get(2) instanceof ElfoVerde);
@@ -135,7 +136,7 @@ public class ExercitoDeElfosTest
     @Test
     public void ordenarAtaqueComContingenteVazio() throws NaoPodeAlistarException {
         ExercitoDeElfos elfada = new ExercitoDeElfos();
-        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        List<Elfo> lista = elfada.getOrdemDeAtaque(Arrays.asList(elfada.getContingente()), null);
         assertEquals(0, lista.size());
     }
     
@@ -148,7 +149,7 @@ public class ExercitoDeElfosTest
         elfada.alistar(new ElfoNoturno("Cláudio"));
         elfada.alistar(new ElfoNoturno("Café"));
         elfada.alistar(new ElfoNoturno("Acab"));
-        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        List<Elfo> lista = elfada.getOrdemDeAtaque(Arrays.asList(elfada.getContingente()), null);
         assertTrue(lista.get(0) instanceof ElfoNoturno);
         assertTrue(lista.get(1) instanceof ElfoNoturno);
         assertTrue(lista.get(2) instanceof ElfoNoturno);
