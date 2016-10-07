@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -111,6 +112,49 @@ public class ExercitoDeElfosTest
         assertEquals(2, lista.size());
         assertTrue(lista.get(0).getNome().equals("Didi Mocó"));
         assertTrue(lista.get(1).getNome().equals("Spongebob Squarepants"));
+    }
+    
+    @Test
+    public void ordemDeAtaqueComElfosVerdesNaFrenteEElfosNoturnosAtras() throws NaoPodeAlistarException {
+        ExercitoDeElfos elfada = new ExercitoDeElfos();
+        elfada.alistar(new ElfoNoturno("Leonidas"));
+        elfada.alistar(new ElfoNoturno("Ricadinho"));
+        elfada.alistar(new ElfoVerde("Rycharlison"));
+        elfada.alistar(new ElfoNoturno("Cláudio"));
+        elfada.alistar(new ElfoVerde("Café"));
+        elfada.alistar(new ElfoVerde("Acab"));
+        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        assertTrue(lista.get(0) instanceof ElfoVerde);
+        assertTrue(lista.get(1) instanceof ElfoVerde);
+        assertTrue(lista.get(2) instanceof ElfoVerde);
+        assertTrue(lista.get(3) instanceof ElfoNoturno);
+        assertTrue(lista.get(4) instanceof ElfoNoturno);
+        assertTrue(lista.get(5) instanceof ElfoNoturno);
+    }
+    
+    @Test
+    public void ordenarAtaqueComContingenteVazio() throws NaoPodeAlistarException {
+        ExercitoDeElfos elfada = new ExercitoDeElfos();
+        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        assertEquals(0, lista.size());
+    }
+    
+    @Test
+    public void ordenarAtaqueApenasComElfosNoturnos() throws NaoPodeAlistarException {
+        ExercitoDeElfos elfada = new ExercitoDeElfos();
+        elfada.alistar(new ElfoNoturno("Leonidas"));
+        elfada.alistar(new ElfoNoturno("Ricadinho"));
+        elfada.alistar(new ElfoNoturno("Rycharlison"));
+        elfada.alistar(new ElfoNoturno("Cláudio"));
+        elfada.alistar(new ElfoNoturno("Café"));
+        elfada.alistar(new ElfoNoturno("Acab"));
+        List<Elfo> lista = elfada.getOrdemDeAtaque();
+        assertTrue(lista.get(0) instanceof ElfoNoturno);
+        assertTrue(lista.get(1) instanceof ElfoNoturno);
+        assertTrue(lista.get(2) instanceof ElfoNoturno);
+        assertTrue(lista.get(3) instanceof ElfoNoturno);
+        assertTrue(lista.get(4) instanceof ElfoNoturno);
+        assertTrue(lista.get(5) instanceof ElfoNoturno);
     }
     
     @After
