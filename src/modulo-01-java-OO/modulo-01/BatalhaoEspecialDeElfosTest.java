@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-
+import java.util.Arrays;
+import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -126,6 +127,57 @@ public class BatalhaoEspecialDeElfosTest
             elfo1.atirarFlecha(new Dwarf());
         }
         assertEquals(1, elfada.buscar(Status.VIVO).size());
+    }
+    
+    @Test(expected=ContingenteDesproporcionalException.class)
+    public void ordenarAtaqueComContingenteDesproporcional() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+        BatalhaoEspecialDeElfos bat = new BatalhaoEspecialDeElfos();
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João Pedro"));
+        bat.alistar(new ElfoNoturno("Lester"));
+        bat.alistar(new ElfoVerde("João Lucas"));
+        bat.alistar(new ElfoVerde("João João"));
+        bat.getOrdemDeAtaque(Arrays.asList(bat.getContingente()), null);
+    }
+    
+    @Test
+    public void ordenarAtaqueComDoisElfos() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+        BatalhaoEspecialDeElfos bat = new BatalhaoEspecialDeElfos();
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        List<Elfo> lista = bat.getOrdemDeAtaque(Arrays.asList(bat.getContingente()), null);
+        assertTrue(lista.get(0) instanceof ElfoVerde);
+        assertTrue(lista.get(1) instanceof ElfoNoturno);
+    }
+    
+    @Test
+    public void ordenarAtaqueComDozeElfos() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+        BatalhaoEspecialDeElfos bat = new BatalhaoEspecialDeElfos();
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        bat.alistar(new ElfoNoturno("João Pedro"));
+        List<Elfo> lista = bat.getOrdemDeAtaque(Arrays.asList(bat.getContingente()), null);
+        assertTrue(lista.get(0) instanceof ElfoVerde);
+        assertTrue(lista.get(1) instanceof ElfoNoturno);
+        assertTrue(lista.get(2) instanceof ElfoVerde);
+        assertTrue(lista.get(3) instanceof ElfoNoturno);
+        assertTrue(lista.get(4) instanceof ElfoVerde);
+        assertTrue(lista.get(5) instanceof ElfoNoturno);
+        assertTrue(lista.get(6) instanceof ElfoVerde);
+        assertTrue(lista.get(7) instanceof ElfoNoturno);
+        assertTrue(lista.get(8) instanceof ElfoVerde);
+        assertTrue(lista.get(9) instanceof ElfoNoturno);
+        assertTrue(lista.get(10) instanceof ElfoVerde);
+        assertTrue(lista.get(11) instanceof ElfoNoturno);
     }
     
     @After
