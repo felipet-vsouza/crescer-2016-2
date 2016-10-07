@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ExercitoDeElfosTest
 {
     @Test
-    public void exercitoDeElfosAlistaTresElfosDeCadaRaca() {
+    public void exercitoDeElfosAlistaTresElfosDeCadaRaca() throws NaoPodeAlistarException {
         ElfoNoturno not1 = new ElfoNoturno("El Huervo", 13), not2 = new ElfoNoturno("Daisuke", 8), 
             not3 = new ElfoNoturno("Helmet", 22);
         ElfoVerde ver1 = new ElfoVerde("Dylan", 1), ver2 = new ElfoVerde("Corrina", 1), 
@@ -35,7 +35,7 @@ public class ExercitoDeElfosTest
     }
     
     @Test
-    public void exercitoDeElfosAlistaTresElfosDeCadaRacaEBuscaElHuervo() {
+    public void exercitoDeElfosAlistaTresElfosDeCadaRacaEBuscaElHuervo() throws NaoPodeAlistarException {
         ElfoNoturno not1 = new ElfoNoturno("El Huervo", 13), not2 = new ElfoNoturno("Daisuke", 8), 
             not3 = new ElfoNoturno("Helmet", 22);
         ElfoVerde ver1 = new ElfoVerde("Dylan", 1), ver2 = new ElfoVerde("Corrina", 1), 
@@ -51,13 +51,13 @@ public class ExercitoDeElfosTest
     }
     
     @Test
-    public void exercitoDeElfosBuscarElfoEmContingenteVazio() {
+    public void exercitoDeElfosBuscarElfoEmContingenteVazio() throws NaoPodeAlistarException {
         ExercitoDeElfos nords = new ExercitoDeElfos();
         assertNull(nords.buscar("El Huervo"));
     }
     
     @Test
-    public void exercitoDeElfosBuscarElfoComNomeDuplicadoEReceberOPrimeiro() {
+    public void exercitoDeElfosBuscarElfoComNomeDuplicadoEReceberOPrimeiro() throws NaoPodeAlistarException  {
         ExercitoDeElfos nords = new ExercitoDeElfos();
         ElfoNoturno not1 = new ElfoNoturno("El Huervo", 13), not2 = new ElfoNoturno("El Huervo", 13);
         not1.atirarFlecha(new Dwarf());
@@ -68,8 +68,8 @@ public class ExercitoDeElfosTest
         assertTrue(nords.buscar("El Huervo").equals(not1));
     }
     
-    @Test
-    public void exercitoDeElfosNaoRecebeElfosQueNaoSejamElfosVerdesOuElfosNoturnos() {
+    @Test(expected=NaoPodeAlistarException.class)
+    public void exercitoDeElfosNaoRecebeElfosQueNaoSejamElfosVerdesOuElfosNoturnos() throws NaoPodeAlistarException {
         ExercitoDeElfos nords = new ExercitoDeElfos();
         nords.alistar(new Elfo("Melita"));
         nords.alistar(new ElfoVerde("Café Pelé"));
@@ -80,7 +80,7 @@ public class ExercitoDeElfosTest
     }
     
     @Test
-    public void exercitoDeElfosRetornaListaComUmElfoMorto() {
+    public void exercitoDeElfosRetornaListaComUmElfoMorto() throws NaoPodeAlistarException {
         ElfoNoturno elfo1 = new ElfoNoturno("Renato Aragão", 1000);
         for(int i = 0; i <= 200; i++){
             elfo1.atirarFlecha(new Dwarf());
@@ -96,7 +96,7 @@ public class ExercitoDeElfosTest
     }
     
     @Test
-    public void exercitoDeElfosRetornaListaComDoisElfosVivos() {
+    public void exercitoDeElfosRetornaListaComDoisElfosVivos() throws NaoPodeAlistarException {
         ElfoNoturno elfo1 = new ElfoNoturno("Renato Aragão", 1000);
         for(int i = 0; i <= 200; i++){
             elfo1.atirarFlecha(new Dwarf());

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public interface Exercito {
-    public void alistar(Elfo elfo);
+    public void alistar(Elfo elfo)throws NaoPodeAlistarException;
 
     public Elfo[] getContingente();
 

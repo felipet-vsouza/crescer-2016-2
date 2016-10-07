@@ -7,9 +7,11 @@ public class ExercitoDeElfos implements Exercito {
         this.contingente = new ArrayList<>();
     }
     
-    public void alistar(Elfo elfo){
+    public void alistar(Elfo elfo) throws NaoPodeAlistarException {
         if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
             this.contingente.add(elfo);
+        } else {
+            throw new NaoPodeAlistarException();
         }
     }
     
