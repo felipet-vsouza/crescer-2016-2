@@ -57,30 +57,36 @@ public class BatalhaoEspecialDeElfos implements Exercito, EstrategiaDeAtaque {
         listaStatus.addAll(this.porStatus.get(status));
         return listaStatus;
     }
-    
+
     public List<Elfo> getOrdemDeAtaque(List<Elfo> elfos, List<Dwarf> dwarves) throws ContingenteDesproporcionalException {
         ArrayList<Elfo> ordemDeAtaque = new ArrayList<>();
-        ArrayList<Elfo> elfosVivos = new ArrayList<>();
-        // Buscar maneira performática de realizar esta ação
-        List<Elfo> verdes = elfos.stream()
-            .filter(e -> e instanceof ElfoVerde && e.getStatus().equals(Status.VIVO))
-            .collect(Collectors.toList());
-        List<Elfo> noturnos = elfos.stream()
-            .filter(e -> e instanceof ElfoNoturno && e.getStatus().equals(Status.VIVO))
-            .collect(Collectors.toList());
-        if(verdes.size() != noturnos.size()) {
+        List<Elfo> elfosVivos = new ArrayList<>();
+        int verdes = 0, noturnos = 0;
+        Class primeiroElfo = null;
+        for(Elfo e : elfos) {
+            if(primeiroElfo == null && e.getStatus().equals(Status.VIVO)) {
+                primeiroElfo = e.getClass();
+            }
+            if(e instanceof ElfoVerde) {
+                verdes++;
+            } else {
+                noturnos++;
+            }
+            elfosVivos.add(e);
+        }
+        if(verdes != noturnos) {
             throw new ContingenteDesproporcionalException();
         }
-        elfosVivos.addAll(verdes);
-        elfosVivos.addAll(noturnos);
+        int ultimoDiferente = 0;
         for(int i = 0; i < elfosVivos.size(); i++) {
             Elfo elfo = elfosVivos.get(i);
-            if(elfo instanceof ElfoVerde) {
+            if(elfo.getClass().isAssignableFrom(primeiroElfo)) {
                 ordemDeAtaque.add(elfo);
-                for(int j = i+1; j < elfosVivos.size(); j++) {
+                for(int j = ultimoDiferente; j < elfosVivos.size(); j++) {
                     Elfo elfo2 = elfosVivos.get(j);
-                    if(elfo2 instanceof ElfoNoturno) {
+                    if(!(elfo2.getClass().isAssignableFrom(primeiroElfo))) {
                         ordemDeAtaque.add(elfo2);
+                        ultimoDiferente = j;
                         break;
                     }
                 }

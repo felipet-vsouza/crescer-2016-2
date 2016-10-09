@@ -151,12 +151,43 @@ public class BatalhaoEspecialDeElfosTest
     }
     
     @Test
-    public void ordenarAtaqueComDozeElfos() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+    public void ordenarAtaqueComDozeElfosComecandoPorElfoNoturno() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
         BatalhaoEspecialDeElfos bat = new BatalhaoEspecialDeElfos();
+        ArrayList<Elfo> elfos = new ArrayList<>();
+        elfos.add(new ElfoNoturno("João Pedro"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoNoturno("João Pedro"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoNoturno("João Pedro"));
+        elfos.add(new ElfoVerde("João"));
+        elfos.add(new ElfoNoturno("João Pedro"));
+        elfos.add(new ElfoNoturno("João Pedro"));
+        elfos.add(new ElfoNoturno("João Pedro"));
+        List<Elfo> lista = bat.getOrdemDeAtaque(elfos, null);
+        assertTrue(lista.get(0) instanceof ElfoNoturno);
+        assertTrue(lista.get(1) instanceof ElfoVerde);
+        assertTrue(lista.get(2) instanceof ElfoNoturno);
+        assertTrue(lista.get(3) instanceof ElfoVerde);
+        assertTrue(lista.get(4) instanceof ElfoNoturno);
+        assertTrue(lista.get(5) instanceof ElfoVerde);
+        assertTrue(lista.get(6) instanceof ElfoNoturno);
+        assertTrue(lista.get(7) instanceof ElfoVerde);
+        assertTrue(lista.get(8) instanceof ElfoNoturno);
+        assertTrue(lista.get(9) instanceof ElfoVerde);
+        assertTrue(lista.get(10) instanceof ElfoNoturno);
+        assertTrue(lista.get(11) instanceof ElfoVerde);
+    }
+    
+    @Test
+    public void ordenarAtaqueComDozeElfosComecandoPorElfoVerde() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+        BatalhaoEspecialDeElfos bat = new BatalhaoEspecialDeElfos();
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João"));
+        bat.alistar(new ElfoVerde("João"));
         bat.alistar(new ElfoNoturno("João Pedro"));
-        bat.alistar(new ElfoVerde("João"));
-        bat.alistar(new ElfoVerde("João"));
-        bat.alistar(new ElfoVerde("João"));
         bat.alistar(new ElfoVerde("João"));
         bat.alistar(new ElfoNoturno("João Pedro"));
         bat.alistar(new ElfoVerde("João"));
