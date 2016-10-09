@@ -13,7 +13,13 @@ import org.junit.Test;
  */
 public class EstrategiaAtaqueIntercaladoTest
 {
-    
+    @Test
+    public void ordenarAtaqueComContingenteVazio() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
+        EstrategiaAtaqueIntercalado bat = new EstrategiaAtaqueIntercalado();
+        ArrayList<Elfo> lista = new ArrayList<>();
+        List<Elfo> listaRet = bat.getOrdemDeAtaque(lista, null);
+        assertEquals(0, listaRet.size());
+    }
     
     @Test(expected=ContingenteDesproporcionalException.class)
     public void ordenarAtaqueComContingenteDesproporcional() throws NaoPodeAlistarException, ContingenteDesproporcionalException {
