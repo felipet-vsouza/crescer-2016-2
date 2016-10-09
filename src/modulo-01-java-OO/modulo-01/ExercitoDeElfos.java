@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExercitoDeElfos implements Exercito, EstrategiaDeAtaque {
+public class ExercitoDeElfos implements Exercito {
     private ArrayList<Elfo> contingente;
     
     public ExercitoDeElfos() {
@@ -38,18 +38,5 @@ public class ExercitoDeElfos implements Exercito, EstrategiaDeAtaque {
     
     public Elfo[] getContingente() {
         return this.contingente.toArray(new Elfo[this.contingente.size()]);
-    }
-    
-    public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes, List<Dwarf> alvos) {
-        ArrayList<Elfo> ordemDeAtaque = new ArrayList<>();
-        ordemDeAtaque.addAll(atacantes
-            .stream()
-            .filter(e -> e instanceof ElfoVerde && e.getStatus().equals(Status.VIVO))
-            .collect(Collectors.toList()));
-        ordemDeAtaque.addAll(atacantes
-            .stream()
-            .filter(e -> e instanceof ElfoNoturno && e.getStatus().equals(Status.VIVO))
-            .collect(Collectors.toList()));
-        return ordemDeAtaque;
     }
 }
