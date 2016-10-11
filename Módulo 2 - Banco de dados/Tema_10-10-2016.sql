@@ -5,8 +5,8 @@ From Cidade;
 
 -- 2)
 Truncate table CidadeAux;
+Insert into CidadeAux 
 Select *
-Into CidadeAux
 From Cidade;
 
 -- 3)
@@ -23,7 +23,10 @@ Create table Produtos
 
 -- 4)
 Insert into Produtos(ID, Nome_curto, Nome_descr, Data_criacao, Local_estoque, Quantidade, Preco) 
-values (1, 'TÃªnis All-Star Preto ClÃ¡ssico', 'TÃªnis All-Star Preto ClÃ¡ssico com Exterior em Lona e Interior Emborrachado'), convert(datetime, 2016/10/10, 111), 'ExpediÃ§Ã£o', 514, 119.20);
+values (1, 'Tênis All-Star Preto Clássico', 'Tênis All-Star Preto Clássico com Exterior em Lona e Interior Emborrachado', convert(datetime, '2016/10/10', 111), 'Expedição', 514, 119.20);
 
 Insert into Produtos(ID, Nome_curto, Nome_descr, Data_criacao, Local_estoque, Quantidade, Preco) 
-values (1, 'GPU Geforce GTX 1060 6 GB', 'Placa de VÃ­deo Galax EXOC Geforce GTX 1060 6 GB'), convert(datetime, 2016/10/06, 111), 'Estoque S01', 1, 1388.99);
+values (1, 'GPU Geforce GTX 1060 6 GB', 'Placa de Vídeo Galax EXOC Geforce GTX 1060 6 GB', convert(datetime, '2016/10/06', 111), 'Estoque S01', 1, 1388.99);
+
+Select * From Produtos;
+Select * From CidadeAux;
