@@ -44,7 +44,53 @@ From Associado;
 -- 6) Faça uma consulta que mostre o nome do empregado, o Salario e percentual a ser descontado do Imposto de Renda
 Select	NomeEmpregado, 
 		Salario, 
-		case when salario < 1164 then 0
-		when salario >= 1164 and salario <= 2326 then 15
-		else 27.5 end as PercentualDescontoIRPF 
+		case 
+			when salario <= 1164	then	0
+			when salario <= 2326	then	15
+			else							27.5 
+		end as PercentualDescontoIRPF 
 From Empregado;
+
+-- 7) Liste o nome do empregado, o nome do gerente e o departamento de cada um.
+Select	emp.NomeEmpregado,
+		ger.NomeEmpregado as NomeGerente,
+		empd.NomeDepartamento as DepartamentoEmpregado,
+		gerd.NomeDepartamento as DepartamentoGerente
+From	Empregado emp
+	Left Join Empregado ger on emp.IDGerente = ger.IDEmpregado
+	Left Join Departamento empd on emp.IDDepartamento = empd.IDDepartamento
+	Left Join Departamento gerd on ger.IDDepartamento = gerd.IDDepartamento;
+
+-- 8) Faça uma cópia da tabela Empregado e altere o salário de todos os empregados 
+--    (Empregado) cujo departamento fique na localidade de SAO PAULO, faça um 
+--    reajuste de 14,5%.
+Select *
+Into EmpregadoCopia
+From Empregado;
+Update emp
+	Set	emp.Salario	=	emp.Salario + (emp.Salario / 100) * 14.5
+From EmpregadoCopia emp
+	Inner Join Departamento empd on emp.IDDepartamento = empd.IDDepartamento
+Where empd.Localizacao = 'SAO PAULO';
+-- Consulta
+Select c.NomeEmpregado as NomeEmpregado, c.Salario as SalarioCopiaEmpregado,
+		e.Salario as SalarioOriginal 
+From EmpregadoCopia c
+	Inner join Empregado e on e.IDEmpregado = c.IDEmpregado;
+
+-- 9) Liste a diferença que representará o reajuste aplicado no item anterior
+--    no somatório dos salários de todos os empregados.
+Select	sum(o.Salario) as TotalSalarioAnterior, sum(c.Salario) as TotalSalarioPosterior,
+		sum(c.Salario) - sum(o.Salario) as Diferenca
+From	Empregado o
+	Inner Join EmpregadoCopia c on o.IDEmpregado = c.IDEmpregado;
+
+-- 10) Liste o departamento com o empregado de maior salário.
+Select	dep.NomeDepartamento, emp.NomeEmpregado, emp.Salario
+From	Empregado emp
+	Inner join	Departamento dep on emp.IDDepartamento = dep.IDDepartamento
+Where	emp.Salario in	(
+						Select	top(1) max(Salario)
+						From	Empregado
+						Where	0 <> isnull(IDDepartamento, 0)
+						);
