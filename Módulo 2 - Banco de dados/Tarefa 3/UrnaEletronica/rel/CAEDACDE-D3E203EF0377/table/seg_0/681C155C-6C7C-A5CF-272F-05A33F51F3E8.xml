@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="681C155C-6C7C-A5CF-272F-05A33F51F3E8" name="Candidato">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:42:53 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCandidato" id="727E69E1-19E1-A1BF-5974-B15A9C4D6DF4">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NomeCompleto" id="27155224-515F-5279-E05C-E728A3991470">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>75</dataTypeSize>
+<ownDataTypeParameters>75,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NomePopular" id="02198C21-121F-5AE0-893A-1E6411790E4D">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataNascimento" id="E369E6DC-858A-F8B4-C67A-D533CF150341">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDCidade" id="39A35AF8-E13B-F37C-499F-CDBCF5777305">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F06E67F1-45F4-BF6B-286A-66EEF84E3C5E" referredColumn="DA925F3E-F9DA-C8CE-29A3-26B7867EBD04"/>
+</associations>
+</Column>
+<Column name="RegistroTRE" id="528A3032-1B2E-2357-60E2-04519185A3DA">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Partido" id="8849E9E0-6FF0-098C-8083-B8C6F96C7279">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Foto" id="185F0B9B-B819-8637-A6DE-1E560C39AF95">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>150</dataTypeSize>
+<ownDataTypeParameters>150,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Numero" id="4D507BE3-9FC8-BB1F-6A94-F650A2847DB4">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cargo" id="A4531DD6-6E71-70BB-D8F1-6C96EE47C21D">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="55B91DEE-E128-D7E8-670B-77B40B4E0C11" name="Candidato_PK">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:48:36 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="727E69E1-19E1-A1BF-5974-B15A9C4D6DF4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AE1F19AE-0207-9059-4BC3-FE803B54A833" name="FK_Candidato_Cidade">
+<createdBy>felipe.souza</createdBy>
+<createdTime>2016-10-18 18:50:49 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="39A35AF8-E13B-F37C-499F-CDBCF5777305"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
