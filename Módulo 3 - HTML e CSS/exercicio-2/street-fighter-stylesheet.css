@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, monospace;
+    text-align: center;
+    background-attachment: fixed; 
+    background-image: url(http://gstylemag.zippykid.netdna-cdn.com/wp-content/uploads/2016/02/e240e76a522e678668d016f136499493_large.jpeg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+.main-options {
+    font-size: 120%;
+    height: 60px;
+    width: 450px;
+    margin: 400px auto 75px;
+    border: solid;
+    border-radius: 10px;
+    border-width: thin;
+    border-color: rgb(100,100,100);
+    line-height: 60px;
+    background-color: rgba(100,100,100,0.6);
+    color: white;
+}
+
+.main-options > a:visited {
+    color: white;
+}
+
+.main-options > a {
+    font-weight: bold;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.main-options a:not(:last-child) {
+    padding-right: 25px;
+}
+
+.content {
+    width: 750px;
+    height: 80px;
+    line-height: 80px;
+    margin: 70px auto;
+}
+
+.top-title {
+    text-align: left;
+    color: rgb(200,200,200);
+    background-color: #333;
+    vertical-align: middle;
+    padding-left: 20px;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.bottom-content {
+    text-align: left; 
+    background-color: #DDD; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    line-height: normal; 
+    margin-bottom: 100px; 
+    padding-bottom: 40px;
+}
+
+.bottom-title {
+    margin: auto;
+    line-height: 80px;
+}
+
+p { 
+    margin: auto;
+}
+
+p.ficha {
+    width: 350px;
+}
+
+p.sobre {
+    width: 600px;
+}
+
+.descricao {
+    float: right;
+}
