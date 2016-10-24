@@ -1,0 +1,77 @@
+.personagens > :last-of-type,
+.digiescolhidos,
+.historia-digimon,
+h1 > span:first-child {
+    display: none;
+}
+
+h1 > span:last-child {
+    font-family: 'Bungee', cursive;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 74px;
+    width: 100%;
+    min-width: 300px;
+    font-family: 'Pacifico', cursive;
+    background-color: #cd5241;
+    color: #ffe69c;
+    text-align: center;
+    overflow-wrap: break-word
+}
+
+.logo {
+    position: fixed;
+    top: 30px;
+    right: 100px;
+    height: 10%;
+    width: 10%;
+    background-image: url(https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG);
+    background-repeat: no-repeat;
+    background-size: 25%;
+}
+
+.autenticacao {
+    font-family: 'Bungee', cursive;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.autenticacao > a {
+    position: relative;
+    margin-right: 30px;
+    transition: color 0.3s ease;
+}
+
+.autenticacao > a:hover {
+    color: #084152;
+}
+
+body {
+    background-color: #ffe69c;
+}
+
+footer {
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    height: 3%;
+    width: 100%;
+    min-height: 40px;
+    min-width: 300px;
+    font-family: 'Bungee', cursive;
+    background-color: #cd5241;
+    color: #ffe69c;
+    text-align: center;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #8b2900;
+}
