@@ -1,0 +1,51 @@
+.fixed {
+    position: fixed;
+    left: 0;
+    background-color: brown;
+    height: 50px;
+    width: 100%;
+}
+
+.header {
+    top: 0;
+}
+
+.footer {
+    bottom: 0;
+}
+
+.father {
+    margin: 170px auto;
+    position: relative; 
+    width: 300px;
+    height: 300px;
+    background-color: chartreuse;
+}
+
+.kiddie {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: darkorange;
+}
+
+.center {
+    top: 110px;
+    left: 110px;
+}
+
+.top {
+    top: -90px;
+}
+
+.bottom {
+    bottom: -90px;
+}
+
+.left {
+    left: -90px;
+}
+
+.right {
+    right: -90px;
+}
