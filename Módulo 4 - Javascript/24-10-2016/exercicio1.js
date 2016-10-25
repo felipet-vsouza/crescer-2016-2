@@ -46,7 +46,7 @@ var find = function (array, criterio) {
     }
     return retorno;
 }
-
+    
 //TESTES
 var maiorIgualADois = function (elemento) {
     return elemento >= 2;
@@ -149,7 +149,10 @@ Escreva uma função ctrlC que recebe um parâmetro e realiza a cópia de todos 
 var ctrlC = function(objeto) {
     var ret = {};
     for(var property in objeto) {
-        ret[property] = objeto[property];
+        if(typeof objeto[property] === 'object')
+            ret[property] = ctrlC(objeto[property]);
+        else
+            ret[property] = objeto[property];
     }
     return ret;
 }
@@ -169,19 +172,14 @@ console.log(destino.a[2].e());
 /*  7. Mesclar
 Crie uma função chamada mesclar que recebe dois objetos como argumentos e mescla todas propriedades do segundo parâmetro dentro do primeiro. NÃO SURTEM!!!  */
 var mesclar = function(obj1, obj2, recursiva) {
-    if(recursiva === false) {
-        for(var prop in obj2) {
+    for(var prop in obj2) {
+        if(typeof obj2[prop] !== 'object')
             obj1[prop] = obj2[prop];
-        }
-    } else {
-        if(typeof obj1 === 'object') {
-            for(var prop in obj2) {
-                mesclar(obj1[prop], obj2[prop], recursiva);
-            }
-        } else {
-            obj1 = obj2;
-        }
-    } 
+        else if(recursiva === true)
+            mesclar(obj1[prop], obj2[prop]);
+        else
+            obj1[prop] = ctrlC(obj2[prop]);
+    }
 }
 
 //TESTE
