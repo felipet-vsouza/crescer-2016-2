@@ -84,17 +84,21 @@ Escreva uma função iguais que recebe dois parâmetros e retorna true apenas se
 iguais ou se eles forem objetos com as mesmas propriedades com valores iguais e assim recursivamente 
 (ou seja, em até vários níveis de propriedades dentro dos objetos). */
 var iguais = function(obj1, obj2) {
-    if(obj1 === null || typeof obj1 !== "object") {
-        if(obj1 === obj2)
-            return true;
-        else
-            return false;
-    } else {
+    if(obj1 !== null && typeof obj1 === "object" && 
+       obj2 !== null && typeof obj2 === "object") {
         for(var prop in obj1) {
-            if(!obj1.hasOwnProperty(prop) || !obj2.hasOwnProperty(prop) || !iguais(obj1[prop], obj2[prop]))
+            if(!obj2.hasOwnProperty(prop) || !iguais(obj1[prop], obj2[prop]))
+                return false;
+        }
+        for(var prop in obj2) {
+            if(!obj1.hasOwnProperty(prop) || !iguais(obj1[prop], obj2[prop]))
                 return false;
         }
         return true;
+    } else {
+        if(obj1 === obj2)
+            return true;
+        return false;
     } 
 }
 
