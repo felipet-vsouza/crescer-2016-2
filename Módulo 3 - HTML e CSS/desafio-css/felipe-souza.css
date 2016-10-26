@@ -13,6 +13,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
     height: 74px;
     width: 100%;
     min-width: 300px;
@@ -21,6 +22,36 @@ header {
     color: #ffe69c;
     text-align: center;
     overflow-wrap: break-word
+}
+
+nav:not(.autenticacao) {
+    position: relative;
+    top: 0;
+    left: -5%;
+    margin-top: 74px;
+    height: 40px;
+    width: 110%;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #084152;
+    min-width: 300px;
+    font-family: 'Bungee', cursive;
+    background-color: #084152;
+    color: #ffe69c;
+    text-align: center;
+}
+
+nav:not(.autenticacao) > a:not(:first-of-type) {
+    margin-left: 9px;
+}
+
+nav:not(.autenticacao) > a {
+    height: 100%;
+    transition: color 0.3s ease;
+}
+
+nav:not(.autenticacao) > a:hover {
+    color: #cd5241;
 }
 
 .logo {
@@ -54,7 +85,28 @@ header {
 }
 
 body {
-    background-color: #ffe69c;
+    background-color: #eeb45a;
+}
+
+section {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eede7b;
+    border-radius: 10px;
+}
+
+section:last-of-type {
+    margin-bottom: 5%;
+}
+
+.historia-pokemon > h1,
+section h2,
+section h3 {
+    font-family: 'Bungee', cursive;
+    margin-left: 15px;
+    margin-bottom: -5px;
 }
 
 footer {
@@ -73,5 +125,21 @@ footer {
 
 a, a:visited {
     text-decoration: none;
-    color: #8b2900;
+    color: #eeb45a;
+}
+
+p > a {
+    color: #084152;
+}
+
+p, li {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+p:last-child, li:last-child {
+    padding-bottom: 15px;
+}
+
+p {
+    margin: 0 10px 10px;
 }
