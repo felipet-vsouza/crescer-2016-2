@@ -24,6 +24,57 @@ class Heroi {
             }
             return false;
         }
+
+        this.personagemMaisPublicado = function() {
+            let personagens = {"personagem": {}, "publicacoes": 0};
+            let publicacoes = Array();
+
+            function contemPersonagem(person) {
+                for(let pos in publicacoes)
+                    if(iguais(publicacoes[pos]["personagem"], person))
+                        return pos;
+                    return -1;
+            }
+
+            function iguais(obj1, obj2) {
+                if(obj1 !== null && typeof obj1 === "object" && 
+                obj2 !== null && typeof obj2 === "object") {
+                    for(var prop in obj1) {
+                        if(!obj2.hasOwnProperty(prop) || !iguais(obj1[prop], obj2[prop]))
+                            return false;
+                    }
+                    for(var prop in obj2) {
+                        if(!obj1.hasOwnProperty(prop) || !iguais(obj1[prop], obj2[prop]))
+                            return false;
+                    }
+                    return true;
+                } else {
+                    if(obj1 === obj2)
+                        return true;
+                    return false;
+                } 
+            }
+
+            for(let ed in this._comics["items"]) {
+                let edition = this._comics["items"][ed];
+                for(var pers in edition["characters"]["items"]) {
+                    let character = edition["characters"]["items"][pers];
+                    let pos = contemPersonagem(character);
+                    if(pos === -1)
+                        publicacoes.push({"personagem": character, "publicacoes": 0})
+                    else
+                        publicacoes[pos]["publicacoes"]++;
+                }
+            }
+
+            let retorno = {"publicacoes": 0};
+            for(let pos in publicacoes) {
+                if(publicacoes[pos]["publicacoes"] > retorno["publicacoes"])
+                    retorno = publicacoes[pos];
+            }
+            return retorno["personagem"];
+                
+        }
     }
 
     get comics() {
