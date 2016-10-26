@@ -15,6 +15,15 @@ class Heroi {
         for(let url in urls) {
             this.urls.push(urls[url]);
         }
+
+        //Métodos
+        this.participouDaGuerraCivil = function () {
+            for(let pos in this._events["items"]) {
+                if(this._events["items"][pos]["name"] === "Civil War")
+                    return true;
+            }
+            return false;
+        }
     }
 
     get comics() {
@@ -93,4 +102,13 @@ class Heroi {
     set urls(urls) {
         this._urls = urls;
     }
-} 
+}
+
+
+
+// Representação de marvel como um array de Heroi
+var herois = Array();
+for(let pos in  marvel) {
+    herois.push(new Heroi(marvel[pos]["comics"], marvel[pos]["description"], marvel[pos]["events"], marvel[pos]["id"], marvel[pos]["modified"],
+    marvel[pos]["name"], marvel[pos]["resourceURI"], marvel[pos]["series"], marvel[pos]["stories"], marvel[pos]["thumbnail"], marvel[pos]["urls"]));
+}
