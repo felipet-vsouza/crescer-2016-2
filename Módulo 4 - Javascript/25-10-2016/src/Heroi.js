@@ -100,6 +100,16 @@ class Heroi {
             return seriesLong;
         }
 
+        this.comicMaisCara = function() {
+            let maisCara = {"prices": [{"price": 0}]};
+            let comics = this._comics.items;
+            for(let comic of comics) {
+                if(comic.prices[0].price > maisCara.prices[0].price)
+                    maisCara = comic;
+            }
+            return maisCara;    
+        }
+
     }
 
     get comics() {
