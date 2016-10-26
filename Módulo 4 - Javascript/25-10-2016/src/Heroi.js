@@ -75,6 +75,31 @@ class Heroi {
             return retorno["personagem"];
                 
         }
+
+        this.mediaPaginas = function() {
+            let contagem = 0;
+            let quantidade = 0;
+            let arrayComics = this._comics["items"];
+            for(let pos in arrayComics) {
+                contagem += arrayComics[pos]["pageCount"];
+                quantidade++;
+            }
+            return contagem / quantidade;
+        }
+
+        this.seriesPorLongevidade = function() {
+            let series = this._series["items"];
+            let seriesLong = Array();
+            for(let pos in series) {
+                seriesLong.push(series[pos]);
+            }
+            let compare = function(ser1, ser2) {
+                return (ser2["endYear"] - ser2["startYear"]) - (ser1["endYear"] - ser1["startYear"]);
+            }
+            seriesLong.sort(compare);
+            return seriesLong;
+        }
+
     }
 
     get comics() {
