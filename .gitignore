@@ -1,3 +1,6 @@
+# arquivos de Backup
+*.bak
+
 .DS_Store
 
 *.class
