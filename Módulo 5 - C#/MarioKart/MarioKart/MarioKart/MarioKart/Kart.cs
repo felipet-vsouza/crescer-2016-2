@@ -16,7 +16,7 @@ namespace MarioKart
 
         public Corredor Corredor { get; set; }
         public List<IEquipamento> Equipamentos { get; set; }
-        public int Velocidade
+        public virtual int Velocidade
         {
             get
             {
@@ -33,7 +33,12 @@ namespace MarioKart
             }
         }
 
-        private int BonusVelocidadePorCorredor()
+        public void Equipar(IEquipamento equipamento)
+        {
+            this.Equipamentos.Add(equipamento);
+        }
+
+        protected int BonusVelocidadePorCorredor()
         {
             switch (this.Corredor.Habilidade)
             {
@@ -54,11 +59,6 @@ namespace MarioKart
                         return 0;
                     }
             }
-        }
-
-        public void Equipar(IEquipamento equipamento)
-        {
-            this.Equipamentos.Add(equipamento);
         }
     }
 }

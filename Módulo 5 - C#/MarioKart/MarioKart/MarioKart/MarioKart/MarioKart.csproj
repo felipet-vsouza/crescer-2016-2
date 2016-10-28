@@ -46,6 +46,9 @@
     <Compile Include="Kart.cs" />
     <Compile Include="Equipamentos\MotorABaseDeLava.cs" />
     <Compile Include="Equipamentos\PneusDeCouroDeDragao.cs" />
+    <Compile Include="Karts\Dinam.cs" />
+    <Compile Include="Karts\Light.cs" />
+    <Compile Include="Karts\Sonnar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
