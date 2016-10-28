@@ -15,14 +15,7 @@ namespace MarioKart
             this.Habilidade = Habilidade;
         }
 
-        public NivelHabilidade Habilidade { get; set; }
+        public NivelHabilidade Habilidade { get; private set; }
         public string Nome { get; private set; }
-    }
-
-    public enum NivelHabilidade
-    {
-        Noob,
-        Mediano,
-        Profissional
     }
 }

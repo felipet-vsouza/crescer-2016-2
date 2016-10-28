@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Corredor.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="IEquipamento.cs" />
     <Compile Include="Kart.cs" />
     <Compile Include="Equipamentos\MotorABaseDeLava.cs" />

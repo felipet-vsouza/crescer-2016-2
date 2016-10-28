@@ -21,32 +21,38 @@ namespace MarioKart
             get
             {
                 int velocidade = 0;
-                int velocidadeCorredor = 3;
+                int velocidadeBase = 3;
 
-                velocidade += velocidadeCorredor;
+                velocidade += velocidadeBase;
                 foreach(IEquipamento equipamento in this.Equipamentos)
                 {
                     velocidade += equipamento.Bonus;
                 }
-                switch(this.Corredor.Habilidade)
-                {
-                    case NivelHabilidade.Noob:
-                        {
-                            velocidade += 3;
-                            break;
-                        }
-                    case NivelHabilidade.Mediano:
-                        {
-                            velocidade += 5;
-                            break;
-                        }
-                    case NivelHabilidade.Profissional:
-                        {
-                            velocidade += 6 + this.Equipamentos.Count;
-                            break;
-                        }
-                }
+                velocidade += this.BonusVelocidadePorCorredor();
                 return velocidade;
+            }
+        }
+
+        private int BonusVelocidadePorCorredor()
+        {
+            switch (this.Corredor.Habilidade)
+            {
+                case NivelHabilidade.Noob:
+                    {
+                        return 3;
+                    }
+                case NivelHabilidade.Mediano:
+                    {
+                        return 5;
+                    }
+                case NivelHabilidade.Profissional:
+                    {
+                        return 6 + this.Equipamentos.Count;
+                    }
+                default:
+                    {
+                        return 0;
+                    }
             }
         }
 
