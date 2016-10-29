@@ -107,5 +107,104 @@ namespace MarioKartTest
             dinam.Equipar(new PneusDeCouroDeDragao());
             Assert.AreEqual(19, dinam.Velocidade);
         }
+
+        [TestMethod]
+        public void SkyFusionNaoConcedeBonusAdicionalParaCorredorProfissional()
+        {
+            Kart skyFusion = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            Assert.AreEqual(12, skyFusion.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkyFusionConcedeBonusAdicionalParaCorredorProfissionalComPneusDeCouroDeDragao()
+        {
+            Kart skyFusion = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            skyFusion.Equipar(new PneusDeCouroDeDragao());
+            Assert.AreEqual(21, skyFusion.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkuFusionNaoConcedeBonusAdicionalParaCorredorNoobComUltraPackDeFogueteDePlutonioNivel3()
+        {
+            Kart skyFusion = new SkyFusion(new Corredor("Ricardinho", NivelHabilidade.Noob));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(3)));
+            Assert.AreEqual(12, skyFusion.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkuFusionConcedeBonusAdicionalParaCorredorNoobComUltraPackDeFogueteDePlutonioNivel4()
+        {
+            Kart skyFusion = new SkyFusion(new Corredor("Ricardinho", NivelHabilidade.Noob));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(4)));
+            Assert.AreEqual(18, skyFusion.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkyFusionConcedeBonusAdicionalParaCorredorMedianoCom3Itens()
+        {
+            Kart skyFusion = new SkyFusion(new Corredor("Romário", NivelHabilidade.Mediano));
+            skyFusion.Equipar(new UltraPack(new UltraPack(new MotorABaseDeLava())));
+            skyFusion.Equipar(new FogueteDePlutonio(Int32.MaxValue));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(5)));
+            Assert.AreEqual(31, skyFusion.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkyFusionConcedeBonusAdicionalParaCorredorProfissionalEquipadoComSkyFusionEUltraPack()
+        {
+            SkyFusion skyFusion = new SkyFusion(new Corredor("Romário", NivelHabilidade.Mediano));
+            skyFusion.Equipar(new UltraPack(new UltraPack(new MotorABaseDeLava())));
+            skyFusion.Equipar(new FogueteDePlutonio(Int32.MaxValue));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(5)));
+            Kart skyFusionEquipadao = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            skyFusionEquipadao.Equipar(skyFusion);
+            skyFusionEquipadao.Equipar(new UltraPack(new UltraPack(new UltraPack(new PneusDeCouroDeDragao()))));
+            Assert.AreEqual(36, skyFusionEquipadao.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkyFusionConcedeBonusAdicionalParaCorredorNoobEquipadoComDoisSkyFusionsEmUltraPacks()
+        {
+            SkyFusion skyFusion = new SkyFusion(new Corredor("Romário", NivelHabilidade.Mediano));
+            skyFusion.Equipar(new UltraPack(new UltraPack(new MotorABaseDeLava())));
+            skyFusion.Equipar(new FogueteDePlutonio(Int32.MaxValue));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(5)));
+            SkyFusion skyFusionEquipadao = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            skyFusionEquipadao.Equipar(skyFusion);
+            skyFusionEquipadao.Equipar(new UltraPack(new UltraPack(new UltraPack(new PneusDeCouroDeDragao()))));
+            SkyFusion skyFusionMaisQueEquipadao = new SkyFusion(new Corredor("Crash Bandicoot", NivelHabilidade.Noob));
+            skyFusionMaisQueEquipadao.Equipar(new UltraPack(skyFusion));
+            skyFusionMaisQueEquipadao.Equipar(new UltraPack(new UltraPack(skyFusionEquipadao)));
+            Assert.AreEqual(41, skyFusionMaisQueEquipadao.Velocidade);
+        }
+
+        [TestMethod]
+        public void SkyFusionBacanaoEquipaDoisSkyFusionsBuffadosERecebeBonus()
+        {
+            SkyFusion skyFusion = new SkyFusion(new Corredor("Romário", NivelHabilidade.Mediano));
+            skyFusion.Equipar(new UltraPack(new UltraPack(new MotorABaseDeLava())));
+            skyFusion.Equipar(new FogueteDePlutonio(Int32.MaxValue));
+            skyFusion.Equipar(new UltraPack(new FogueteDePlutonio(5)));
+            SkyFusion skyFusionEquipadao = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            skyFusionEquipadao.Equipar(skyFusion);
+            skyFusionEquipadao.Equipar(new UltraPack(new UltraPack(new UltraPack(new PneusDeCouroDeDragao()))));
+            SkyFusion skyFusionMaisQueEquipadao = new SkyFusion(new Corredor("Crash Bandicoot", NivelHabilidade.Noob));
+            skyFusionMaisQueEquipadao.Equipar(new UltraPack(skyFusion));
+            skyFusionMaisQueEquipadao.Equipar(new UltraPack(new UltraPack(skyFusionEquipadao)));
+            SkyFusion skyFusion1 = new SkyFusion(new Corredor("Romário", NivelHabilidade.Mediano));
+            skyFusion1.Equipar(new UltraPack(new UltraPack(new MotorABaseDeLava())));
+            skyFusion1.Equipar(new FogueteDePlutonio(Int32.MaxValue));
+            skyFusion1.Equipar(new UltraPack(new FogueteDePlutonio(5)));
+            SkyFusion skyFusionEquipadao1 = new SkyFusion(new Corredor("Roberto Carlos", NivelHabilidade.Profissional));
+            skyFusionEquipadao1.Equipar(skyFusion);
+            skyFusionEquipadao1.Equipar(new UltraPack(new UltraPack(new UltraPack(new PneusDeCouroDeDragao()))));
+            SkyFusion skyFusionMaisQueEquipadao1 = new SkyFusion(new Corredor("Crash Bandicoot", NivelHabilidade.Noob));
+            skyFusionMaisQueEquipadao1.Equipar(new UltraPack(skyFusion));
+            skyFusionMaisQueEquipadao1.Equipar(new UltraPack(new UltraPack(skyFusionEquipadao)));
+            SkyFusion skyFusionBacanao = new SkyFusion(new Corredor("Pelé", NivelHabilidade.Profissional));
+            skyFusionBacanao.Equipar(new UltraPack(new UltraPack(skyFusionMaisQueEquipadao)));
+            skyFusionBacanao.Equipar(new UltraPack(new UltraPack(skyFusionMaisQueEquipadao1)));
+            Assert.AreEqual(45, skyFusionBacanao.Velocidade);
+        }
     }
 }
