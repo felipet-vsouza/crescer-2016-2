@@ -59,8 +59,37 @@ nav:not(.autenticacao) > a:hover {
     width: 100%;
     background-image: url(http://31.media.tumblr.com/63e10630e5216c6af8798ec870acfbbc/tumblr_n4pl0xYGuF1s3bc1no1_400.gif);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 24.7%;
     background-position: center;
+}
+
+.whatever:hover {
+    position: relative;
+    margin: 0 auto;
+    top: 15px;
+    height: 30%;
+    width: 85%;
+    background-image: url(http://31.media.tumblr.com/63e10630e5216c6af8798ec870acfbbc/tumblr_n4pl0xYGuF1s3bc1no1_400.gif);
+    background-repeat: no-repeat;
+    background-size: 29%;
+    background-position: center;
+    animation: evolution 15s infinite;
+    animation-timing-function: step-end;
+}
+
+@keyframes evolution {
+    0%   {
+        background-size: 29%;
+        background-image: url(http://31.media.tumblr.com/63e10630e5216c6af8798ec870acfbbc/tumblr_n4pl0xYGuF1s3bc1no1_400.gif);        
+    }
+    34%  {
+        background-size: 20%;
+        background-image: url(http://31.media.tumblr.com/5e7c202c9577d66bb0bb2a1cc049e511/tumblr_n4pl0xYGuF1s3bc1no2_400.gif);
+    }
+    67%  {
+        background-size: 18%;
+        background-image: url(http://rs260.pbsrc.com/albums/ii29/lulubelle95/Charizard-1.gif~c200);
+    }
 }
 
 .autenticacao {
@@ -146,6 +175,11 @@ p {
     padding-right: 3%;
 }
 
+li {
+    list-style-image: url(https://cdndata.bigfooty.com/medal/362_1467858108l.jpg);
+    padding-bottom: 1px;
+}
+
 ::-webkit-scrollbar {
   width: 11px;
   height: 11px;
@@ -178,4 +212,28 @@ p {
 }
 ::-webkit-scrollbar-corner {
   background: transparent;
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v13/Zd2E9abXLFGSr9G3YK2MsDAdhzWOYhqHvOZMRGaEyPo.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'), url(https://fonts.gstatic.com/s/pacifico/v7/Q_Z9mv4hySLTMoMjnk_rCfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Bungee';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bungee'), local('Bungee-Regular'), url(https://fonts.gstatic.com/s/bungee/v2/86NbnFpNqZ2MU9Gl0ca2YQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
