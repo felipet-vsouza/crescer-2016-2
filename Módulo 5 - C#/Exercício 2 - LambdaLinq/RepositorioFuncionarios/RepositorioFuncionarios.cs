@@ -106,12 +106,23 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-            throw new NotImplementedException();
+
+            var ret = new List<Funcionario>();
+            foreach(var turno in turnos)
+            {
+                ret.AddRange(this.Funcionarios
+                                 .Where(funcionario => funcionario.TurnoTrabalho.Equals(turno))
+                                 .ToList());
+            }
+            return ret;
         }        
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            throw new NotImplementedException();
+            return this.Funcionarios
+                       .Where(funcionario => (idade - 5) <= GetIdade(funcionario.DataNascimento) &&
+                                             (idade + 5) >= GetIdade(funcionario.DataNascimento))
+                       .ToList();
         }        
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
@@ -137,6 +148,13 @@ namespace Repositorio
         public dynamic FuncionarioMaisComplexo()
         {
             throw new NotImplementedException();
+        }
+
+        private static int GetIdade(DateTime nascimento)
+        {
+            int idade = DateTime.Today.Year - nascimento.Year;
+            if (DateTime.Today < nascimento.AddYears(idade)) idade--;
+            return idade;
         }
     }
 }
