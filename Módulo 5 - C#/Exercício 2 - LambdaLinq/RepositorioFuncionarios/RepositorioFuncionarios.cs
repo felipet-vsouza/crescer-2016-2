@@ -106,7 +106,10 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
-
+            if (turnos.Count() == 0)
+            {
+                return this.Funcionarios.ToList();
+            }
             var ret = new List<Funcionario>();
             foreach(var turno in turnos)
             {
@@ -127,12 +130,20 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            throw new NotImplementedException();
+            var funcionarios = this.Funcionarios
+                                   .Where(funcionario => turno == null || funcionario.TurnoTrabalho == turno)
+                                   .ToList();
+            int quantidade = funcionarios.Count();
+            return funcionarios.Select(funcionario => funcionario.Cargo.Salario)
+                               .Sum()
+                               / quantidade;
         }
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            throw new NotImplementedException();
+            return this.Funcionarios
+                       .Where(funcionario => funcionario.DataNascimento.Month == DateTime.Now.Month)
+                       .ToList();
         }
 
         public IList<dynamic> BuscaRapida()
