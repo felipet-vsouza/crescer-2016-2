@@ -132,13 +132,9 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            var funcionarios = this.Funcionarios
-                                   .Where(funcionario => turno == null || funcionario.TurnoTrabalho == turno)
-                                   .ToList();
-            int quantidade = funcionarios.Count();
-            return funcionarios.Select(funcionario => funcionario.Cargo.Salario)
-                               .Sum()
-                               / quantidade;
+            return this.Funcionarios
+                       .Where(funcionario => turno == null || funcionario.TurnoTrabalho == turno)
+                       .Average(funcionario => funcionario.Cargo.Salario);
         }
 
         public IList<Funcionario> AniversariantesDoMes()
