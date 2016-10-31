@@ -19,6 +19,8 @@ namespace Repositorio
             CriarBase();
         }
 
+        private const string DEV_JUNIOR = "Desenvolvedor Júnior";
+
         private void CriarBase()
         {
             Funcionarios = new List<Funcionario>();
@@ -148,17 +150,42 @@ namespace Repositorio
 
         public IList<dynamic> BuscaRapida()
         {
-            throw new NotImplementedException();
+            return this.Funcionarios
+                       .Select(funcionario => (dynamic) new { NomeFuncionario = funcionario.Nome,
+                                                              TituloCargo = funcionario.Cargo.Titulo })
+                       .ToList();
         }
 
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
-            throw new NotImplementedException();
+            return this.Funcionarios
+                       .GroupBy(funcionario => funcionario.TurnoTrabalho)
+                       .Select(grupo => (dynamic) new { Turno = grupo.Key,
+                                                        Quantidade = grupo.Count()})
+                       .ToList();
+                       
         }
 
         public dynamic FuncionarioMaisComplexo()
         {
-            throw new NotImplementedException();
+            var maisComplexo = this
+                .Funcionarios
+                .Where(funcionario => !funcionario.TurnoTrabalho.Equals(TurnoTrabalho.Tarde) &&
+                                      !funcionario.Cargo.Titulo.Equals(DEV_JUNIOR))
+                .OrderBy(funcionario => funcionario.Nome
+                                                   .ToCharArray()
+                                                   .Count(c => "AEIOU".IndexOf(Char.ToUpperInvariant(c)) == 0))
+                .ElementAt(0);
+            var mesmoCargo = this
+                .Funcionarios
+                .Where(funcionario => funcionario.Cargo.Equals(maisComplexo.Cargo))
+                .Count();
+            return new { Nome = maisComplexo.Nome,
+                         DataNascimento = maisComplexo.DataNascimento.ToString("dd/MM/yyyy"),
+                         SalarioRS = String.Format("R$ {0},{1}", Math.Truncate(maisComplexo.Cargo.Salario),
+                                                                        GetFractionalPart(maisComplexo.Cargo.Salario)),
+                         SalarioUS = String.Format("${0:000.00}", maisComplexo.Cargo.Salario),
+                         QuantidadeMesmoCargo = mesmoCargo};
         }
 
         private static int GetIdade(DateTime nascimento)
@@ -166,6 +193,11 @@ namespace Repositorio
             int idade = DateTime.Today.Year - nascimento.Year;
             if (DateTime.Today < nascimento.AddYears(idade)) idade--;
             return idade;
+        }
+
+        private static int GetFractionalPart(double number)
+        {
+            return (int) ((number - Math.Truncate(number)) * 100.0);
         }
     }
 }
