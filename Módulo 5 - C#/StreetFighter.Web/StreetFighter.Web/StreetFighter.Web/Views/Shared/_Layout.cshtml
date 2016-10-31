@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="~/Content/street-fighter-stylesheet.css" rel="stylesheet" />
+    <title>Street Fighter</title>
+</head>
+
+<body>
+    <div class="main-options">
+        <a href="~/StreetFighter">Início</a>
+        <a href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=street+fighter&safe=off&tbm=nws">Notícias</a>
+        <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
+        <a href="~/StreetFighter/Sobre">Sobre</a>
+    </div>
+    <div class="content">
+        <div class="top-title">
+            <span>@ViewBag.Title</span>
+        </div>
+        @RenderBody()
+    </div>
+</body>
+
+</html>
