@@ -179,8 +179,9 @@ namespace Repositorio
             return new { Nome = maisComplexo.Nome,
                          DataNascimento = maisComplexo.DataNascimento.ToString("dd/MM/yyyy"),
                          SalarioRS = String.Format("R$ {0},{1}", Math.Truncate(maisComplexo.Cargo.Salario),
-                                                                        GetFractionalPart(maisComplexo.Cargo.Salario)),
-                         SalarioUS = String.Format("${0:000.00}", maisComplexo.Cargo.Salario),
+                                                                 GetFractionalPart(maisComplexo.Cargo.Salario)),
+                         SalarioUS = String.Format("${0}.{1}", Math.Truncate(maisComplexo.Cargo.Salario),
+                                                               GetFractionalPart(maisComplexo.Cargo.Salario)),
                          QuantidadeMesmoCargo = mesmoCargo};
         }
 
