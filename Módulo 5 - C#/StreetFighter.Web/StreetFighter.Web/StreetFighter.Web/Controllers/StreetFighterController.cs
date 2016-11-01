@@ -21,23 +21,23 @@ namespace StreetFighter.Web.Controllers
             var model = new FichaTecnicaModel();
             model.PrimeiraAparicao = "Street Fighter II The World Warrior (1991)";
             model.DataNascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR"));
-            model.Altura = 0;
-            model.Peso = 0;
-            model.Medidas = "";
-            model.TipoSanguineo = "";
-            model.HabilidadesEspeciais = "";
-            model.Gosta = "";
-            model.Desgosta = "";
-            model.EstiloDeLuta = "";
-            model.Origem = "";
-            model.FalaDeVitoria = "";
-            model.SSF2Nickname = "";
-            model.SFA3Nickname = "";
-            model.SF4Nickname = "";
-            model.SFA3Stage = "";
-            model.SF2Stage = "";
-            model.GolpesEspeciaisFamosos = "";
-            return View();
+            model.Altura = 192;
+            model.Peso = 96;
+            model.Medidas = "B198, C120, Q172";
+            model.TipoSanguineo = 'B';
+            model.HabilidadesEspeciais = "Caçar, Eletricidade";
+            model.Gosta = "Frutas tropicais, Pirarucu, Sua mãe";
+            model.Desgosta = "Army ants (espécie de formiga)";
+            model.EstiloDeLuta = "Luta Selvagem autodidata (Army Ants) / Capoeira";
+            model.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia)";
+            model.FalaDeVitoria = "\"Ver você em ação é uma piada!\"";
+            model.SSF2Nickname = "\"A selvagem criança da natureza\"";
+            model.SFA3Nickname = "\"A animal pessoa amazônica\"";
+            model.SF4Nickname = "\"Guerreiro da selva\"";
+            model.SFA3Stage = "Ramificação do Rio Madeira - pantano, Brasil (ramificação do rio Madeira: talvez possa ser Mato Grosso, ou Tocantins?)";
+            model.SF2Stage = "Bacia do rio Amazonas (Brasil)";
+            model.GolpesEspeciaisFamosos = "Electric Thunder, Rolling Attack";
+            return View(model);
         }
 
         public ActionResult Sobre()
