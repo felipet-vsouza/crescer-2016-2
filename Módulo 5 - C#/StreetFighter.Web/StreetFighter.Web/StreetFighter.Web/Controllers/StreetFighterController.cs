@@ -19,24 +19,13 @@ namespace StreetFighter.Web.Controllers
         public ActionResult FichaTecnica()
         {
             var model = new FichaTecnicaModel();
-            model.PrimeiraAparicao = "Street Fighter II The World Warrior (1991)";
-            model.DataNascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR"));
+            model.Nome = "Blanka";
+            model.Nascimento = "12/02/1966";
             model.Altura = 192;
             model.Peso = 96;
-            model.Medidas = "B198, C120, Q172";
-            model.TipoSanguineo = 'B';
-            model.HabilidadesEspeciais = "Caçar, Eletricidade";
-            model.Gosta = "Frutas tropicais, Pirarucu, Sua mãe";
-            model.Desgosta = "Army ants (espécie de formiga)";
-            model.EstiloDeLuta = "Luta Selvagem autodidata (Army Ants) / Capoeira";
-            model.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia)";
-            model.FalaDeVitoria = "\"Ver você em ação é uma piada!\"";
-            model.SSF2Nickname = "\"A selvagem criança da natureza\"";
-            model.SFA3Nickname = "\"A animal pessoa amazônica\"";
-            model.SF4Nickname = "\"Guerreiro da selva\"";
-            model.SFA3Stage = "Ramificação do Rio Madeira - pantano, Brasil (ramificação do rio Madeira: talvez possa ser Mato Grosso, ou Tocantins?)";
-            model.SF2Stage = "Bacia do rio Amazonas (Brasil)";
-            model.GolpesEspeciaisFamosos = "Electric Thunder, Rolling Attack";
+            model.Origem = "BR";
+            model.GolpesEspeciais = "Electric Thunder, Rolling Attack";
+            model.PersonagemOculto = false;
             return View(model);
         }
 
@@ -54,6 +43,11 @@ namespace StreetFighter.Web.Controllers
             model.Nickname = "Felps";
             model.GolpesEspeciaisFamosos = "Strafe na varanda, rush b";
             return View(model);
+        }
+
+        public ActionResult Cadastro()
+        {
+            return View();
         }
     }
 }
