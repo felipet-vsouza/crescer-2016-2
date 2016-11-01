@@ -42,7 +42,18 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult Sobre()
         {
-            return View();
+            var model = new SobreModel();
+            model.Nome = "Felipe Thomas Vargas de Souza";
+            model.DataNascimento = DateTime.Parse("02/06/1997", new CultureInfo("pt-BR"));
+            model.JogosFavoritos = "CSGO, Fallout 4, Terraria";
+            model.TipoSanguineo = "B-";
+            model.HabilidadesEspeciais = "Programar, beber café";
+            model.Gosta = "Doritos, goiabada, jogos";
+            model.Desgosta = "Insônia";
+            model.Origem = "Campo Bom / RS - Brasil";
+            model.Nickname = "Felps";
+            model.GolpesEspeciaisFamosos = "Strafe na varanda, rush b";
+            return View(model);
         }
     }
 }
