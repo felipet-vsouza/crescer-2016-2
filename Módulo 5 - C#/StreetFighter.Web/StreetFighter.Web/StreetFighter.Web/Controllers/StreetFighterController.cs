@@ -59,6 +59,16 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult Cadastro()
         {
+            ViewData["ListaOrigens"] = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value = "BR", Text = "Brasil" },
+                new SelectListItem() { Value = "JP", Text = "Japão" },
+                new SelectListItem() { Value = "AC", Text = "Acre" },
+                new SelectListItem() { Value = "MO", Text = "Mordor" },
+                new SelectListItem() { Value = "US", Text = "Estados Unidos" },
+                new SelectListItem() { Value = "CR", Text = "Costa Rica" },
+                new SelectListItem() { Value = "AU", Text = "Austrália" }
+            };
             return View();
         }
     }
