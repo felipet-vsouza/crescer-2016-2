@@ -16,18 +16,29 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica()
+        public ActionResult FichaTecnica(FichaTecnicaModel model = null)
         {
-            var model = new FichaTecnicaModel();
-            model.Nome = "Blanka";
-            model.Imagem = "https://files.slack.com/files-pri/T2FVBENMS-F2RM5AKSL/blanka.png";
-            model.Nascimento = "12/02/1966";
-            model.Altura = 192;
-            model.Peso = 96;
-            model.Origem = "BR";
-            model.GolpesEspeciais = "Electric Thunder, Rolling Attack";
-            model.PersonagemOculto = false;
-            return View(model);
+            if(model.Nome == null)
+            {
+                model.Nome = "Blanka";
+                model.Imagem = "https://files.slack.com/files-pri/T2FVBENMS-F2RM5AKSL/blanka.png";
+                model.Nascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR"));
+                model.Altura = 192;
+                model.Peso = 96;
+                model.Origem = "BR";
+                model.GolpesEspeciais = "Electric Thunder, Rolling Attack";
+                model.PersonagemOculto = false;
+                return View(model);
+            }
+            if (ModelState.IsValid)
+            {
+                ViewBag.Mensagem = "Cadastro concluído com sucesso.";
+                return View(model);
+            }
+            else
+            {
+                return View("Cadastro");
+            }
         }
 
         public ActionResult Sobre()
