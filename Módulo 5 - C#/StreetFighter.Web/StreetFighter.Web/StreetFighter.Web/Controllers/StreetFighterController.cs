@@ -20,6 +20,7 @@ namespace StreetFighter.Web.Controllers
         {
             var model = new FichaTecnicaModel();
             model.Nome = "Blanka";
+            model.Imagem = "https://files.slack.com/files-pri/T2FVBENMS-F2RM5AKSL/blanka.png";
             model.Nascimento = "12/02/1966";
             model.Altura = 192;
             model.Peso = 96;
