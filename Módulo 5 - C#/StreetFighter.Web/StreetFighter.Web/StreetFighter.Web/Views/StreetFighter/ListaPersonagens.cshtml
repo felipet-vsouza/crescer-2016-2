@@ -1,0 +1,13 @@
+﻿@model List<StreetFighter.Dominio.Personagem>
+@{
+    ViewBag.Title = "Lista de Personagens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    foreach (var personagem in Model)
+    {
+        <img src="@personagem.Imagem">
+    }
+}
+

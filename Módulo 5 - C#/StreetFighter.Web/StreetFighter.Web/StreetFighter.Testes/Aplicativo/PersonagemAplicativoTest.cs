@@ -14,7 +14,7 @@ namespace StreetFighter.Testes.Aplicativo
         public void PersonagemComId0DeveSerIncluido()
         {
             var repositorio = A.Fake<IPersonagemRepositorio>();
-            var personagem = new Personagem("Blanka", "Rio Negro e Solimões");
+            var personagem = new Personagem("Blanka", 172, 89, "Rio Negro e Solimões", "", "", false);
             var aplicativo = new PersonagemAplicativo(repositorio);
 
             aplicativo.Salvar(personagem);

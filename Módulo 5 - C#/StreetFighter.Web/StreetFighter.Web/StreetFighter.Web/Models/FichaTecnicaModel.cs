@@ -10,7 +10,6 @@ namespace StreetFighter.Web.Models
 {
     public class FichaTecnicaModel
     {
-        [Required]
         [DisplayName("URL Imagem")]
         public string Imagem { get; set; }
 

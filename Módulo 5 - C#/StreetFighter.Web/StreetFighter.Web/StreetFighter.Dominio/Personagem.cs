@@ -10,18 +10,30 @@ namespace StreetFighter.Dominio
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
+        public int Altura { get; private set; }
+        public decimal Peso { get; private set; }
         public string Origem { get; private set; }
+        public string Imagem { get; private set; }
+        public string GolpesEspeciais { get; private set; }
+        public bool PersonagemOculto { get; private set; }
 
-        public Personagem(int id, string nome, string origem)
-                : this(nome, origem)
+        public Personagem(int id, string nome, int altura, decimal peso, string origem, string imagem,
+            string golpesEspeciais, bool personagemOculto)
+                : this(nome, altura, peso, origem, imagem, golpesEspeciais, personagemOculto)
         {
             this.Id = id;
         }
 
-        public Personagem(string nome, string origem)
+        public Personagem(string nome, int altura, decimal peso, string origem, string imagem,
+            string golpesEspeciais, bool personagemOculto)
         {
             this.Nome = nome;
+            this.Altura = altura;
+            this.Peso = peso;
             this.Origem = origem;
+            this.Imagem = imagem;
+            this.GolpesEspeciais = golpesEspeciais;
+            this.PersonagemOculto = personagemOculto;
         }
 
     }

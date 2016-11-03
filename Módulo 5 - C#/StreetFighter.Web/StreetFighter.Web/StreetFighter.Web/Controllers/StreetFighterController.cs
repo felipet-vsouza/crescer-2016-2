@@ -1,4 +1,5 @@
-﻿using StreetFighter.Web.Models;
+﻿using StreetFighter.Aplicativo;
+using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,6 +11,13 @@ namespace StreetFighter.Web.Controllers
 {
     public class StreetFighterController : Controller
     {
+
+        public ActionResult ListaPersonagens(string filtro)
+        {
+            var model = new PersonagemAplicativo().ListaPersonagens(filtro);
+            return View(model);
+        }
+
         // GET: StreetFighter
         public ActionResult Index()
         {
@@ -67,7 +75,8 @@ namespace StreetFighter.Web.Controllers
                 new SelectListItem() { Value = "MO", Text = "Mordor" },
                 new SelectListItem() { Value = "US", Text = "Estados Unidos" },
                 new SelectListItem() { Value = "CR", Text = "Costa Rica" },
-                new SelectListItem() { Value = "AU", Text = "Austrália" }
+                new SelectListItem() { Value = "AU", Text = "Austrália" },
+                new SelectListItem() { Value = "MP", Text = "Morro da Pedra" }
             };
             return View();
         }
