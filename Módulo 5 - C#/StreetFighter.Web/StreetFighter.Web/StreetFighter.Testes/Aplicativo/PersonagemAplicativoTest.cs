@@ -4,6 +4,7 @@ using StreetFighter.Dominio;
 using StreetFighter.Repositorio;
 using FakeItEasy;
 using StreetFighter.Aplicativo;
+using System.Globalization;
 
 namespace StreetFighter.Testes.Aplicativo
 {
@@ -14,7 +15,7 @@ namespace StreetFighter.Testes.Aplicativo
         public void PersonagemComId0DeveSerIncluido()
         {
             var repositorio = A.Fake<IPersonagemRepositorio>();
-            var personagem = new Personagem("Blanka", 172, 89, "Rio Negro e Solimões", "", "", false);
+            var personagem = new Personagem("Blanka", DateTime.Parse("15/08/1967", new CultureInfo("pt-BR")), 172, 89, "Rio Negro e Solimões", "", "", false);
             var aplicativo = new PersonagemAplicativo(repositorio);
 
             aplicativo.Salvar(personagem);

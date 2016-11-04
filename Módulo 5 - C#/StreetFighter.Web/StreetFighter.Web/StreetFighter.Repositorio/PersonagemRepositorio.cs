@@ -1,6 +1,7 @@
 ﻿using StreetFighter.Dominio;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace StreetFighter.Repositorio
         private readonly string filepath;
 
         public PersonagemRepositorio()
-            : this(@"\data\personagens.csv")
+            : this(@"C:\Users\Felps\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\personagens.csv")
         {
         }
 
@@ -22,7 +23,7 @@ namespace StreetFighter.Repositorio
         {
             this.filepath = filepath;
             if (!File.Exists(filepath))
-                File.Create(filepath);
+                File.Create(filepath).Close();
         }
         
         public List<Personagem> ListaPersonagens()
@@ -36,16 +37,17 @@ namespace StreetFighter.Repositorio
             var personagens = File.ReadLines(filepath);
             foreach(var personagem in personagens)
             {
-                var parametros = personagem.Split(';');
+                var parametros = personagem.Split(',');
                 Personagem p = new Personagem(
                     Convert.ToInt32(parametros[0]),
                     parametros[1],
-                    Convert.ToInt32(parametros[2]),
-                    Convert.ToDecimal(parametros[3]),
-                    parametros[4],
+                    DateTime.ParseExact(parametros[2], "dd/MM/yyyy", new CultureInfo("pr-BR")),
+                    Convert.ToInt32(parametros[3]),
+                    Convert.ToDecimal(parametros[4]),
                     parametros[5],
                     parametros[6],
-                    Convert.ToBoolean(parametros[7])
+                    parametros[7],
+                    Convert.ToBoolean(parametros[8])
                 );
                 if(filtro == null || p.Nome.Contains(filtro))
                     lista.Add(p);
@@ -56,9 +58,10 @@ namespace StreetFighter.Repositorio
         public void IncluirPersonagem(Personagem personagem)
         {
             var id = this.ListaPersonagens().Count() + 1;
-            var conteudo = String.Format("{0};{1};{2};{3};{4};{5};{6};{7}{8}",
+            var conteudo = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}{9}",
                 id,
                 personagem.Nome,
+                personagem.Nascimento.ToString("dd/MM/yyyy"),
                 personagem.Altura,
                 personagem.Peso,
                 personagem.Origem,
@@ -96,7 +99,7 @@ namespace StreetFighter.Repositorio
         {
             if(File.Exists(filepath))
                 File.Delete(filepath);
-            using (File.Create(filepath)) ;
+            using (File.Create(filepath));
             foreach (var item in lista)
                 this.IncluirPersonagem(item);
         }

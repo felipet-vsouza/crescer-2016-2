@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreetFighter.Repositorio;
 using StreetFighter.Dominio;
+using System.Globalization;
 
 namespace StreetFighter.Testes.Repositorio
 {
@@ -20,7 +21,7 @@ namespace StreetFighter.Testes.Repositorio
         [TestMethod]
         public void AdicionaUmPersonagemAoRepositorioEODeleta()
         {
-            var personagem = new Personagem("Blanka", 178, 82, "Amazônia", "", "", false);
+            var personagem = new Personagem("Blanka", DateTime.Parse("15/08/1967", new CultureInfo("pt-BR")), 178, 82, "Amazônia", "", "", false);
             repositorio.IncluirPersonagem(personagem);
             var lista = repositorio.ListaPersonagens();
             Assert.AreEqual(1, lista.Count);
@@ -33,7 +34,7 @@ namespace StreetFighter.Testes.Repositorio
         [TestMethod]
         public void AdicionaEEditaUmPersonagemDoRepositorioEOExclui()
         {
-            var personagem = new Personagem("Blanka", 178, 82, "Amazônia", "", "", false);
+            var personagem = new Personagem("Blanka", DateTime.Parse("15/08/1967", new CultureInfo("pt-BR")), 178, 82, "Amazônia", "", "", false);
             repositorio.IncluirPersonagem(personagem);
             var lista = repositorio.ListaPersonagens();
             Assert.AreEqual(1, lista.Count);

@@ -1,4 +1,5 @@
 ﻿using StreetFighter.Aplicativo;
+using StreetFighter.Dominio;
 using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,20 @@ namespace StreetFighter.Web.Controllers
     public class StreetFighterController : Controller
     {
 
-        public ActionResult ListaPersonagens(string filtro)
+        public ActionResult ListaPersonagens(FichaTecnicaModel ficha = null, string filtro = null)
         {
-            var model = new PersonagemAplicativo().ListaPersonagens(filtro);
-            return View(model);
+            if (ModelState.IsValid)
+            {
+                var personagem = new PersonagemAplicativo();
+                if (ficha != null)
+                    personagem.Salvar(this.ToPersonagem(ficha));
+                var model = new PersonagemAplicativo().ListaPersonagens(filtro);
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Cadastro");
+            }
         }
 
         // GET: StreetFighter
@@ -24,29 +35,9 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica(FichaTecnicaModel model = null)
+        public ActionResult FichaTecnica()
         {
-            if(model.Nome == null)
-            {
-                model.Nome = "Blanka";
-                model.Imagem = "https://files.slack.com/files-pri/T2FVBENMS-F2RM5AKSL/blanka.png";
-                model.Nascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR"));
-                model.Altura = 192;
-                model.Peso = 96;
-                model.Origem = "BR";
-                model.GolpesEspeciais = "Electric Thunder, Rolling Attack";
-                model.PersonagemOculto = false;
-                return View(model);
-            }
-            if (ModelState.IsValid)
-            {
-                ViewBag.Mensagem = "Cadastro concluído com sucesso.";
-                return View(model);
-            }
-            else
-            {
-                return View("Cadastro");
-            }
+            return View();
         }
 
         public ActionResult Sobre()
@@ -79,6 +70,20 @@ namespace StreetFighter.Web.Controllers
                 new SelectListItem() { Value = "MP", Text = "Morro da Pedra" }
             };
             return View();
+        }
+
+        private Personagem ToPersonagem(FichaTecnicaModel model)
+        {
+            return new Personagem(
+                model.Nome,
+                model.Nascimento,
+                model.Altura,
+                model.Peso,
+                model.Origem,
+                model.Imagem,
+                model.GolpesEspeciais,
+                model.PersonagemOculto
+                );
         }
     }
 }

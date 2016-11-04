@@ -5,9 +5,30 @@
 }
 
 @{ 
+    if (Model.Count == 0)
+    {
+        <h2>Não há nenhum personagem cadastrado.</h2>
+    }
     foreach (var personagem in Model)
     {
-        <img src="@personagem.Imagem">
+        <div>
+            <img src="@personagem.Imagem">
+            <p>@personagem.Nome</p>
+        </div>
     }
+}
+
+@section Styles {
+    <style>
+        img {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+        }
+
+        h2 {
+            color: crimson;
+        }
+    </style>
 }
 
