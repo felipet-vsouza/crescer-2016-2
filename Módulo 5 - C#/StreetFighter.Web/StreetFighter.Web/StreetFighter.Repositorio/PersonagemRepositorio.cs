@@ -14,7 +14,7 @@ namespace StreetFighter.Repositorio
         private readonly string filepath;
 
         public PersonagemRepositorio()
-            : this(@"C:\Users\Felps-Notebook\Documents\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\personagens.csv")
+            : this(@"\data\personagens.csv")
         {
         }
 
@@ -94,7 +94,9 @@ namespace StreetFighter.Repositorio
 
         private void SobrescreveArquivo(List<Personagem> lista)
         {
-            File.(filepath);
+            if(File.Exists(filepath))
+                File.Delete(filepath);
+            using (File.Create(filepath)) ;
             foreach (var item in lista)
                 this.IncluirPersonagem(item);
         }

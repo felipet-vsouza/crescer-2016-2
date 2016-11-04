@@ -8,7 +8,7 @@ namespace StreetFighter.Testes.Repositorio
     [TestClass]
     public class PersonagemRepositorioTest
     {
-        private readonly PersonagemRepositorio repositorio = new PersonagemRepositorio(@"C:\Users\Felps-Notebook\Documents\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\StreetFighter.Testes\Repositorio\personagens.csv");
+        private readonly PersonagemRepositorio repositorio = new PersonagemRepositorio(@"C:\Users\Felps\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\StreetFighter.Testes\Repositorio\personagens.csv");
         
         [TestMethod]
         public void PersonagemRepositorioEhInstanciadoComListaVazia()
