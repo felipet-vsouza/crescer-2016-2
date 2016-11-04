@@ -11,11 +11,23 @@ namespace StreetFighter.Repositorio
     public class PersonagemRepositorio : IPersonagemRepositorio
     {
 
-        private string filepath;
+        private readonly string filepath;
 
         public PersonagemRepositorio()
+            : this(@"C:\Users\Felps-Notebook\Documents\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\personagens.csv")
         {
-            filepath = @"~/data/personagens.csv";
+        }
+
+        internal PersonagemRepositorio(string filepath)
+        {
+            this.filepath = filepath;
+            if (!File.Exists(filepath))
+                File.Create(filepath);
+        }
+        
+        public List<Personagem> ListaPersonagens()
+        {
+            return this.ListaPersonagens(null);
         }
 
         public List<Personagem> ListaPersonagens(string filtro)
@@ -26,13 +38,14 @@ namespace StreetFighter.Repositorio
             {
                 var parametros = personagem.Split(';');
                 Personagem p = new Personagem(
-                    parametros[0],
-                    Convert.ToInt32(parametros[1]),
-                    Convert.ToDecimal(parametros[2]),
-                    parametros[3],
+                    Convert.ToInt32(parametros[0]),
+                    parametros[1],
+                    Convert.ToInt32(parametros[2]),
+                    Convert.ToDecimal(parametros[3]),
                     parametros[4],
                     parametros[5],
-                    Convert.ToBoolean(parametros[6])
+                    parametros[6],
+                    Convert.ToBoolean(parametros[7])
                 );
                 if(filtro == null || p.Nome.Contains(filtro))
                     lista.Add(p);
@@ -42,7 +55,9 @@ namespace StreetFighter.Repositorio
 
         public void IncluirPersonagem(Personagem personagem)
         {
-            var conteudo = String.Format("{0};{1};{2};{3};{3};{4};{5};{6};{7}",
+            var id = this.ListaPersonagens().Count() + 1;
+            var conteudo = String.Format("{0};{1};{2};{3};{4};{5};{6};{7}{8}",
+                id,
                 personagem.Nome,
                 personagem.Altura,
                 personagem.Peso,
@@ -56,24 +71,32 @@ namespace StreetFighter.Repositorio
 
         public void EditarPersonagem(Personagem personagem)
         {
-            var lista = this.ListaPersonagens(null);
-            foreach(var item in lista)
-            {
-                bool deveEditar = false;
-                if (deveEditar)
-                {
-                    lista.Remove(item);
-                    lista.Add(personagem);
-                }
-            }
-            File.Delete(filepath);
-            foreach (var item in lista)
-                this.IncluirPersonagem(item);
+            this.ExcluirPersonagem(personagem);
+            var lista = this.ListaPersonagens();
+            lista.Add(personagem);
+            this.SobrescreveArquivo(lista);
         }
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            var lista = this.ListaPersonagens();
+            foreach (var item in lista)
+            {
+                bool deveExcluir = personagem.Id == item.Id;
+                if (deveExcluir)
+                {
+                    lista.Remove(item);
+                    break;
+                }
+            }
+            this.SobrescreveArquivo(lista);
+        }
+
+        private void SobrescreveArquivo(List<Personagem> lista)
+        {
+            File.(filepath);
+            foreach (var item in lista)
+                this.IncluirPersonagem(item);
         }
     }
 }

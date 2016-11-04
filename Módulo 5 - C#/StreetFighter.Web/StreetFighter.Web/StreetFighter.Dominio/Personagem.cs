@@ -9,7 +9,7 @@ namespace StreetFighter.Dominio
     public class Personagem
     {
         public int Id { get; private set; }
-        public string Nome { get; private set; }
+        public string Nome { get; set; }
         public int Altura { get; private set; }
         public decimal Peso { get; private set; }
         public string Origem { get; private set; }
