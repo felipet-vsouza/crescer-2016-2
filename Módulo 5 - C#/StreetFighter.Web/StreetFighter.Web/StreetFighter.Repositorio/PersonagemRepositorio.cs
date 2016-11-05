@@ -41,7 +41,7 @@ namespace StreetFighter.Repositorio
                 Personagem p = new Personagem(
                     Convert.ToInt32(parametros[0]),
                     parametros[1],
-                    DateTime.ParseExact(parametros[2], "dd/MM/yyyy", new CultureInfo("pr-BR")),
+                    DateTime.ParseExact(parametros[2], "dd/MM/yyyy", new CultureInfo("pt-BR")),
                     Convert.ToInt32(parametros[3]),
                     Convert.ToDecimal(parametros[4]),
                     parametros[5],

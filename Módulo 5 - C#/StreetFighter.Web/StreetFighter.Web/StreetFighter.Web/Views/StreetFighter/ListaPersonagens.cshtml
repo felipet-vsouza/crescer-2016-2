@@ -11,9 +11,11 @@
     }
     foreach (var personagem in Model)
     {
-        <div>
+        <div class="personagem">
             <img src="@personagem.Imagem">
-            <p>@personagem.Nome</p>
+            <span>
+                @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
+            </span> 
         </div>
     }
 }
@@ -23,11 +25,20 @@
         img {
             width: 70px;
             height: 70px;
-            display: inline-block;
+            display: inline;
         }
 
         h2 {
             color: crimson;
+            display: inline;
+        }
+
+        .personagem {
+            padding: 10px 10px 10px 10px;
+        }
+
+        .informacoes {
+            display: inline;
         }
     </style>
 }

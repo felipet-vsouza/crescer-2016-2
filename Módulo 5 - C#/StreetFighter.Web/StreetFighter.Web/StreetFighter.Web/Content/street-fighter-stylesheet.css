@@ -28,7 +28,6 @@ body {
 .main-options > a {
     font-weight: bold;
     vertical-align: middle;
-    text-decoration: none;
     color: white;
 }
 
@@ -82,4 +81,17 @@ p.sobre {
 
 .descricao {
     float: right;
+}
+
+a {
+    text-decoration: none;
+}
+
+.personagem a {
+    font-size: 20px;
+    color: black;
+}
+
+.personagem a:visited {
+    color: black;
 }

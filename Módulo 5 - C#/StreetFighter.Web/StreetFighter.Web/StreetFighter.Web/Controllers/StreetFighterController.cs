@@ -13,12 +13,12 @@ namespace StreetFighter.Web.Controllers
     public class StreetFighterController : Controller
     {
 
-        public ActionResult ListaPersonagens(FichaTecnicaModel ficha = null, string filtro = null)
+        public ActionResult ListaPersonagens(FichaTecnicaModel ficha, string filtro = null)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || ficha.Nome == null)
             {
                 var personagem = new PersonagemAplicativo();
-                if (ficha != null)
+                if (ficha.Nome != null)
                     personagem.Salvar(this.ToPersonagem(ficha));
                 var model = new PersonagemAplicativo().ListaPersonagens(filtro);
                 return View(model);
@@ -35,9 +35,13 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica()
+        public ActionResult FichaTecnica(int idPersonagem)
         {
-            return View();
+            Personagem p = new PersonagemAplicativo().BuscarPeloId(idPersonagem);
+            if (p != null)
+                return View(this.ToFichaTecnicaModel(p));
+            else
+                return RedirectToAction("ListaPersonagens");
         }
 
         public ActionResult Sobre()
@@ -84,6 +88,21 @@ namespace StreetFighter.Web.Controllers
                 model.GolpesEspeciais,
                 model.PersonagemOculto
                 );
+        }
+
+        private FichaTecnicaModel ToFichaTecnicaModel(Personagem personagem)
+        {
+            return new FichaTecnicaModel()
+            {
+                Nome = personagem.Nome,
+                Nascimento = personagem.Nascimento,
+                Altura = personagem.Altura,
+                Peso = personagem.Peso,
+                Origem = personagem.Origem,
+                Imagem = personagem.Imagem,
+                GolpesEspeciais = personagem.GolpesEspeciais,
+                PersonagemOculto = personagem.PersonagemOculto
+            };
         }
     }
 }

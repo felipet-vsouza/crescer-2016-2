@@ -23,7 +23,6 @@ namespace StreetFighter.Web.Models
         public int Altura { get; set; }
 
         [Required]
-        [Range(1, 300, ErrorMessage = "O peso deve ser entre 1 e 300 kg.")]
         public decimal Peso { get; set; }
         
         public string Origem { get; set; }
