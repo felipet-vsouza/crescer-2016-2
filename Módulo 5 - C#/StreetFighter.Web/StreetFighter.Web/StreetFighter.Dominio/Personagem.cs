@@ -28,6 +28,10 @@ namespace StreetFighter.Dominio
         public Personagem(string nome, DateTime nascimento, int altura, decimal peso, string origem, string imagem,
             string golpesEspeciais, bool personagemOculto)
         {
+            if (nome.ToUpperInvariant().Contains("NUNES"))
+                throw new RegraNegocioException("Não é permitido cadastrar persongens overpowered.");
+            if (origem == "MP")
+                throw new RegraNegocioException($"Somente um personagem pode ser dessa região e esse personagem não é o {nome}.");
             this.Nome = nome;
             this.Nascimento = nascimento;
             this.Altura = altura;

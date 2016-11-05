@@ -17,11 +17,20 @@ namespace StreetFighter.Web.Controllers
         {
             if (ModelState.IsValid || ficha.Nome == null)
             {
-                var personagem = new PersonagemAplicativo();
-                if (ficha.Nome != null)
-                    personagem.Salvar(this.ToPersonagem(ficha));
-                var model = new PersonagemAplicativo().ListaPersonagens(filtro);
-                return View(model);
+                try
+                {
+                    var personagem = new PersonagemAplicativo();
+                    if (ficha.Nome != null)
+                        personagem.Salvar(this.ToPersonagem(ficha));
+                    var model = new PersonagemAplicativo().ListaPersonagens(filtro);
+                    return View(model);
+                }
+                catch(RegraNegocioException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+                ViewData["ListaOrigens"] = this.ListaOrigens();
+                return View("Cadastro", ficha);
             }
             else
             {
@@ -62,17 +71,7 @@ namespace StreetFighter.Web.Controllers
 
         public ActionResult Cadastro()
         {
-            ViewData["ListaOrigens"] = new List<SelectListItem>()
-            {
-                new SelectListItem() { Value = "BR", Text = "Brasil" },
-                new SelectListItem() { Value = "JP", Text = "Japão" },
-                new SelectListItem() { Value = "AC", Text = "Acre" },
-                new SelectListItem() { Value = "MO", Text = "Mordor" },
-                new SelectListItem() { Value = "US", Text = "Estados Unidos" },
-                new SelectListItem() { Value = "CR", Text = "Costa Rica" },
-                new SelectListItem() { Value = "AU", Text = "Austrália" },
-                new SelectListItem() { Value = "MP", Text = "Morro da Pedra" }
-            };
+            ViewData["ListaOrigens"] = this.ListaOrigens();
             return View();
         }
 
@@ -102,6 +101,21 @@ namespace StreetFighter.Web.Controllers
                 Imagem = personagem.Imagem,
                 GolpesEspeciais = personagem.GolpesEspeciais,
                 PersonagemOculto = personagem.PersonagemOculto
+            };
+        }
+
+        private List<SelectListItem> ListaOrigens()
+        {
+            return new List<SelectListItem>()
+            {
+                new SelectListItem() { Value = "BR", Text = "Brasil" },
+                new SelectListItem() { Value = "JP", Text = "Japão" },
+                new SelectListItem() { Value = "AC", Text = "Acre" },
+                new SelectListItem() { Value = "MO", Text = "Mordor" },
+                new SelectListItem() { Value = "US", Text = "Estados Unidos" },
+                new SelectListItem() { Value = "CR", Text = "Costa Rica" },
+                new SelectListItem() { Value = "AU", Text = "Austrália" },
+                new SelectListItem() { Value = "MP", Text = "Morro da Pedra" }
             };
         }
     }

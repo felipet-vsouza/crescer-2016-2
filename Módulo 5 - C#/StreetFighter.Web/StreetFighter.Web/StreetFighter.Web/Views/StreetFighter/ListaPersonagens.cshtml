@@ -4,15 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("ListaPersonagens", "StreetFighter", FormMethod.Get))
-{
-    <div class="filtro">
-        <strong>
-            @Html.Label("Filtro: ")
-        </strong>
-        @Html.TextBox("filtro")
+<div class="opcoes_lista">
+    @using (Html.BeginForm("ListaPersonagens", "StreetFighter", FormMethod.Get))
+    {
+        <span class="opcao">
+            <strong>
+                @Html.Label("Filtro: ")
+            </strong>
+            @Html.TextBox("filtro")
+        </span>
+    }
+
+    @using (Html.BeginForm("Cadastro", "StreetFighter"))
+    {
+        <span class="opcao">
+            <button type="submit">Cadastro</button>
+        </span>
+    }
 </div>
-}
 
 @{ 
     if (Model.Count == 0)
@@ -51,10 +60,18 @@
             display: inline;
         }
 
-        .filtro {
+        form {
+            display: inline;
+        }
+
+        .opcoes_lista {
             padding: 15px;
             font-size: 15px;
             text-align: center;
+        }
+
+        form:not(:first-of-type) .opcao {
+            margin-left: 20px;
         }
     </style>
 }
