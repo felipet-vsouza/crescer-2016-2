@@ -37,7 +37,7 @@ namespace StreetFighter.Repositorio
             var personagens = File.ReadLines(filepath);
             foreach(var personagem in personagens)
             {
-                var parametros = personagem.Split(',');
+                var parametros = personagem.Split(';');
                 Personagem p = new Personagem(
                     Convert.ToInt32(parametros[0]),
                     parametros[1],
@@ -57,9 +57,8 @@ namespace StreetFighter.Repositorio
 
         public void IncluirPersonagem(Personagem personagem)
         {
-            var id = this.ListaPersonagens().Count() + 1;
-            var conteudo = String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}{9}",
-                id,
+            var conteudo = String.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8}{9}",
+                this.NextId(),
                 personagem.Nome,
                 personagem.Nascimento.ToString("dd/MM/yyyy"),
                 personagem.Altura,
@@ -102,6 +101,17 @@ namespace StreetFighter.Repositorio
             using (File.Create(filepath));
             foreach (var item in lista)
                 this.IncluirPersonagem(item);
+        }
+
+        private int NextId()
+        {
+            var lista = this.ListaPersonagens();
+            if (lista.Count == 0)
+                return 1;
+            else
+                return lista.OrderBy(p => p.Id)
+                            .Last()
+                            .Id + 1;
         }
     }
 }
