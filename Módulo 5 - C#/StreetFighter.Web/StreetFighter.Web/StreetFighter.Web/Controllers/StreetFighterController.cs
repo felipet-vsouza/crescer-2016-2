@@ -12,20 +12,34 @@ namespace StreetFighter.Web.Controllers
 {
     public class StreetFighterController : Controller
     {
-
-        public ActionResult ListaPersonagens(FichaTecnicaModel ficha, string filtro = null)
+        // GET: StreetFighter
+        public ActionResult Index()
         {
-            if (ModelState.IsValid || ficha.Nome == null)
+            return View();
+        }
+
+        public ActionResult Excluir(int idPersonagem)
+        {
+            var aplicativo = new PersonagemAplicativo();
+            var personagem = aplicativo.BuscarPeloId(idPersonagem);
+            aplicativo.Excluir(personagem);
+            TempData["Mensagem"] = "Personagem excluído com sucesso.";
+            return RedirectToAction("ListaPersonagens");
+        }
+
+        public ActionResult ListaPersonagens(FichaTecnicaModel ficha = null, string filtro = null)
+        {
+            if (ModelState.IsValid || ficha == null || ficha.Nome == null)
             {
                 try
                 {
                     var personagem = new PersonagemAplicativo();
-                    if (ficha.Nome != null)
+                    if (ficha != null && ficha.Nome != null)
                         personagem.Salvar(this.ToPersonagem(ficha));
                     var model = new PersonagemAplicativo().ListaPersonagens(filtro);
                     return View(model);
                 }
-                catch(RegraNegocioException ex)
+                catch (RegraNegocioException ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                 }
@@ -36,12 +50,6 @@ namespace StreetFighter.Web.Controllers
             {
                 return RedirectToAction("Cadastro");
             }
-        }
-
-        // GET: StreetFighter
-        public ActionResult Index()
-        {
-            return View();
         }
 
         public ActionResult FichaTecnica(int idPersonagem)

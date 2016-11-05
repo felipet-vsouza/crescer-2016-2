@@ -31,6 +31,11 @@ namespace StreetFighter.Aplicativo
                 repositorio.EditarPersonagem(personagem);
         }
 
+        public void Excluir(Personagem personagem)
+        {
+            this.repositorio.ExcluirPersonagem(personagem);
+        }
+
         public Personagem BuscarPeloId(int id)
         {
             return this.ListaPersonagens()

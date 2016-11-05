@@ -28,6 +28,7 @@
     {
         <h2>Não há nenhum personagem cadastrado.</h2>
     }
+    <h2> @TempData["Mensagem"] </h2>
     foreach (var personagem in Model)
     {
         <div class="personagem">
@@ -35,6 +36,7 @@
             <span>
                 @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
             </span> 
+            @Html.ActionLink("Excluir", "Excluir", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "excluir"})
         </div>
     }
 }
@@ -72,6 +74,11 @@
 
         form:not(:first-of-type) .opcao {
             margin-left: 20px;
+        }
+
+        .excluir {
+            color: crimson;
+            float: right;
         }
     </style>
 }
