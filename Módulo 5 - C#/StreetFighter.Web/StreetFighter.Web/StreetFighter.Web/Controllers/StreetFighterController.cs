@@ -1,6 +1,8 @@
 ﻿using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
+using StreetFighter.Web.Filters;
 using StreetFighter.Web.Models;
+using StreetFighter.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -18,6 +20,28 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult FazerLogin(string username, string senha)
+        {
+            Usuario usuarioAutenticado = AutenticacaoAplicativo.BuscarUsuarioAutenticado(
+                    username, senha);
+
+            if (usuarioAutenticado != null)
+            {
+                ServicoDeAutenticacao.Autenticar(new UsuarioLogadoModel(
+                    usuarioAutenticado.Nome, usuarioAutenticado.Permissoes));
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Login");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Excluir(int idPersonagem)
         {
             var aplicativo = new PersonagemAplicativo();
@@ -52,6 +76,7 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult FichaTecnica(int idPersonagem)
         {
             Personagem p = new PersonagemAplicativo().BuscarPeloId(idPersonagem);
@@ -77,6 +102,7 @@ namespace StreetFighter.Web.Controllers
             return View(model);
         }
 
+        [StreetFighterAutorizador]
         public ActionResult Cadastro(int idPersonagem = 0)
         {
             ViewData["ListaOrigens"] = this.ListaOrigens();
