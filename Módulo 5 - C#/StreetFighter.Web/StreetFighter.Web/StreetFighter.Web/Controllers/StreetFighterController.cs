@@ -27,15 +27,15 @@ namespace StreetFighter.Web.Controllers
             return RedirectToAction("ListaPersonagens");
         }
 
-        public ActionResult ListaPersonagens(FichaTecnicaModel ficha = null, string filtro = null)
+        public ActionResult ListaPersonagens(FichaTecnicaModel personagem = null, string filtro = null)
         {
-            if (ModelState.IsValid || ficha == null || ficha.Nome == null)
+            if (ModelState.IsValid || personagem == null || personagem.Nome == null)
             {
                 try
                 {
-                    var personagem = new PersonagemAplicativo();
-                    if (ficha != null && ficha.Nome != null)
-                        personagem.Salvar(this.ToPersonagem(ficha));
+                    var aplicativo = new PersonagemAplicativo();
+                    if (personagem != null && personagem.Nome != null)
+                        aplicativo.Salvar(this.ToPersonagem(personagem));
                     var model = new PersonagemAplicativo().ListaPersonagens(filtro);
                     return View(model);
                 }
@@ -44,7 +44,7 @@ namespace StreetFighter.Web.Controllers
                     ModelState.AddModelError("", ex.Message);
                 }
                 ViewData["ListaOrigens"] = this.ListaOrigens();
-                return View("Cadastro", ficha);
+                return View("Cadastro", personagem);
             }
             else
             {
@@ -77,15 +77,27 @@ namespace StreetFighter.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Cadastro()
+        public ActionResult Cadastro(int idPersonagem = 0)
         {
             ViewData["ListaOrigens"] = this.ListaOrigens();
-            return View();
+            var personagem = new PersonagemAplicativo().BuscarPeloId(idPersonagem);
+            if (personagem == null)
+            {
+                return View(new FichaTecnicaModel() {
+                    Id = 0
+                    });
+            }
+            else
+            {
+                TempData["Mensagem"] = "Personagem editado com sucesso.";
+                return View(this.ToFichaTecnicaModel(personagem));
+            }
         }
 
         private Personagem ToPersonagem(FichaTecnicaModel model)
         {
             return new Personagem(
+                model.Id,
                 model.Nome,
                 model.Nascimento,
                 model.Altura,
@@ -101,6 +113,7 @@ namespace StreetFighter.Web.Controllers
         {
             return new FichaTecnicaModel()
             {
+                Id = personagem.Id,
                 Nome = personagem.Nome,
                 Nascimento = personagem.Nascimento,
                 Altura = personagem.Altura,

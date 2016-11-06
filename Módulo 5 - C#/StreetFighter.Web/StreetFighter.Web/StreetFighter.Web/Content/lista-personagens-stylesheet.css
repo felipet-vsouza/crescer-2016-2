@@ -1,0 +1,40 @@
+﻿img {
+    width: 70px;
+    height: 70px;
+    display: inline;
+}
+
+h2 {
+    color: crimson;
+    display: inline;
+}
+
+.personagem {
+    padding: 10px 10px 10px 10px;
+}
+
+.informacoes {
+    display: inline;
+}
+
+form {
+    display: inline;
+}
+
+.opcoes_lista {
+    padding: 15px;
+    font-size: 15px;
+    text-align: center;
+}
+
+form:not(:first-of-type) .opcao {
+    margin-left: 20px;
+}
+
+.item_opcao {
+    float: right;
+}
+
+.item_opcao:not(:first-child) {
+    margin-right: 20px;
+}

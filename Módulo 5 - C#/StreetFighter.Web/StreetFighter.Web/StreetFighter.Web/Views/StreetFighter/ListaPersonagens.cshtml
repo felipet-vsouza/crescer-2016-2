@@ -36,50 +36,13 @@
             <span>
                 @Html.ActionLink(personagem.Nome, "FichaTecnica", "StreetFighter", new { idPersonagem = personagem.Id }, null)
             </span> 
-            @Html.ActionLink("Excluir", "Excluir", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "excluir"})
+            @Html.ActionLink("Excluir", "Excluir", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "item_opcao"})
+            @Html.ActionLink("Editar", "Cadastro", "StreetFighter", new { idPersonagem = personagem.Id }, new { @class = "item_opcao"})
         </div>
     }
 }
 
 @section Styles {
-    <style>
-        img {
-            width: 70px;
-            height: 70px;
-            display: inline;
-        }
-
-        h2 {
-            color: crimson;
-            display: inline;
-        }
-
-        .personagem {
-            padding: 10px 10px 10px 10px;
-        }
-
-        .informacoes {
-            display: inline;
-        }
-
-        form {
-            display: inline;
-        }
-
-        .opcoes_lista {
-            padding: 15px;
-            font-size: 15px;
-            text-align: center;
-        }
-
-        form:not(:first-of-type) .opcao {
-            margin-left: 20px;
-        }
-
-        .excluir {
-            color: crimson;
-            float: right;
-        }
-    </style>
+    <link href="~/Content/lista-personagens-stylesheet.css" rel="stylesheet" />
 }
 
