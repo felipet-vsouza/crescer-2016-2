@@ -15,7 +15,7 @@ namespace StreetFighter.Repositorio
         private readonly string filepath;
 
         public PersonagemRepositorio()
-            : this(@"C:\Users\Felps\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\personagens.csv")
+            : this(@"C:\Users\felipe.souza\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\personagens.csv")
         {
         }
 

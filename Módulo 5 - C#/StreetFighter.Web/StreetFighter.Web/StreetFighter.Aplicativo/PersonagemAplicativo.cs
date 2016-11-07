@@ -20,7 +20,7 @@ namespace StreetFighter.Aplicativo
 
         public List<Personagem> ListaPersonagens(string filtro = null)
         {
-            return repositorio.ListaPersonagens(filtro);
+            return new PersonagemRepositorioADO().ListaPersonagens(filtro);
         }
 
         public void Salvar(Personagem personagem)
