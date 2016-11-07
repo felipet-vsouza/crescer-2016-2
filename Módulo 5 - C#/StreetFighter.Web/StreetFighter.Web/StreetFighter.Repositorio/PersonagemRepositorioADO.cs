@@ -26,7 +26,7 @@ namespace StreetFighter.Repositorio
             throw new NotImplementedException();
         }
 
-        public List<Personagem> ListaPersonagens(string filtro)
+        public List<Personagem> ListaPersonagens(string filtro = "%")
         {
             string connectionString = ConfigurationManager.ConnectionStrings["sfwDB"].ConnectionString;
             var lista = new List<Personagem>();
@@ -34,6 +34,25 @@ namespace StreetFighter.Repositorio
             {
                 connection.Open();
 
+                string sql = $"SELECT * FROM Personagem WHERE Nome like @filter_nome";
+                var command = new SqlCommand(sql, connection);
+                command.Parameters.Add(new SqlParameter("filter_nome", $"%{filtro}%"));
+                SqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    var p = new Personagem(
+                        Convert.ToInt32(reader["Id"]),
+                        reader["Nome"].ToString(),
+                        Convert.ToDateTime(reader["Nascimento"]),
+                        Convert.ToInt32(reader["Altura"]),
+                        Convert.ToDecimal(reader["Peso"]),
+                        reader["Origem"].ToString(),
+                        reader["Imagem"].ToString(),
+                        reader["GolpesEspeciais"].ToString(),
+                        Convert.ToBoolean(reader["PersonagemOculto"])
+                        );
+                    lista.Add(p);
+                }
                 connection.Close();
             }
 
