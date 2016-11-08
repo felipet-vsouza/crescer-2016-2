@@ -109,9 +109,7 @@ namespace StreetFighter.Web.Controllers
             var personagem = new PersonagemAplicativo().BuscarPeloId(idPersonagem);
             if (personagem == null)
             {
-                return View(new FichaTecnicaModel() {
-                    Id = 0
-                    });
+                return View();
             }
             else
             {
@@ -123,7 +121,7 @@ namespace StreetFighter.Web.Controllers
         private Personagem ToPersonagem(FichaTecnicaModel model)
         {
             return new Personagem(
-                model.Id,
+                model.Id.GetValueOrDefault(),
                 model.Nome,
                 model.Nascimento,
                 model.Altura,
