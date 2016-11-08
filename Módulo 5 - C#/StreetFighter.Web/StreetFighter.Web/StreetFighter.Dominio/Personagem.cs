@@ -18,6 +18,11 @@ namespace StreetFighter.Dominio
         public string GolpesEspeciais { get; set; }
         public bool PersonagemOculto { get; set; }
 
+        public Personagem()
+        {
+
+        }
+
         public Personagem(int id, string nome, DateTime nascimento, int altura, decimal peso, string origem, string imagem,
             string golpesEspeciais, bool personagemOculto)
                 : this(nome, nascimento, altura, peso, origem, imagem, golpesEspeciais, personagemOculto)
