@@ -1,5 +1,5 @@
 Create table Personagem (
-	Id					int				primary key,
+	Id					int				primary key identity,
 	Nome				varchar(32)		not null,
 	Nascimento			DateTime		not null,
 	Altura				int				not null,
@@ -7,15 +7,18 @@ Create table Personagem (
 	Origem				varchar(2)		not null,
 	Imagem				varchar(256),
 	GolpesEspeciais		varchar(256),
-	PersonagemOculto	bit 
+	PersonagemOculto		bit 
 );
 
 Select * from Personagem Where Nome like '%%%'
 
-Insert into Personagem(Id, Nome, Nascimento, Altura, Peso, Origem, Imagem, GolpesEspeciais, PersonagemOculto)
-Values (1, 'Felpera', convert(datetime, '02/06/1997'), 167, 62, 'BR', 'https://www.royalcanin.com/~/media/Royal-Canin/Product-Categories/cat-adult-landing-hero.ashx', 'Muitos golpes especiais pra citar', 1);
-
 Create table Usuario (
-	Usuario				varchar(32)		primary key,
-	Senha				varchar()
+	Username				varchar(32)		primary key,
+	Senha				varchar(32)		not null,
+	Permissoes			varchar(256)		not null
 );
+
+Insert into Usuario (Username, Senha, Permissoes)
+Values ('felipe.souza', '8622f73326f2aad4ac3292cc37fc7895', 'admin;');
+
+Select * From Usuario;

@@ -47,14 +47,14 @@ namespace StreetFighter.Repositorio
         {
             var sql = "INSERT INTO Personagem (Nome, Nascimento, Altura, Peso, Origem, Imagem, " +
                       "GolpesEspeciais, PersonagemOculto) " +
-                      "VALUES Nome = @param_nome AND " +
-                      "Nascimento = @param_nascimento AND " +
-                      "Altura = @param_altura AND " +
-                      "Peso = @param_peso AND " +
-                      "Origem = @param_origem AND " +
-                      "Imagem = @param_imagem AND " +
-                      "GolpesEspeciais = @param_golpes AND " +
-                      "PersonagemOculto = @param_oculto;";
+                      "VALUES ( @param_nome, " +
+                      "@param_nascimento, " +
+                      "@param_altura, " +
+                      "@param_peso, " +
+                      "@param_origem, " +
+                      "@param_imagem, " +
+                      "@param_golpes, " +
+                      "@param_oculto);";
             this.ExecuteNonQuery(sql, personagem);
         }
 

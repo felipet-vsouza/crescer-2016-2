@@ -13,7 +13,7 @@ namespace StreetFighter.Repositorio
     {
         public static List<Usuario> ListaUsuarios()
         {
-            var filepath = @"C:\Users\felipe.souza\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\usuarios.csv";
+            var filepath = @"C:\Users\Felps\github\crescer-2016-2\Módulo 5 - C#\StreetFighter.Web\StreetFighter.Web\data\usuarios.csv";
             var lista = new List<Usuario>();
             var usuarios = File.ReadLines(filepath);
             foreach (var usuario in usuarios)
