@@ -1,0 +1,25 @@
+﻿@model List<Loja.Dominio.Produto>
+@{
+    ViewBag.Title = "Lista de Produtos";
+}
+
+<h2>Lista</h2>
+@Html.ActionLink("Cadastrar novo produto", "Cadastro")
+
+<h2 style="color: crimson;">@TempData["MensagemLista"]</h2>
+
+@if (Model.Count() == 0)
+{
+    <h2 style="color: crimson;">Não há nenhum produto cadastrado.</h2>
+}
+else
+{
+    foreach(var produto in Model)
+    {
+        <div style="padding: 20px 0;">
+            <p><strong>@produto.Nome</strong>   -   Valor: @produto.Valor</p>
+            <p>@Html.ActionLink("Editar", "Cadastro", new { id = produto.Id })</p>
+            <p>@Html.ActionLink("Excluir", "Excluir", new { id = produto.Id })</p>
+        </div>
+    }
+}
