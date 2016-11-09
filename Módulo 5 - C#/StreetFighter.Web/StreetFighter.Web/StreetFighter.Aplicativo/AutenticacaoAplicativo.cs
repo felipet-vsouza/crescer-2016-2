@@ -1,5 +1,5 @@
 ﻿using StreetFighter.Dominio;
-using StreetFighter.Repositorio;
+using StreetFighter.RepositorioEF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace StreetFighter.Aplicativo
     {
         public static Usuario BuscarUsuarioAutenticado(string nome, string senha)
         {
-            Usuario usuarioEncontrado = UsuarioRepositorioADO.ListaUsuarios().ToArray().FirstOrDefault(
+            Usuario usuarioEncontrado = UsuarioRepositorioEF.ListaUsuarios().ToArray().FirstOrDefault(
                 usuario => usuario.Nome.Equals(nome));
             string senhaDeComparacao =
                 ServicoDeCriptografia.ConverterParaMD5($"{nome}_$_{senha}");
