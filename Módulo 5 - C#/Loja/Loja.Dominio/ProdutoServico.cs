@@ -17,7 +17,13 @@ namespace Loja.Dominio
 
         public void Salvar(Produto produto)
         {
-            if(produto.Id == 0)
+            if (produto.Nome.Length < 2)
+                throw new ProdutoInvalidoException("O nome do produto deve ter no mínimo 3 caracteres.");
+            if (produtoRepositorio.BuscarProdutoPorNome(produto.Nome) != null)
+                throw new ProdutoInvalidoException($"Um produto de nome {produto.Nome} já foi cadastrado.");
+            if (produto.Valor > 0)
+                throw new ProdutoInvalidoException("O valor do produto deve ser definido.");
+            if (produto.Id == 0)
             {
                 produtoRepositorio.Criar(produto);
             }

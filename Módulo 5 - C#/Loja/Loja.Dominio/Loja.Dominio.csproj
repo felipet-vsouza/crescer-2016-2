@@ -43,6 +43,7 @@
     <Compile Include="IProdutoRepositorio.cs" />
     <Compile Include="IServicoDeCriptografia.cs" />
     <Compile Include="Produto.cs" />
+    <Compile Include="ProdutoInvalidoException.cs" />
     <Compile Include="ProdutoServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />

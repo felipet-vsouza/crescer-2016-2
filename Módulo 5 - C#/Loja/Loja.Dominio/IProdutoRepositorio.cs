@@ -12,6 +12,8 @@ namespace Loja.Dominio
 
         Produto BuscarProdutoPorId(int id);
 
+        Produto BuscarProdutoPorNome(string nome);
+
         void Criar(Produto produto);
 
         void Editar(Produto produto);

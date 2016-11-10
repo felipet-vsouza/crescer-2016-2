@@ -1,4 +1,5 @@
-﻿using Loja.Web.Filters;
+﻿using Loja.Dominio;
+using Loja.Web.Filters;
 using Loja.Web.Models;
 using Loja.Web.Servicos;
 using System;
@@ -51,9 +52,16 @@ namespace Loja.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var produto = model.ConverterParaProduto();
-                ServicoDeDependencias.MontarProdutoServico().Salvar(produto);
-                return RedirectToAction("Lista");
+                try
+                {
+                    var produto = model.ConverterParaProduto();
+                    ServicoDeDependencias.MontarProdutoServico().Salvar(produto);
+                    return RedirectToAction("Lista");
+                }
+                catch (ProdutoInvalidoException ex)
+                {
+                    TempData["MensagemException"] = ex.Message;
+                }
             }
             TempData["MensagemCadastro"] = "Existem informações inválidas no cadastro.";
             return RedirectToAction("Cadastro");

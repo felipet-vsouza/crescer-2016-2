@@ -5,18 +5,22 @@
 
 <h2>Cadastro de Produto</h2>
 <h3 style="color: crimson;">@TempData["MensagemCadastro"]</h3>
+<h3 style="color: crimson;">@TempData["MensagemException"]</h3>
 @using (Html.BeginForm("Salvar", "Produto", FormMethod.Post))
 {
-    Html.AntiForgeryToken
-    Html.HiddenFor(p => p.Id);
-    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(p => p.Id);
+
     <div>
         @Html.LabelFor(p => p.Nome)
         @Html.TextBoxFor(p => p.Nome)
+        @Html.ValidationMessageFor(p => p.Nome)
     </div>
     <div>
         @Html.LabelFor(p => p.Valor)
         @Html.TextBoxFor(p => p.Valor)
+        @Html.ValidationMessageFor(p => p.Valor)
     </div>
     <div>
         <button type="submit">Salvar</button>
