@@ -31,18 +31,15 @@ namespace Marvelflix.Controllers
         }
 
         // POST: api/Herois
-        //[ResponseType(typeof(Heroi))]
-        //public IHttpActionResult PostHeroi(Heroi heroi)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Heroi.Add(heroi);
-        //    db.SaveChanges();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = heroi.Id }, heroi);
-        //}
+        [ResponseType(typeof(Heroi))]
+        public IHttpActionResult PostHeroi(Heroi heroi)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            herois.Adicionar(heroi);
+            return CreatedAtRoute("DefaultApi", new { id = heroi.Id }, heroi);
+        }
     }
 }

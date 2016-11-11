@@ -1,6 +1,6 @@
 let marvelflix = {};
 
-marvelflix.renderizarTela = function(nome) {
+marvelflix.renderizarTela = function (nome) {
 
   // escondendo todas as telas antes de renderizar a tela correta
   let $subTelas = $('.sub-tela');
@@ -18,11 +18,11 @@ marvelflix.renderizarTela = function(nome) {
 
 }
 
-marvelflix.loadTemplate = function(name) {
+marvelflix.loadTemplate = function (name) {
 
   let deferred = $.Deferred();
   $.get(`/static/templates/${name}.tpl.html`).then(
-    function(template) {
+    function (template) {
       deferred.resolve(Handlebars.compile(template));
     }
   );
@@ -30,17 +30,19 @@ marvelflix.loadTemplate = function(name) {
 
 }
 
-marvelflix.render = function(viewElementSelector, templateName, data) {
+marvelflix.render = function (viewElementSelector, templateName, data) {
 
-  this.loadTemplate(templateName).then(
-    function(templateFn) {
-      let rendered = templateFn(data);
-      $(viewElementSelector).html(rendered);
-    }
-  );
-
+  return new Promise((resolve, reject) => {
+    this.loadTemplate(templateName).then(
+     function (templateFn) {
+       let rendered = templateFn(data);
+       $(viewElementSelector).html(rendered);
+       resolve();
+     }
+   );
+  });
 }
 
-marvelflix.iniciar = function() {
+marvelflix.iniciar = function () {
   return marvelflix.renderizarTela('login');
 };
