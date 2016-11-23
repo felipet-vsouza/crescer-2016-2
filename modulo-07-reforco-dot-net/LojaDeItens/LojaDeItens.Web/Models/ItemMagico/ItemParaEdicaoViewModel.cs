@@ -33,6 +33,7 @@ namespace LojaDeItens.Web.Models.ItemMagico
 
         public decimal Preco { get; set; }
 
+        [Range(0, 1000)]
         public int Estoque { get; set; }
 
         public bool Raro { get; set; }
