@@ -32,6 +32,9 @@ public class StringRun {
         } catch (ParseException ex) {
             System.err.println("Erro de conversão da data.");
         }
+        
+        System.out.println(MeuStringUtil.isPalindromo("A sogra má e amargosa"));
+        System.out.println(MeuStringUtil.isPalindromo("Poladoful"));
     }
 
     public static int contarVogais(String frase) {
