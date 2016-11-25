@@ -11,7 +11,9 @@ public class MeuStringUtil {
     }
     
     public static boolean isVazia(String ref) {
-        return ref.equals("");
+        if(ref != null)
+            return ref.equals("");
+        return true;
     }
 
     public static int contarVogais(String ref) {
