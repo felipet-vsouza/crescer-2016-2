@@ -13,10 +13,10 @@ public class Parcelator {
         this.primeira = primeira;
     }
 
-    private double valor;
-    private double taxa;
-    private int quantidadeParcelas;
-    private Date primeira;
+    private final double valor;
+    private final double taxa;
+    private final int quantidadeParcelas;
+    private final Date primeira;
 
     public String getParcelas() {
         Calendar cal = Calendar.getInstance();
