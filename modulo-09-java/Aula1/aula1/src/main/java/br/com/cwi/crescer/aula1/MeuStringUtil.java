@@ -2,6 +2,14 @@ package br.com.cwi.crescer.aula1;
 
 public class MeuStringUtil {
 
+    public static void main(String[] args) {
+        System.out.println("Recursos disponíveis:");
+        System.out.println("Validação de string vazia: isVazia(String)");
+        System.out.println("Contagem de vogais: contarVogais(String)");
+        System.out.println("Inversão: inverter(String)");
+        System.out.println("Verificação de palíndromo: isPalindromo(String)");
+    }
+    
     public static boolean isVazia(String ref) {
         return ref.equals("");
     }
