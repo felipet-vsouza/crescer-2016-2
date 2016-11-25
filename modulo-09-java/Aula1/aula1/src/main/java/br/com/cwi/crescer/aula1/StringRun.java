@@ -3,18 +3,14 @@ package br.com.cwi.crescer.aula1;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class StringRun {
 
     public static void main(String[] args) throws ParseException {
         System.out.println(listaDeEstados());
-        MeuCalendarioUtil.diferencaParaHoje(new SimpleDateFormat("dd/MM/yyyy").parse("01/12/2016"));
+        Parcelator p = new Parcelator(1389.90, 0.10, 12, new SimpleDateFormat("dd/MM/yyyy").parse("30/12/2016"));
+        System.out.println(p.getParcelas());
     }
 
     public static String listaDeEstados() {
