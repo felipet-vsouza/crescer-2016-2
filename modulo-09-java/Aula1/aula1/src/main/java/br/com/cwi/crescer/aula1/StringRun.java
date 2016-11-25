@@ -12,48 +12,9 @@ import java.util.logging.Logger;
 
 public class StringRun {
 
-    public static void main(String[] args) {
-//        System.out.print("Digite uma frase: ");
-//        String frase = new Scanner(System.in).nextLine();
-//        System.out.println("Quantidade total de vogais: " + contarVogais(frase));
-//        System.out.println("String invertida: " + inverter(frase));
-
-//        System.out.println(listaDeEstados());
-        Date atual = Calendar.getInstance().getTime();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        System.out.println(format.format(atual));
-        
-        try {
-            System.out.print("Digite sua data de nascimento: ");
-            String nascimento = new Scanner(System.in).nextLine();
-            Date nasc = new SimpleDateFormat("dd/MM/yyyy").parse(nascimento);
-            System.out.println("Você nasceu em um(a) " + 
-                    new SimpleDateFormat("EEEE").format(nasc));
-        } catch (ParseException ex) {
-            System.err.println("Erro de conversão da data.");
-        }
-        
-        System.out.println(MeuStringUtil.isPalindromo("A sogra má e amargosa"));
-        System.out.println(MeuStringUtil.isPalindromo("Poladoful"));
-    }
-
-    public static int contarVogais(String frase) {
-        int total = 0;
-        for (char c : frase.toLowerCase().toCharArray()) {
-            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-                total++;
-            }
-        }
-        return total;
-    }
-
-    public static String inverter(String frase) {
-        String invertida = "";
-        char[] array = frase.toCharArray();
-        for (int x = array.length - 1; x >= 0; x--) {
-            invertida += array[x];
-        }
-        return invertida;
+    public static void main(String[] args) throws ParseException {
+        System.out.println(listaDeEstados());
+        MeuCalendarioUtil.diferencaParaHoje(new SimpleDateFormat("dd/MM/yyyy").parse("01/12/2016"));
     }
 
     public static String listaDeEstados() {
