@@ -1,20 +1,13 @@
 package br.com.cwi.crescer.aula2;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MeuFileUtils {
-
-    public static void main(String[] args) {
-//        execCommand("mk C:/TEMPERA/TEMPERA/TEMPERA/TEMPERA/ué.txt");
-//        execCommand("mk C:/TEMPERA/ué.txt");
-//        execCommand("rm C:/TEMPERA/ué.txt");
-//        execCommand("rm C:/TEMPERA");
-        execCommand("ls C:/tmp");
-        execCommand("ls C:/TEMPERA/TEMPERA/TEMPERA/TEMPERA");
-        execCommand("ls C:/TEMPERA/TEMPERA/TEMPERA/TEMPERA/ué.txt");
-        execCommand("mv C:/tmp/ola.txt C:/TEMP");
-    }
 
     public static void execCommand(String command) {
         String start = command.toLowerCase().substring(0, 2);
@@ -37,7 +30,7 @@ public class MeuFileUtils {
                 break;
             case "mv":
                 if (args.length == 3) {
-                    System.out.println("Alright");
+                    move(new File(args[1]), new File(args[2]));
                 }
                 break;
             default:
@@ -72,16 +65,41 @@ public class MeuFileUtils {
     public static void remove(File file) {
         file.delete();
     }
-    
+
     public static void list(File file) {
-        if(!file.exists()) {
+        if (!file.exists()) {
             System.out.println("O arquivo/diretório indicado não existe.");
-        } else if(file.isFile()) {
+        } else if (file.isFile()) {
             System.out.println(file.getAbsolutePath());
         } else {
             System.out.format("Conteúdos de %s:\n", file.getAbsolutePath());
-            for(File sub : file.listFiles()) {
+            for (File sub : file.listFiles()) {
                 System.out.println(sub.getName());
+            }
+        }
+    }
+
+    public static void move(File file, File destiny) {
+        if (!file.exists() || !destiny.exists()
+                || file.isDirectory() || destiny.isFile()) {
+            System.err.println("Há um problema com o arquivo indicado ou com o destino.");
+        } else {
+            File des = new File(String.format("%s\\%s", destiny.getAbsolutePath(),
+                    file.getName()));
+            create(des);
+            try (
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(des));
+                    BufferedReader reader = new BufferedReader(new FileReader(file));) {
+                String line = "";
+                do {
+                    line = reader.readLine();
+                    if (line != null) {
+                        writer.append(line);
+                        writer.newLine();
+                    }
+                } while (line != null);
+            } catch (IOException e) {
+                System.err.println("Problema na cópia do arquivo.");
             }
         }
     }
