@@ -13,7 +13,7 @@ public class MeuReaderUtils {
             System.err.println("O arquivo indicado é inválido.");
             return;
         }
-        if (!getExtension(file).equals("txt")) {
+        if (!MeuFileUtils.getExtension(file).equals("txt")) {
             System.err.println("O arquivo indicado é incompatível.");
             return;
         }
@@ -29,14 +29,5 @@ public class MeuReaderUtils {
         } catch (IOException e) {
             System.err.println("Problema na leitura do arquivo.");
         }
-    }
-
-    private static String getExtension(File file) {
-        String extension = "";
-        int pos = file.getName().lastIndexOf('.');
-        if (pos > 0) {
-            extension = file.getName().substring(pos + 1);
-        }
-        return extension;
     }
 }

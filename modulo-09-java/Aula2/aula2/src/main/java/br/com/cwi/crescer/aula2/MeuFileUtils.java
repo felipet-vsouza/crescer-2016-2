@@ -103,4 +103,13 @@ public class MeuFileUtils {
             }
         }
     }
+
+    public static String getExtension(File file) {
+        String extension = "";
+        int pos = file.getName().lastIndexOf('.');
+        if (pos > 0) {
+            extension = file.getName().substring(pos + 1);
+        }
+        return extension;
+    }
 }
