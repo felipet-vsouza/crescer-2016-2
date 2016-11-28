@@ -20,10 +20,32 @@ import java.util.Set;
 
 public class MeuSQLUtils {
 
-    public static void main(String[] args) {
-//        execute("SELECT * FROM FELIPE");
-//        executeToCSV("SELECT * FROM FELIPE", new File("C:/tmp/saisai.csv"));
-        importFromCSV(new File("C:/tmp/FELIPE.csv"));
+    public static void executeFromSQLFile(File file) {
+        if (!MeuFileUtils.getExtension(file).equalsIgnoreCase("sql")) {
+            System.err.println("Extensão inválida de arquivo.");
+            return;
+        }
+        StringBuilder statement = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
+            String line = "";
+            do {
+                line = reader.readLine();
+                if (line != null) {
+                    statement.append(line).append(' ');
+                }
+            } while (line != null);
+        } catch (IOException e) {
+            System.err.println("Problema durante a leitura do arquivo CSV.");
+        }
+        ArrayList<HashMap> result = execute(statement.toString());
+        for (HashMap map : result) {
+            Collection values = map.values();
+            List<String> list = new ArrayList<>();
+            for (Object obj : values) {
+                list.add(obj.toString());
+            }
+            System.out.println(String.join(" | ", list));
+        }
     }
 
     public static ArrayList<HashMap> execute(String query) {
