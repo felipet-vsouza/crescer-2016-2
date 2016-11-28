@@ -1,11 +1,13 @@
 package br.com.cwi.crescer.aula2;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -19,8 +21,9 @@ import java.util.Set;
 public class MeuSQLUtils {
 
     public static void main(String[] args) {
-        execute("SELECT * FROM FELIPE");
-        executeToCSV("SELECT * FROM FELIPE", new File("C:/tmp/saisai.csv"));
+//        execute("SELECT * FROM FELIPE");
+//        executeToCSV("SELECT * FROM FELIPE", new File("C:/tmp/saisai.csv"));
+        importFromCSV(new File("C:/tmp/FELIPE.csv"));
     }
 
     public static ArrayList<HashMap> execute(String query) {
@@ -69,6 +72,48 @@ public class MeuSQLUtils {
             }
         } catch (IOException e) {
             System.err.println("Problema na escrita do arquivo CSV.");
+        }
+    }
+
+    public static void importFromCSV(File file) {
+        List<String> content = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
+            String line = "";
+            do {
+                line = reader.readLine();
+                if (line != null) {
+                    content.add(line);
+                }
+            } while (line != null);
+        } catch (IOException e) {
+            System.err.println("Problema durante a leitura do arquivo CSV.");
+        }
+        if (content.isEmpty() || content.size() <= 1) {
+            System.err.println("O arquivo está vazio ou não possui a estrutura adequada.");
+            return;
+        }
+        String tablename = file.getName().replaceAll("(\\.[^.]+)$", "");
+        String columns = String.join(",", content.remove(0).split(";"));
+        for (String rawRow : content) {
+            String row = String.join(",", asSQLRow(rawRow.split(";")));
+            String query = String.format("INSERT INTO %s(%s) VALUES(%s)", tablename, columns, row);
+            insertQuery(query);
+        }
+    }
+
+    private static String[] asSQLRow(String[] rawRow) {
+        String[] row = rawRow.clone();
+        for (int i = 0; i < rawRow.length; i++) {
+            row[i] = String.format("'%s'", rawRow[i]);
+        }
+        return row;
+    }
+
+    private static void insertQuery(String query) {
+        try (final PreparedStatement preparedStatement = ConnectionUtils.getConnection().prepareStatement(query)) {
+            preparedStatement.executeUpdate();
+        } catch (final SQLException e) {
+            System.err.format("SQLException: %s", e);
         }
     }
 }
