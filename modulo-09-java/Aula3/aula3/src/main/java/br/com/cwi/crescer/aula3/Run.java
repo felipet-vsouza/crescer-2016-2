@@ -14,10 +14,9 @@ public class Run {
         emf = Persistence.createEntityManagerFactory("CRESCER16");
         em = emf.createEntityManager();
         PessoaDAO dao = new PessoaDAO(em);
-//        Pessoa p = new Pessoa();
-//        p.setIdPessoa(3l);
-//        p.setNmPessoa("Felpera");
-//        dao.insert(p);
+        Pessoa p = new Pessoa();
+        p.setNmPessoa("Felpera");
+        dao.insert(p);
 
         dao.findByName("zue").stream().forEach((Pessoa pes) -> System.out.format("%d - %s\n",
                 pes.getIdPessoa(), pes.getNmPessoa()));
