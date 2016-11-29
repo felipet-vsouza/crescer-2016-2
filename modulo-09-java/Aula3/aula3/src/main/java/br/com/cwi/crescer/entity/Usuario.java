@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USUARIO")
-class Usuario implements Serializable {
+public class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_USUARIO")

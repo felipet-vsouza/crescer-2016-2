@@ -36,7 +36,7 @@ public class ClientDAO implements iDao<Client, Long> {
 
     @Override
     public List<Client> findAll() {
-        return em.createQuery("SELECT p FROM Pessoa p").getResultList();
+        return em.createQuery("SELECT c FROM Client c").getResultList();
     }
 
     @Override
