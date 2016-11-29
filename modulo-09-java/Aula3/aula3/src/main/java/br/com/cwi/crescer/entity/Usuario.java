@@ -111,6 +111,6 @@ class Usuario implements Serializable {
     @Column(name = "TP_PERMISSAO")
     private String tpPermissao;
     
-    @OneToMany(mappedBy = "USUARIO")
+    @OneToMany(mappedBy = "usuario")
     private List<Servico> servicos;
 }

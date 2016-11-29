@@ -1,7 +1,7 @@
 package br.com.cwi.crescer.aula3;
 
-import br.com.cwi.crescer.entity.Pessoa;
-import br.com.cwi.crescer.repository.PessoaDAO;
+import br.com.cwi.crescer.entity.Client;
+import br.com.cwi.crescer.repository.ClientDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,14 +13,19 @@ public class Run {
         final EntityManagerFactory emf;
         emf = Persistence.createEntityManagerFactory("CRESCER16");
         em = emf.createEntityManager();
-        PessoaDAO dao = new PessoaDAO(em);
-        Pessoa p = new Pessoa();
-        p.setNmPessoa("Felpera");
-        dao.insert(p);
+        ClientDAO dao = new ClientDAO(em);
 
-        dao.findByName("zue").stream().forEach((Pessoa pes) -> System.out.format("%d - %s\n",
-                pes.getIdPessoa(), pes.getNmPessoa()));
-
+        Client client = new Client();
+        client.setDsEmail("caroline.lentz2@gmail.com");
+        client.setDsPassword("dsdijasdoa2371e$$%531423");
+        client.setDsPreferredCoin("Yen");
+        client.setDsState("RS");
+        client.setDsUserName("Carolzera");
+        client.setNmClient("Caroline Lentz");
+        client.setTpPermission("cheats_enabled true");
+        
+        dao.insert(client);
+        
         em.close();
         emf.close();
     }

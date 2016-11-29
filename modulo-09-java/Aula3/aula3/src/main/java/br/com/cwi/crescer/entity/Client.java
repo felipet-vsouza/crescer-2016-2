@@ -123,6 +123,6 @@ public class Client implements Serializable {
     @Column(name = "TP_PERMISSION")
     private String tpPermission;
 
-    @OneToMany(mappedBy = "CLIENT")
+    @OneToMany(mappedBy = "client")
     private List<Contract> contracts;
 }

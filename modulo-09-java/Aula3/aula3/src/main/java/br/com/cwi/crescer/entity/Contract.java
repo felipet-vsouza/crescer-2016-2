@@ -74,11 +74,11 @@ public class Contract implements Serializable {
     }
 
     public Client getClient() {
-        return Client;
+        return client;
     }
 
     public void setClient(Client Client) {
-        this.Client = Client;
+        this.client = Client;
     }
 
     public List<ContractValue> getContractValues() {
@@ -99,8 +99,8 @@ public class Contract implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "CLIENT_ID_CLIENT")
-    private Client Client;
+    private Client client;
     
-    @OneToMany(mappedBy = "CONTRACT")
+    @OneToMany(mappedBy = "contract")
     private List<ContractValue> contractValues;
 }
