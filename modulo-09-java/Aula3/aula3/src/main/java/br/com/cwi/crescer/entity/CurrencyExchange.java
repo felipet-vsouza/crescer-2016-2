@@ -22,13 +22,13 @@ public class CurrencyExchange implements Serializable {
     @SequenceGenerator(name = "SEQ_CURRENCY_EXCHANGE", sequenceName = "SEQ_CURRENCY_EXCHANGE", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_CURRENCY_EXCHANGE")
-    private long idCurrencyExchange;
+    private Long idCurrencyExchange;
 
-    public long getIdCurrencyExchange() {
+    public Long getIdCurrencyExchange() {
         return idCurrencyExchange;
     }
 
-    public void setIdCurrencyExchange(long idCurrencyExchange) {
+    public void setIdCurrencyExchange(Long idCurrencyExchange) {
         this.idCurrencyExchange = idCurrencyExchange;
     }
 

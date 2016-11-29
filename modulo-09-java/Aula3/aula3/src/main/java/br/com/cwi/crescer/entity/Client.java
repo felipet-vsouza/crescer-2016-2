@@ -21,13 +21,13 @@ public class Client implements Serializable {
     @SequenceGenerator(name = "SEQ_CLIENT", sequenceName = "SEQ_CLIENT", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_CLIENT")
-    private long idClient;
+    private Long idClient;
 
-    public long getIdClient() {
+    public Long getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(long idClient) {
+    public void setIdClient(Long idClient) {
         this.idClient = idClient;
     }
 

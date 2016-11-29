@@ -23,7 +23,7 @@ public class Contract implements Serializable {
     @SequenceGenerator(name = "SEQ_CONTRACT", sequenceName = "SEQ_CONTRACT", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_CONTRACT")
-    private long idContract;
+    private Long idContract;
 
     @Basic(optional = false)
     @Column(name = "DS_DESCRIPTION")
@@ -33,11 +33,11 @@ public class Contract implements Serializable {
     @Column(name = "DS_STATE")
     private String dsState;
 
-    public long getIdContract() {
+    public Long getIdContract() {
         return idContract;
     }
 
-    public void setIdContract(long idContract) {
+    public void setIdContract(Long idContract) {
         this.idContract = idContract;
     }
 

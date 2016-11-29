@@ -22,17 +22,17 @@ public class Cotacao implements Serializable {
     @SequenceGenerator(name = "SEQ_COTACAO", sequenceName = "SEQ_COTACAO", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_COTACAO")
-    private long idCotacao;
+    private Long idCotacao;
 
     @Basic(optional = false)
     @Column(name = "DS_COTACAO_DOLLAR_AUSTRALIANO")
     private double dsCotacaoDollarAustraliano;
 
-    public long getIdCotacao() {
+    public Long getIdCotacao() {
         return idCotacao;
     }
 
-    public void setIdCotacao(long idCotacao) {
+    public void setIdCotacao(Long idCotacao) {
         this.idCotacao = idCotacao;
     }
 

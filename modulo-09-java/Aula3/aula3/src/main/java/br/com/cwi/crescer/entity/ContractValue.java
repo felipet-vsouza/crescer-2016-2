@@ -21,17 +21,17 @@ public class ContractValue implements Serializable {
     @SequenceGenerator(name = "SEQ_CONTRACT_VALUE", sequenceName = "SEQ_CONTRACT_VALUE", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_CONTRACT_VALUE")
-    private long idContractValue;
+    private Long idContractValue;
     
     @Basic(optional = false)
     @Column(name = "DS_COIN")
     private String dsCoin;
 
-    public long getIdContractValue() {
+    public Long getIdContractValue() {
         return idContractValue;
     }
 
-    public void setIdContractValue(long idContractValue) {
+    public void setIdContractValue(Long idContractValue) {
         this.idContractValue = idContractValue;
     }
 

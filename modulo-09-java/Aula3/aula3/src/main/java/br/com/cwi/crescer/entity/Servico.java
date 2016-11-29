@@ -21,17 +21,17 @@ public class Servico implements Serializable {
     @SequenceGenerator(name = "SEQ_SERVICO", sequenceName = "SEQ_SERVICO", allocationSize = 1)
     @Basic(optional = false)
     @Column(name = "ID_SERVICO")
-    private long idServico;
+    private Long idServico;
     
     @Basic(optional = false)
     @Column(name = "DS_DESCRICAO")
     private String dsDescricao;
 
-    public long getIdServico() {
+    public Long getIdServico() {
         return idServico;
     }
 
-    public void setIdServico(long idServico) {
+    public void setIdServico(Long idServico) {
         this.idServico = idServico;
     }
 
