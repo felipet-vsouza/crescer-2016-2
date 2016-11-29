@@ -27,6 +27,86 @@ public class Cotacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_COTACAO_DOLLAR_AUSTRALIANO")
     private double dsCotacaoDollarAustraliano;
+
+    public long getIdCotacao() {
+        return idCotacao;
+    }
+
+    public void setIdCotacao(long idCotacao) {
+        this.idCotacao = idCotacao;
+    }
+
+    public double getDsCotacaoDollarAustraliano() {
+        return dsCotacaoDollarAustraliano;
+    }
+
+    public void setDsCotacaoDollarAustraliano(double dsCotacaoDollarAustraliano) {
+        this.dsCotacaoDollarAustraliano = dsCotacaoDollarAustraliano;
+    }
+
+    public double getDsCotacaoDollarCanadense() {
+        return dsCotacaoDollarCanadense;
+    }
+
+    public void setDsCotacaoDollarCanadense(double dsCotacaoDollarCanadense) {
+        this.dsCotacaoDollarCanadense = dsCotacaoDollarCanadense;
+    }
+
+    public double getDsCotacaoEuro() {
+        return dsCotacaoEuro;
+    }
+
+    public void setDsCotacaoEuro(double dsCotacaoEuro) {
+        this.dsCotacaoEuro = dsCotacaoEuro;
+    }
+
+    public double getDsCotacaoFrancoSuico() {
+        return dsCotacaoFrancoSuico;
+    }
+
+    public void setDsCotacaoFrancoSuico(double dsCotacaoFrancoSuico) {
+        this.dsCotacaoFrancoSuico = dsCotacaoFrancoSuico;
+    }
+
+    public double getDsCotacaoLibra() {
+        return dsCotacaoLibra;
+    }
+
+    public void setDsCotacaoLibra(double dsCotacaoLibra) {
+        this.dsCotacaoLibra = dsCotacaoLibra;
+    }
+
+    public double getDsCotacaoReal() {
+        return dsCotacaoReal;
+    }
+
+    public void setDsCotacaoReal(double dsCotacaoReal) {
+        this.dsCotacaoReal = dsCotacaoReal;
+    }
+
+    public double getDsCotacaoYen() {
+        return dsCotacaoYen;
+    }
+
+    public void setDsCotacaoYen(double dsCotacaoYen) {
+        this.dsCotacaoYen = dsCotacaoYen;
+    }
+
+    public double getDsCotacaoYuan() {
+        return dsCotacaoYuan;
+    }
+
+    public void setDsCotacaoYuan(double dsCotacaoYuan) {
+        this.dsCotacaoYuan = dsCotacaoYuan;
+    }
+
+    public Date getDtCotacao() {
+        return dtCotacao;
+    }
+
+    public void setDtCotacao(Date dtCotacao) {
+        this.dtCotacao = dtCotacao;
+    }
     
     @Basic(optional = false)
     @Column(name = "DS_COTACAO_DOLLAR_CANADENSE")

@@ -26,6 +26,70 @@ class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_EMAIL")
     private String dsEmail;
+
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getDsEmail() {
+        return dsEmail;
+    }
+
+    public void setDsEmail(String dsEmail) {
+        this.dsEmail = dsEmail;
+    }
+
+    public String getDsSenha() {
+        return dsSenha;
+    }
+
+    public void setDsSenha(String dsSenha) {
+        this.dsSenha = dsSenha;
+    }
+
+    public String getDsSituacao() {
+        return dsSituacao;
+    }
+
+    public void setDsSituacao(String dsSituacao) {
+        this.dsSituacao = dsSituacao;
+    }
+
+    public String getDsUserName() {
+        return dsUserName;
+    }
+
+    public void setDsUserName(String dsUserName) {
+        this.dsUserName = dsUserName;
+    }
+
+    public String getNmUsuario() {
+        return nmUsuario;
+    }
+
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
+    }
+
+    public String getTpPermissao() {
+        return tpPermissao;
+    }
+
+    public void setTpPermissao(String tpPermissao) {
+        this.tpPermissao = tpPermissao;
+    }
+
+    public List<Servico> getServicos() {
+        return servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
+    }
     
     @Basic(optional = false)
     @Column(name = "DS_SENHA")

@@ -26,6 +26,86 @@ public class Servico implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_DESCRICAO")
     private String dsDescricao;
+
+    public long getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(long idServico) {
+        this.idServico = idServico;
+    }
+
+    public String getDsDescricao() {
+        return dsDescricao;
+    }
+
+    public void setDsDescricao(String dsDescricao) {
+        this.dsDescricao = dsDescricao;
+    }
+
+    public String getDsPeriodicidade() {
+        return dsPeriodicidade;
+    }
+
+    public void setDsPeriodicidade(String dsPeriodicidade) {
+        this.dsPeriodicidade = dsPeriodicidade;
+    }
+
+    public String getDsSimboloMoeda() {
+        return dsSimboloMoeda;
+    }
+
+    public void setDsSimboloMoeda(String dsSimboloMoeda) {
+        this.dsSimboloMoeda = dsSimboloMoeda;
+    }
+
+    public String getDsSituacao() {
+        return dsSituacao;
+    }
+
+    public void setDsSituacao(String dsSituacao) {
+        this.dsSituacao = dsSituacao;
+    }
+
+    public String getDsWebsite() {
+        return dsWebsite;
+    }
+
+    public void setDsWebsite(String dsWebsite) {
+        this.dsWebsite = dsWebsite;
+    }
+
+    public String getNmServico() {
+        return nmServico;
+    }
+
+    public void setNmServico(String nmServico) {
+        this.nmServico = nmServico;
+    }
+
+    public double getVlMensalUsd() {
+        return vlMensalUsd;
+    }
+
+    public void setVlMensalUsd(double vlMensalUsd) {
+        this.vlMensalUsd = vlMensalUsd;
+    }
+
+    public double getVlTotalServico() {
+        return vlTotalServico;
+    }
+
+    public void setVlTotalServico(double vlTotalServico) {
+        this.vlTotalServico = vlTotalServico;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
     @Basic(optional = false)
     @Column(name = "DS_PERIODICIDADE")

@@ -26,6 +26,54 @@ public class ContractValue implements Serializable {
     @Basic(optional = false)
     @Column(name = "DS_COIN")
     private String dsCoin;
+
+    public long getIdContractValue() {
+        return idContractValue;
+    }
+
+    public void setIdContractValue(long idContractValue) {
+        this.idContractValue = idContractValue;
+    }
+
+    public String getDsCoin() {
+        return dsCoin;
+    }
+
+    public void setDsCoin(String dsCoin) {
+        this.dsCoin = dsCoin;
+    }
+
+    public String getDsPeriodicity() {
+        return dsPeriodicity;
+    }
+
+    public void setDsPeriodicity(String dsPeriodicity) {
+        this.dsPeriodicity = dsPeriodicity;
+    }
+
+    public double getVlAmountContractValue() {
+        return vlAmountContractValue;
+    }
+
+    public void setVlAmountContractValue(double vlAmountContractValue) {
+        this.vlAmountContractValue = vlAmountContractValue;
+    }
+
+    public double getVlMonthlyUsd() {
+        return vlMonthlyUsd;
+    }
+
+    public void setVlMonthlyUsd(double vlMonthlyUsd) {
+        this.vlMonthlyUsd = vlMonthlyUsd;
+    }
+
+    public Contract getContract() {
+        return contract;
+    }
+
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
     
     @Basic(optional = false)
     @Column(name = "DS_PERIODICITY")

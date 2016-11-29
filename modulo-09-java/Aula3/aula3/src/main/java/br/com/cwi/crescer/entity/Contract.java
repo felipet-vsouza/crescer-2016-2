@@ -33,6 +33,62 @@ public class Contract implements Serializable {
     @Column(name = "DS_STATE")
     private String dsState;
 
+    public long getIdContract() {
+        return idContract;
+    }
+
+    public void setIdContract(long idContract) {
+        this.idContract = idContract;
+    }
+
+    public String getDsDescription() {
+        return dsDescription;
+    }
+
+    public void setDsDescription(String dsDescription) {
+        this.dsDescription = dsDescription;
+    }
+
+    public String getDsState() {
+        return dsState;
+    }
+
+    public void setDsState(String dsState) {
+        this.dsState = dsState;
+    }
+
+    public String getDsWebsite() {
+        return dsWebsite;
+    }
+
+    public void setDsWebsite(String dsWebsite) {
+        this.dsWebsite = dsWebsite;
+    }
+
+    public String getNmContract() {
+        return nmContract;
+    }
+
+    public void setNmContract(String nmContract) {
+        this.nmContract = nmContract;
+    }
+
+    public Client getClient() {
+        return Client;
+    }
+
+    public void setClient(Client Client) {
+        this.Client = Client;
+    }
+
+    public List<ContractValue> getContractValues() {
+        return contractValues;
+    }
+
+    public void setContractValues(List<ContractValue> contractValues) {
+        this.contractValues = contractValues;
+    }
+
     @Basic(optional = false)
     @Column(name = "DS_WEBSITE")
     private String dsWebsite;

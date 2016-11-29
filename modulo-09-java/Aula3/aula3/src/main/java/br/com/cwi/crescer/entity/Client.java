@@ -23,6 +23,78 @@ public class Client implements Serializable {
     @Column(name = "ID_CLIENT")
     private long idClient;
 
+    public long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
+    }
+
+    public String getDsEmail() {
+        return dsEmail;
+    }
+
+    public void setDsEmail(String dsEmail) {
+        this.dsEmail = dsEmail;
+    }
+
+    public String getDsPassword() {
+        return dsPassword;
+    }
+
+    public void setDsPassword(String dsPassword) {
+        this.dsPassword = dsPassword;
+    }
+
+    public String getDsPreferredCoin() {
+        return dsPreferredCoin;
+    }
+
+    public void setDsPreferredCoin(String dsPreferredCoin) {
+        this.dsPreferredCoin = dsPreferredCoin;
+    }
+
+    public String getDsState() {
+        return dsState;
+    }
+
+    public void setDsState(String dsState) {
+        this.dsState = dsState;
+    }
+
+    public String getDsUserName() {
+        return dsUserName;
+    }
+
+    public void setDsUserName(String dsUserName) {
+        this.dsUserName = dsUserName;
+    }
+
+    public String getNmClient() {
+        return nmClient;
+    }
+
+    public void setNmClient(String nmClient) {
+        this.nmClient = nmClient;
+    }
+
+    public String getTpPermission() {
+        return tpPermission;
+    }
+
+    public void setTpPermission(String tpPermission) {
+        this.tpPermission = tpPermission;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
+    }
+
     @Basic(optional = false)
     @Column(name = "DS_EMAIL")
     private String dsEmail;
