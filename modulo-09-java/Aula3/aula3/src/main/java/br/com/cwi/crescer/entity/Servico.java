@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "SERVICO")
 public class Servico implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "VL_MENSAL_USD")
+    private BigDecimal vlMensalUsd;
+    @Basic(optional = false)
+    @Column(name = "VL_TOTAL_SERVICO")
+    private BigDecimal vlTotalServico;
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_SERVICO")
@@ -83,22 +92,6 @@ public class Servico implements Serializable {
         this.nmServico = nmServico;
     }
 
-    public double getVlMensalUsd() {
-        return vlMensalUsd;
-    }
-
-    public void setVlMensalUsd(double vlMensalUsd) {
-        this.vlMensalUsd = vlMensalUsd;
-    }
-
-    public double getVlTotalServico() {
-        return vlTotalServico;
-    }
-
-    public void setVlTotalServico(double vlTotalServico) {
-        this.vlTotalServico = vlTotalServico;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
@@ -127,15 +120,27 @@ public class Servico implements Serializable {
     @Column(name = "NM_SERVICO")
     private String nmServico;
     
-    @Basic(optional = false)
-    @Column(name = "VL_MENSAL_USD")
-    private double vlMensalUsd;
-    
-    @Basic(optional = false)
-    @Column(name = "VL_TOTAL_SERVICO")
-    private double vlTotalServico;
     
     @ManyToOne
     @JoinColumn(name = "USUARIO_ID_USUARIO")
     private Usuario usuario;
+
+    public Servico() {
+    }
+
+    public BigDecimal getVlMensalUsd() {
+        return vlMensalUsd;
+    }
+
+    public void setVlMensalUsd(BigDecimal vlMensalUsd) {
+        this.vlMensalUsd = vlMensalUsd;
+    }
+
+    public BigDecimal getVlTotalServico() {
+        return vlTotalServico;
+    }
+
+    public void setVlTotalServico(BigDecimal vlTotalServico) {
+        this.vlTotalServico = vlTotalServico;
+    }
 }

@@ -125,4 +125,7 @@ public class Client implements Serializable {
 
     @OneToMany(mappedBy = "client")
     private List<Contract> contracts;
+
+    public Client() {
+    }
 }

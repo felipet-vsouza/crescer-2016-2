@@ -3,6 +3,7 @@ package br.com.cwi.crescer.entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "CONTRACT")
 public class Contract implements Serializable {
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "contractIdContract")
+    private ContractValue contractValue;
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CONTRACT")
@@ -103,4 +108,15 @@ public class Contract implements Serializable {
     
     @OneToMany(mappedBy = "contract")
     private List<ContractValue> contractValues;
+
+    public Contract() {
+    }
+
+    public ContractValue getContractValue() {
+        return contractValue;
+    }
+
+    public void setContractValue(ContractValue contractValue) {
+        this.contractValue = contractValue;
+    }
 }

@@ -113,4 +113,7 @@ public class Usuario implements Serializable {
     
     @OneToMany(mappedBy = "usuario")
     private List<Servico> servicos;
+
+    public Usuario() {
+    }
 }

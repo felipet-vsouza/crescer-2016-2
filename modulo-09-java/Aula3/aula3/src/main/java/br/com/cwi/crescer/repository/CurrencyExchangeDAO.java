@@ -3,6 +3,7 @@ package br.com.cwi.crescer.repository;
 import br.com.cwi.crescer.entity.CurrencyExchange;
 import java.util.List;
 import javax.persistence.EntityManager;
+import org.hibernate.Session;
 
 public class CurrencyExchangeDAO implements iDao<CurrencyExchange, Long> {
 
@@ -14,32 +15,20 @@ public class CurrencyExchangeDAO implements iDao<CurrencyExchange, Long> {
 
     @Override
     public void insert(CurrencyExchange ce) {
-        if (em.isOpen()) {
-            em.getTransaction().begin();
-            try {
-                if (ce.getIdCurrencyExchange() != null) {
-                    em.merge(ce);
-                } else {
-                    em.persist(ce);
-                }
-                em.getTransaction().commit();
-            } catch (Exception e) {
-                em.getTransaction().rollback();
-            }
+        em.getTransaction().begin();
+        Session session = em.unwrap(Session.class);
+        if (ce.getIdCurrencyExchange() == null) {
+            session.save(ce);
+        } else {
+            session.update(ce);
         }
+        em.getTransaction().commit();
     }
 
     @Override
     public CurrencyExchange find(Long id) {
-        CurrencyExchange ce = null;
-        if (em.isOpen()) {
-            try {
-                ce = em.find(CurrencyExchange.class, id);
-            } catch (Exception e) {
-                System.err.println("Problema na requisição ao banco de dados.");
-            }
-        }
-        return ce;
+        Session session = em.unwrap(Session.class);
+        return (CurrencyExchange) session.load(CurrencyExchange.class, id);
     }
 
     @Override

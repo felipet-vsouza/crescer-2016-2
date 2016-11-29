@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,14 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CONTRACT_VALUE")
 public class ContractValue implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "VL_AMOUNT_CONTRACT_VALUE")
+    private BigDecimal vlAmountContractValue;
+    @Basic(optional = false)
+    @Column(name = "VL_MONTHLY_USD")
+    private BigDecimal vlMonthlyUsd;
     
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CONTRACT_VALUE")
@@ -51,22 +60,6 @@ public class ContractValue implements Serializable {
         this.dsPeriodicity = dsPeriodicity;
     }
 
-    public double getVlAmountContractValue() {
-        return vlAmountContractValue;
-    }
-
-    public void setVlAmountContractValue(double vlAmountContractValue) {
-        this.vlAmountContractValue = vlAmountContractValue;
-    }
-
-    public double getVlMonthlyUsd() {
-        return vlMonthlyUsd;
-    }
-
-    public void setVlMonthlyUsd(double vlMonthlyUsd) {
-        this.vlMonthlyUsd = vlMonthlyUsd;
-    }
-
     public Contract getContract() {
         return contract;
     }
@@ -79,15 +72,27 @@ public class ContractValue implements Serializable {
     @Column(name = "DS_PERIODICITY")
     private String dsPeriodicity;
     
-    @Basic(optional = false)
-    @Column(name = "VL_AMOUNT_CONTRACT_VALUE")
-    private double vlAmountContractValue;
-    
-    @Basic(optional = false)
-    @Column(name = "VL_MONTHLY_USD")
-    private double vlMonthlyUsd;
     
     @ManyToOne
     @JoinColumn(name = "CONTRACT_ID_CONTRACT")
     private Contract contract;
+
+    public ContractValue() {
+    }
+
+    public BigDecimal getVlAmountContractValue() {
+        return vlAmountContractValue;
+    }
+
+    public void setVlAmountContractValue(BigDecimal vlAmountContractValue) {
+        this.vlAmountContractValue = vlAmountContractValue;
+    }
+
+    public BigDecimal getVlMonthlyUsd() {
+        return vlMonthlyUsd;
+    }
+
+    public void setVlMonthlyUsd(BigDecimal vlMonthlyUsd) {
+        this.vlMonthlyUsd = vlMonthlyUsd;
+    }
 }
