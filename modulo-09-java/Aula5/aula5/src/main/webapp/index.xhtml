@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Aula 6</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="form">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome"></h:outputLabel>
+                    <h:inputText id="nome" value="#{hello.pessoa.nome}" />
+
+                    <h:outputLabel value="Sobrenome"></h:outputLabel>
+                    <h:inputText id="sobrenome" value="#{hello.pessoa.sobrenome}" />
+
+                    <h:outputLabel value="Idade"></h:outputLabel>
+                    <h:inputText id="idade" value="#{hello.pessoa.idade}" />
+                </h:panelGrid>
+                <h:outputText value="#{hello.pessoa}" />
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
