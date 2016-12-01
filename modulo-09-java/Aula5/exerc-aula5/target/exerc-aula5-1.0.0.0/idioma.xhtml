@@ -12,25 +12,25 @@
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-            <h:inputText id="nome" value="#{cadastroGenero.genero.nome}" styleClass="form-control"/>
+            <h:inputText id="nome" value="#{cadastroIdioma.idioma.nome}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroGenero.cadastrar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroIdioma.cadastrar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="atores" value="#{cadastroGenero.generos}" var="genero" styleClass="table table-hover">
+        <h:dataTable id="atores" value="#{cadastroIdioma.idiomas}" var="idioma" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Id"/>
                 </f:facet>
-                <h:outputText value="#{genero.id}"/>
+                <h:outputText value="#{idioma.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Nome"/>
                 </f:facet>
-                <h:outputText value="#{genero.nome}"/>
+                <h:outputText value="#{idioma.nome}"/>
             </h:column>
 
         </h:dataTable>
