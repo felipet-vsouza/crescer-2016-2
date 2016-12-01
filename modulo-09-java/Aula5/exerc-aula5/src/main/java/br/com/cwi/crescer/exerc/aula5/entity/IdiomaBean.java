@@ -22,6 +22,6 @@ public class IdiomaBean extends AbstractDao<Idioma, Long> {
 
     @Override
     public List<Idioma> findAll() {
-        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
+        return this.getEntityManager().createQuery("select i from Idioma i").getResultList();
     }
 }
