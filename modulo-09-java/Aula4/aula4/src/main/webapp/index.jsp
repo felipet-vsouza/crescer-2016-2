@@ -14,9 +14,8 @@
             <input type="text" name="nome" placeholder="nome">
             <button type="submit" id="submitter">Cadastrar</button>
         </form>
-        <%
-            String title = "CARLOS";
-        %>
+        <div id="tabela">
+        </div>
         <h1><%=title %></h1>
     </body>
 </html>
