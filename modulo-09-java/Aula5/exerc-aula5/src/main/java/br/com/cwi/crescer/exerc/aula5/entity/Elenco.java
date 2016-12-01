@@ -2,6 +2,7 @@ package br.com.cwi.crescer.exerc.aula5.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,5 +53,13 @@ public class Elenco implements Serializable {
         if(!this.nome.equals(((Elenco)outro).getNome())) return false;
         if(!this.id.equals(((Elenco)outro).getId())) return false;
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.nome);
+        return hash;
     }
 }

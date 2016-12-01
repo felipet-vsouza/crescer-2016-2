@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.exerc.aula5.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,5 +40,22 @@ public class Genero implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    @Override
+    public boolean equals(Object outro) {
+        if(!(outro instanceof Genero)) return false;
+        Genero outroGenero = (Genero) outro;
+        if(!outroGenero.getNome().equals(this.nome)) return false;
+        if(!outroGenero.getId().equals(this.id)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        return hash;
     }
 }

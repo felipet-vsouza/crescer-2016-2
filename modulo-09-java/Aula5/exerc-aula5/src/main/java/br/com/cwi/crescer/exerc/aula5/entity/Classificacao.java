@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.exerc.aula5.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,5 +52,24 @@ public class Classificacao implements Serializable {
 
     public void setIdade(Integer idade) {
         this.idade = idade;
+    }
+    
+    @Override
+    public boolean equals(Object outro) {
+        if(!(outro instanceof Classificacao)) return false;
+        Classificacao outraClassificacao = (Classificacao) outro;
+        if(!outraClassificacao.getDescricao().equals(this.descricao)) return false;
+        if(!outraClassificacao.getId().equals(this.id)) return false;
+        if(!outraClassificacao.getIdade().equals(this.idade)) return false;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.descricao);
+        hash = 79 * hash + Objects.hashCode(this.idade);
+        return hash;
     }
 }
