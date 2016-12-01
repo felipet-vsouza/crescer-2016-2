@@ -22,6 +22,6 @@ public class ElencoBean extends AbstractDao<Elenco, Long> {
 
     @Override
     public List<Elenco> findAll() {
-        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
+        return this.getEntityManager().createQuery("select e from Elenco e").getResultList();
     }
 }

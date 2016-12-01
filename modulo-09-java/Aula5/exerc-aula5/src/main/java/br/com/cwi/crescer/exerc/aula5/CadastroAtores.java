@@ -18,8 +18,8 @@ public class CadastroAtores {
     @EJB
     private AtorBean atorBean;
     
-//    @EJB
-//    private ElencoBean elencoBean;
+    @EJB
+    private ElencoBean elencoBean;
     
     private Ator ator;
     private List<Elenco> elencos;
@@ -29,8 +29,11 @@ public class CadastroAtores {
     @PostConstruct
     public void init() {
         this.ator = new Ator();
-//        this.elencos = elencoBean.findAll();
         this.atores = atorBean.findAll();
+    }
+    
+    public List<Elenco> getElencos() {
+        return elencoBean.findAll();
     }
     
     public Ator getAtor() {
@@ -47,7 +50,6 @@ public class CadastroAtores {
     
     public void cadastrar() {
         this.atorBean.insert(ator);
-//        this.init();
-        this.ator = new Ator();
+        this.init();
     }
 }

@@ -44,7 +44,13 @@ public class Elenco implements Serializable {
     }
     
     @OneToMany(mappedBy = "elenco")
-    @Basic(optional = false)
-    @Column(name = "LS_ATORES")
     private List<Ator> atores;
+    
+    @Override
+    public boolean equals(Object outro) {
+        if(!(outro instanceof Elenco)) return false;
+        if(!this.nome.equals(((Elenco)outro).getNome())) return false;
+        if(!this.id.equals(((Elenco)outro).getId())) return false;
+        return true;
+    }
 }

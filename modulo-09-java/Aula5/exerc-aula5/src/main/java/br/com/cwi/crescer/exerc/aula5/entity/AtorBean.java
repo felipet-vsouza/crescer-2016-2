@@ -4,6 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class AtorBean extends AbstractDao<Ator, Long> {
@@ -22,6 +23,8 @@ public class AtorBean extends AbstractDao<Ator, Long> {
 
     @Override
     public List<Ator> findAll() {
-        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
+        final Query query = entityManager.createQuery("SELECT a FROM Ator a");
+        final List resultList = query.getResultList();
+        return resultList;
     }
 }

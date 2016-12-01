@@ -12,8 +12,12 @@
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-            <h:inputText id="nome" value="#{cadastro.ator.nome}" styleClass="form-control"/>
+            <h:inputText id="nome" value="#{cadastroAtores.ator.nome}" styleClass="form-control"/>
         </div>
+
+        <h:selectOneMenu value="#{cadastroAtores.ator.elenco}" converter="#{elencoConverter}">
+            <f:selectItems value="#{cadastroAtores.elencos}" var="elenco" itemValue="#{elenco}" itemLabel="#{elenco.nome}" />
+        </h:selectOneMenu>
 
         <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroAtores.cadastrar}">    
             <f:ajax execute="@form" render="@form" />
