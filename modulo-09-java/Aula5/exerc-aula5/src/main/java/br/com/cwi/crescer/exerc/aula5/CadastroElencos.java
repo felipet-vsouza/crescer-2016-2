@@ -1,6 +1,5 @@
 package br.com.cwi.crescer.exerc.aula5;
 
-import br.com.cwi.crescer.exerc.aula5.entity.Ator;
 import br.com.cwi.crescer.exerc.aula5.entity.Elenco;
 import br.com.cwi.crescer.exerc.aula5.entity.ElencoBean;
 import java.util.List;

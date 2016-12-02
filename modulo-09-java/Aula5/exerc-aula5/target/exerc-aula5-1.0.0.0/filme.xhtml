@@ -11,26 +11,96 @@
     <ui:define name="form">
 
         <div class="form-group"> 
-            <h:outputLabel for="nome" value="Nome"></h:outputLabel>
-            <h:inputText id="nome" value="#{cadastroElencos.elenco.nome}" styleClass="form-control"/>
+            <h:outputLabel for="titulo" value="Título"></h:outputLabel>
+            <h:inputText id="titulo" value="#{cadastroFilmes.filme.titulo}" styleClass="form-control"/>
+        </div>
+        <div class="form-group"> 
+            <h:outputLabel for="diretor" value="Diretor"></h:outputLabel>
+            <h:inputText id="diretor" value="#{cadastroFilmes.filme.diretor}" styleClass="form-control"/>
+        </div>
+        <div class="form-group"> 
+            <h:outputLabel for="lancamento" value="Lançamento"></h:outputLabel>
+            <h:inputText id="titulo" value="#{cadastroFilmes.filme.lancamento}" styleClass="form-control">
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:inputText>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="classificacao" value="Classificação"></h:outputLabel>
+            <h:selectOneMenu value="#{cadastroFilmes.filme.classificacao}" converter="#{classificacaoConverter}">
+                <f:selectItems value="#{cadastroClassificacao.classsificacoes}" var="classificacao" itemValue="#{classificacao}" itemLabel="#{classificacao.descricao}" />
+            </h:selectOneMenu>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="elenco" value="Elenco"></h:outputLabel>
+            <h:selectOneMenu value="#{cadastroFilmes.filme.elenco}" converter="#{elencoConverter}">
+                <f:selectItems value="#{cadastroElencos.elencos}" var="elenco" itemValue="#{elenco}" itemLabel="#{elenco.nome}" />
+            </h:selectOneMenu>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="genero" value="Gênero"></h:outputLabel>
+            <h:selectOneMenu value="#{cadastroFilmes.filme.genero}" converter="#{generoConverter}">
+                <f:selectItems value="#{cadastroGenero.generos}" var="genero" itemValue="#{genero}" itemLabel="#{genero.nome}" />
+            </h:selectOneMenu>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="idioma" value="Idioma"></h:outputLabel>
+            <h:selectOneMenu value="#{cadastroFilmes.filme.idioma}" converter="#{idiomaConverter}">
+                <f:selectItems value="#{cadastroIdioma.idiomas}" var="idioma" itemValue="#{idioma}" itemLabel="#{idioma.nome}" />
+            </h:selectOneMenu>
         </div>
 
         <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroElencos.cadastrar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="atores" value="#{cadastroElencos.elencos}" var="elenco" styleClass="table table-hover">
+        <h:dataTable id="atores" value="#{cadastroFilmes.filmes}" var="filme" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Id"/>
                 </f:facet>
-                <h:outputText value="#{elenco.id}"/>
+                <h:outputText value="#{filme.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Nome"/>
+                    <h:outputText value="Título"/>
                 </f:facet>
-                <h:outputText value="#{elenco.nome}"/>
+                <h:outputText value="#{filme.titulo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Diretor"/>
+                </f:facet>
+                <h:outputText value="#{filme.diretor}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Elenco"/>
+                </f:facet>
+                <h:outputText value="#{filme.elenco.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Gênero"/>
+                </f:facet>
+                <h:outputText value="#{filme.genero.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Idioma"/>
+                </f:facet>
+                <h:outputText value="#{filme.idioma.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Lançamento"/>
+                </f:facet>
+                <h:outputText value="#{filme.lancamento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                </h:outputText>
             </h:column>
 
         </h:dataTable>
