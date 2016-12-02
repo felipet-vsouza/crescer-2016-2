@@ -26,7 +26,7 @@ public class CadastroFilmes {
         return filme;
     }
 
-    public void setElenco(Filme filme) {
+    public void setFilme(Filme filme) {
         this.filme = filme;
     }
 
@@ -34,7 +34,7 @@ public class CadastroFilmes {
         List<Filme> l = filmeBean.findAll();
         return l;
     }
-
+    
     public void cadastrar() {
         this.filmeBean.insert(filme);
         this.init();

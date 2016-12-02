@@ -20,40 +20,40 @@
         </div>
         <div class="form-group"> 
             <h:outputLabel for="lancamento" value="Lançamento"></h:outputLabel>
-            <h:inputText id="titulo" value="#{cadastroFilmes.filme.lancamento}" styleClass="form-control">
+            <h:inputText id="lancamento" value="#{cadastroFilmes.filme.lancamento}" styleClass="form-control">
                 <f:convertDateTime pattern="dd/MM/yyyy" />
             </h:inputText>
         </div>
 
         <div class="form-group"> 
-            <h:outputLabel for="classificacao" value="Classificação"></h:outputLabel>
+            <h:outputLabel value="Classificação"></h:outputLabel>
             <h:selectOneMenu value="#{cadastroFilmes.filme.classificacao}" converter="#{classificacaoConverter}">
                 <f:selectItems value="#{cadastroClassificacao.classsificacoes}" var="classificacao" itemValue="#{classificacao}" itemLabel="#{classificacao.descricao}" />
             </h:selectOneMenu>
         </div>
 
         <div class="form-group"> 
-            <h:outputLabel for="elenco" value="Elenco"></h:outputLabel>
+            <h:outputLabel value="Elenco"></h:outputLabel>
             <h:selectOneMenu value="#{cadastroFilmes.filme.elenco}" converter="#{elencoConverter}">
                 <f:selectItems value="#{cadastroElencos.elencos}" var="elenco" itemValue="#{elenco}" itemLabel="#{elenco.nome}" />
             </h:selectOneMenu>
         </div>
 
         <div class="form-group"> 
-            <h:outputLabel for="genero" value="Gênero"></h:outputLabel>
+            <h:outputLabel value="Gênero"></h:outputLabel>
             <h:selectOneMenu value="#{cadastroFilmes.filme.genero}" converter="#{generoConverter}">
                 <f:selectItems value="#{cadastroGenero.generos}" var="genero" itemValue="#{genero}" itemLabel="#{genero.nome}" />
             </h:selectOneMenu>
         </div>
 
         <div class="form-group"> 
-            <h:outputLabel for="idioma" value="Idioma"></h:outputLabel>
+            <h:outputLabel value="Idioma"></h:outputLabel>
             <h:selectOneMenu value="#{cadastroFilmes.filme.idioma}" converter="#{idiomaConverter}">
                 <f:selectItems value="#{cadastroIdioma.idiomas}" var="idioma" itemValue="#{idioma}" itemLabel="#{idioma.nome}" />
             </h:selectOneMenu>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroElencos.cadastrar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroFilmes.cadastrar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
@@ -104,7 +104,6 @@
             </h:column>
 
         </h:dataTable>
-
 
     </ui:define>
 

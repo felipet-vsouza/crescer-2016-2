@@ -60,8 +60,9 @@ public class Classificacao implements Serializable {
         Classificacao outraClassificacao = (Classificacao) outro;
         if(!outraClassificacao.getDescricao().equals(this.descricao)) return false;
         if(!outraClassificacao.getId().equals(this.id)) return false;
-        if(!outraClassificacao.getIdade().equals(this.idade)) return false;
-        return false;
+        if(outraClassificacao.getIdade() != null && 
+                !outraClassificacao.getIdade().equals(this.idade)) return false;
+        return true;
     }
 
     @Override
