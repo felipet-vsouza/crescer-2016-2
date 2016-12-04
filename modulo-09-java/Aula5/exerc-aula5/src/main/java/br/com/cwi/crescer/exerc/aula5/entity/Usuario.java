@@ -28,6 +28,18 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "SN_USUARIO")
     private String senha;
+    
+    @Basic(optional = false)
+    @Column(name = "NM_EMAIL")
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
