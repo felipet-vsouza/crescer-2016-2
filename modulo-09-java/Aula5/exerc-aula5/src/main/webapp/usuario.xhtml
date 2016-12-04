@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+
+    template="/templates/template.xhtml"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="form">
+
+        <div class="form-group"> 
+            <h:outputLabel for="username" value="Username"></h:outputLabel>
+            <h:inputText id="username" value="#{cadastroUsuario.usuario.username}" styleClass="form-control"/>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="senha" value="Senha"></h:outputLabel>
+            <h:inputSecret id="senha" value="#{cadastroUsuario.usuario.senha}" styleClass="form-control"/>
+        </div>
+
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{cadastroUsuario.cadastrar}">    
+            <f:ajax execute="@form" render="@form" />
+        </h:commandButton>
+
+        <h:dataTable id="atores" value="#{cadastroUsuario.usuarios}" var="usuario" styleClass="table table-hover">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{usuario.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Username"/>
+                </f:facet>
+                <h:outputText value="#{usuario.username}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Senha"/>
+                </f:facet>
+                <h:outputText value="#{usuario.senha}"/>
+            </h:column>
+        </h:dataTable>
+
+
+    </ui:define>
+
+</ui:composition>

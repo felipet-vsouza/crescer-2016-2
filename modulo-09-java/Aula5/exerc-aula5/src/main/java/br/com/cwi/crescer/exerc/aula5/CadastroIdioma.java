@@ -26,8 +26,8 @@ public class CadastroIdioma {
         return idioma;
     }
 
-    public void setIdioma(Idioma genero) {
-        this.idioma = genero;
+    public void setIdioma(Idioma idioma) {
+        this.idioma = idioma;
     }
 
     public List<Idioma> getIdiomas() {
