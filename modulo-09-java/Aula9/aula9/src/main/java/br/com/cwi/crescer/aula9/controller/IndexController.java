@@ -1,26 +1,13 @@
 package br.com.cwi.crescer.aula9.controller;
 
-import br.com.cwi.crescer.aula9.entitites.Elenco;
-import br.com.cwi.crescer.aula9.service.ElencoService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/rest/index")
+@Controller
 public class IndexController {
-    
-    @Autowired
-    ElencoService service;
-    
-    @RequestMapping(method = RequestMethod.GET)
-    public String listAll(Model model, Pageable pageable) {
-        Page<Elenco> elencos = service.findAll(pageable);
-        model.addAttribute("elencos", elencos);
-        return "elenco";
+
+    @RequestMapping(value = {"/", "/index"})
+    public String basicIndex() {
+        return "index";
     }
 }

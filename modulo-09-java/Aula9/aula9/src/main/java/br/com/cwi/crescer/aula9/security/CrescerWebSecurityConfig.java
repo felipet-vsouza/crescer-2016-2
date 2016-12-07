@@ -28,7 +28,7 @@ public class CrescerWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/elenco", true)
+                .defaultSuccessUrl("/", true)
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()
