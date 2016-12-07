@@ -30,7 +30,7 @@ public class Classificacao implements Serializable {
     @Column(name = "DS_CLASSIFICACAO")
     private String descricao;
 
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "NR_IDADE")
     private Integer idade;
 
