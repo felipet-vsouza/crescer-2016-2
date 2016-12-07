@@ -1,10 +1,10 @@
-package br.com.cwi.crescer.aula9.entitites;
+package br.com.cwi.crescer.aula9.entities;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,20 +15,20 @@ import javax.persistence.Table;
  * @author Carlos H. Nonnemacher
  */
 @Entity
-@Table(name = "GENERO")
-public class Genero implements Serializable {
+@Table(name = "IDIOMA")
+public class Idioma implements Serializable {
 
-    private static final String SQ_NAME = "SQ_GENERO";
+    private static final String SQ_NAME = "SQ_IDIOMA";
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = SQ_NAME)
     @SequenceGenerator(name = SQ_NAME, sequenceName = SQ_NAME, allocationSize = 1)
-    @Column(name = "ID_GENERO")
+    @Column(name = "ID_IDIOMA")
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "DS_GENERO")
-    private String descricao;
+    @Column(name = "NM_IDIOMA")
+    private String nome;
 
     public Long getId() {
         return id;
@@ -38,12 +38,12 @@ public class Genero implements Serializable {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
 }

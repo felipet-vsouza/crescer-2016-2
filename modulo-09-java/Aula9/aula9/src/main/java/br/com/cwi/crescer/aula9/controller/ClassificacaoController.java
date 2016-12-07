@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula9.controller;
 
-import br.com.cwi.crescer.aula9.entitites.Classificacao;
+import br.com.cwi.crescer.aula9.entities.Classificacao;
 import br.com.cwi.crescer.aula9.service.ClassificacaoService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

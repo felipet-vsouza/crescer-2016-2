@@ -1,10 +1,10 @@
-package br.com.cwi.crescer.aula9.entitites;
+package br.com.cwi.crescer.aula9.entities;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column; 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,19 +15,19 @@ import javax.persistence.Table;
  * @author Carlos H. Nonnemacher
  */
 @Entity
-@Table(name = "IDIOMA")
-public class Idioma implements Serializable {
+@Table(name = "ATOR")
+public class Ator implements Serializable {
 
-    private static final String SQ_NAME = "SQ_IDIOMA";
+    private static final String SQ_NAME = "SQ_ATOR";
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = SQ_NAME)
     @SequenceGenerator(name = SQ_NAME, sequenceName = SQ_NAME, allocationSize = 1)
-    @Column(name = "ID_IDIOMA")
+    @Column(name = "ID_ATOR")
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "NM_IDIOMA")
+    @Column(name = "NM_ATOR")
     private String nome;
 
     public Long getId() {

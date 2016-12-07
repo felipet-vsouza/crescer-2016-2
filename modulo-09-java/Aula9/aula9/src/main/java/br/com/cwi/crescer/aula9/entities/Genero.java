@@ -1,16 +1,13 @@
-package br.com.cwi.crescer.aula9.entitites;
+package br.com.cwi.crescer.aula9.entities;
 
-import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,23 +15,20 @@ import javax.persistence.Table;
  * @author Carlos H. Nonnemacher
  */
 @Entity
-@Table(name = "ELENCO")
-public class Elenco implements Serializable {
+@Table(name = "GENERO")
+public class Genero implements Serializable {
 
-    private static final String SQ_NAME = "SQ_ELENCO";
+    private static final String SQ_NAME = "SQ_GENERO";
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = SQ_NAME)
     @SequenceGenerator(name = SQ_NAME, sequenceName = SQ_NAME, allocationSize = 1)
-    @Column(name = "ID_ELENCO")
+    @Column(name = "ID_GENERO")
     private Long id;
 
     @Basic(optional = false)
-    @Column(name = "DS_ELENCO")
+    @Column(name = "DS_GENERO")
     private String descricao;
-    
-    @OneToMany(cascade = ALL)
-    private List<Ator> atores;
 
     public Long getId() {
         return id;
@@ -42,14 +36,6 @@ public class Elenco implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Ator> getAtores() {
-        return atores;
-    }
-
-    public void setAtores(List<Ator> atores) {
-        this.atores = atores;
     }
 
     public String getDescricao() {
@@ -60,5 +46,4 @@ public class Elenco implements Serializable {
         this.descricao = descricao;
     }
 
-    
 }

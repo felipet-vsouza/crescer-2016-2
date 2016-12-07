@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.aula9.entitites;
+package br.com.cwi.crescer.aula9.entities;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 

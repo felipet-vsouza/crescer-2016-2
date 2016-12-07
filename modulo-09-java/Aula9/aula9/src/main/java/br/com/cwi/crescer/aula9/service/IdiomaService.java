@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula9.service;
 
-import br.com.cwi.crescer.aula9.entitites.Idioma;
+import br.com.cwi.crescer.aula9.entities.Idioma;
 import br.com.cwi.crescer.aula9.repository.IdiomaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

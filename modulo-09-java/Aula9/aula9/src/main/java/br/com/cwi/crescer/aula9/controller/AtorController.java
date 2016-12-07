@@ -1,8 +1,7 @@
 package br.com.cwi.crescer.aula9.controller;
 
-import br.com.cwi.crescer.aula9.entities.Elenco;
-import br.com.cwi.crescer.aula9.service.ElencoService;
 import br.com.cwi.crescer.aula9.service.AtorService;
+import br.com.cwi.crescer.aula9.entities.Ator;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,53 +15,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-/**
- * @author Carlos H. Nonnemacher
- */
 @Controller
-@RequestMapping("/elenco")
-public class ElencoController {
-
+@RequestMapping("/ator")
+public class AtorController {
+    
     @Autowired
-    ElencoService service;
-
-    @Autowired
-    AtorService serviceAtor;
+    AtorService service;
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model, @RequestParam(required = false) Long id, Pageable p) {
         Pageable pageable = new PageRequest(p.getPageNumber(), 5, p.getSort());
 
-        Elenco elenco = new Elenco();
+        Ator ator = new Ator();
         if (id != null) {
-            elenco = service.findOne(id);
+            ator = service.findOne(id);
             pageable = null;
         }
         if (pageable == null) {
             pageable = new PageRequest(0, 10);
         }
-        model.addAttribute("atores", serviceAtor.findAll());
-        model.addAttribute("elenco", elenco);
-        model.addAttribute("elencos", service.findAll(pageable));
-        return "elenco";
+        model.addAttribute("ator", ator);
+        model.addAttribute("atores", service.findAll(pageable));
+        return "ator";
     }
-
+    
     @RequestMapping(method = RequestMethod.POST)
-    public String save(@Valid Elenco elenco, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String save(@Valid Ator ator, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (!bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("msg", "Registro salvo com sucesso!");
-            service.save(elenco);
-            return "redirect:elenco";
+            service.save(ator);
+            return "redirect:ator";
         }
-        redirectAttributes.addFlashAttribute("error", bindingResult.getFieldError().getDefaultMessage());
-        return "redirect:elenco";
+        return "ator";
     }
 
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     public String listAll(Model model, Pageable pageable) {
-        Page<Elenco> elencos = service.findAll(pageable);
-        model.addAttribute("elencos", elencos);
-        return "elenco";
+        Page<Ator> ator = service.findAll(pageable);
+        model.addAttribute("atores", ator);
+        return "ator";
     }
-
 }

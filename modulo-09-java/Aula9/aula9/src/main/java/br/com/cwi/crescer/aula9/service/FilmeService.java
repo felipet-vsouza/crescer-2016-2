@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula9.service;
 
-import br.com.cwi.crescer.aula9.entitites.Filme;
+import br.com.cwi.crescer.aula9.entities.Filme;
 import br.com.cwi.crescer.aula9.repository.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

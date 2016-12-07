@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula9.rest;
 
-import br.com.cwi.crescer.aula9.entitites.Elenco;
+import br.com.cwi.crescer.aula9.entities.Elenco;
 import br.com.cwi.crescer.aula9.service.ElencoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package br.com.cwi.crescer.aula9.service;
 
-import br.com.cwi.crescer.aula9.entitites.Genero;
+import br.com.cwi.crescer.aula9.entities.Genero;
 import br.com.cwi.crescer.aula9.repository.GeneroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
