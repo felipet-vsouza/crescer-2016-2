@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragments :: head('Cadastro de Elencos')">
+        <!-- pega do templates/fragments.html o frament:head -->
+    </head>
+
+    <body>
+
+        <div th:replace="fragments :: navbar">
+            <!-- pega do templates/fragments.html o frament:navbar -->
+        </div>
+
+        <div class="container">
+
+            <h1 th:text="#{elenco.form}" class="page-header"></h1>
+
+            <form action="#" th:action="@{/elenco}" th:object="${elenco}" method="POST">
+
+                <input type="hidden" th:field="*{id}"/> 
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+                    <label for="descricao" th:text="#{elenco.descricao}"></label>
+                    <input class="form-control" type="text" th:field="*{descricao}" autofocus="true" />
+                    <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="help-block"></span>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('atores')} ? has-error">
+                    <label for="atores" th:text="#{elenco.atores}"></label>
+                    <select id="atores" multiple="multiple" th:field="*{atores}">
+                        <option th:each="ator : ${atores}" th:value="${ator.id}" th:text="${ator.nome}" />
+                    </select>
+                    <span th:if="${#fields.hasErrors('atores')}" th:errors="*{atores}" class="help-block"></span>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" th:value="#{form.submit}" />
+                    <input class="btn btn-primary" type="reset" th:value="#{form.reset}" />
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th th:text="#{elenco.id}" />
+                            <th th:text="#{elenco.descricao}" />
+                            <th th:text="#{elenco.atores}" />
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="e : ${elencos}">
+                            <td th:text="${e.id}">ID</td>
+                            <td th:text="${e.descricao}">DESCRICAO</td>
+                            <td>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th th:text="#{elenco.atores.nome}" />
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="a : ${e.atores}">
+                                            <td th:text="${a.nome}">NOME</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <a th:href="@{${'/elenco'}(id=${e.id})}" class="btn btn-default btn-xs">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+            <div class="alert alert-success" th:if="${msg}">
+                <strong>Sucess!</strong> <span th:text="${msg}"></span>
+            </div>
+            
+            <div class="alert alert-danger" th:if="${error}">
+                <strong>Erro!</strong> <span th:text="${error}"></span>
+            </div>
+
+
+            <div th:replace="fragments :: paginator(${elencos}, '/elenco')">
+            </div>
+        </div>
+
+        <div th:replace="fragments :: footer">
+            <!-- pega do templates/fragments.html o frament:footer -->
+        </div>
+
+
+    </body>
+
+</html>
