@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,8 +18,6 @@ public class SocialUserDetailsService implements UserDetailsService {
 
     @Autowired
     UsuarioService service;
-    
-    private static final String CRESCER = "crescer";
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
